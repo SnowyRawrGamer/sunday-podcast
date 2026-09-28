@@ -41,14 +41,19 @@ def kokoro_language(speaker):
 
 
 def kokoro_voice(speaker):
-    return 'bm_george' if speaker == 'Jasper' else 'am_adam'
+    return 'bm_fable' if speaker == 'Jasper' else 'am_michael'
 
 
-def synthesize_line(text, speaker, out_path, work):
-    """Use local Kokoro by default; gTTS fallback must be explicitly enabled."""
+def kokoro_speed(speaker):
+    return 1.05 if speaker == 'Jasper' else 0.98
+
+
+def synthesize_line(text, speaker, out_path, work, pause_seconds=0.0):
+    """Use local Kokoro by default; add natural pacing and allow only explicit gTTS fallback."""
     global _MODEL
     lang = kokoro_language(speaker)
     voice = kokoro_voice(speaker)
+    speed = kokoro_speed(speaker)
     if lang not in _PIPELINE_ERRORS:
         try:
             if lang not in _PIPELINES:
@@ -57,14 +62,18 @@ def synthesize_line(text, speaker, out_path, work):
                     _MODEL = KModel(repo_id='hexgrad/Kokoro-82M').to('cpu').eval()
                 print(f'Loading Kokoro CPU pipeline: language={lang}, voice={voice}', flush=True)
                 _PIPELINES[lang] = KPipeline(lang_code=lang, model=_MODEL, device='cpu')
-            chunks = [audio for _, _, audio in _PIPELINES[lang](text, voice=voice) if audio is not None and len(audio)]
+            chunks = [audio for _, _, audio in _PIPELINES[lang](text, voice=voice, speed=speed) if audio is not None and len(audio)]
             if not chunks:
                 raise RuntimeError('Kokoro returned no audio chunks')
+            audio = np.concatenate(chunks)
+            if pause_seconds > 0:
+                silence = np.zeros(round(24000 * pause_seconds), dtype=audio.dtype)
+                audio = np.concatenate((audio, silence))
             wav_path = work / (out_path.stem + '.wav')
-            sf.write(str(wav_path), np.concatenate(chunks), 24000)
+            sf.write(str(wav_path), audio, 24000)
             subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(wav_path), '-codec:a', 'libmp3lame', '-b:a', '128k', str(out_path)], check=True)
             _TTS_BACKENDS['kokoro'] += 1
-            print(f'TTS_RESULT backend=kokoro speaker={speaker} voice={voice} language={lang}', flush=True)
+            print(f'TTS_RESULT backend=kokoro speaker={speaker} voice={voice} language={lang} speed={speed} pause_after={pause_seconds:.2f}s', flush=True)
             return
         except Exception as exc:
             _PIPELINE_ERRORS[lang] = f'{type(exc).__name__}: {exc}'
@@ -77,8 +86,14 @@ def synthesize_line(text, speaker, out_path, work):
 
     fallback_tld = 'co.uk' if speaker == 'Jasper' else 'com'
     gTTS(text=text, lang='en', tld=fallback_tld).save(str(out_path))
+    filters = [f'atempo={speed}']
+    if pause_seconds > 0:
+        filters.append(f'apad=pad_dur={pause_seconds}')
+    processed_path = out_path.with_name(out_path.stem + '-processed.mp3')
+    subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(out_path), '-af', ','.join(filters), '-codec:a', 'libmp3lame', '-b:a', '128k', str(processed_path)], check=True)
+    os.replace(processed_path, out_path)
     _TTS_BACKENDS['gtts_fallback'] += 1
-    print(f'TTS_RESULT backend=gTTS_fallback speaker={speaker} tld={fallback_tld}', flush=True)
+    print(f'TTS_RESULT backend=gTTS_fallback speaker={speaker} tld={fallback_tld} speed={speed} pause_after={pause_seconds:.2f}s', flush=True)
 
 
 def run(*cmd):
@@ -88,8 +103,8 @@ def run(*cmd):
 def make_prompt(bible, topics, test_mode):
     title = topics.get('title', 'Sunday Podcast')
     length = 'a concise 4-6 exchange test, under 90 seconds' if test_mode else 'a natural 8-12 minute episode'
-    return f'''Return valid JSON only in this exact shape: {{"title":"...","lines":[{{"speaker":"Felix","text":"..."}},{{"speaker":"Jasper","text":"..."}}],"continuity_update":"..."}}.
-The show title is {json.dumps(title)}; keep that title exactly. Write {length}, with a lively back-and-forth and short spoken turns.
+    return f'''Return valid JSON only in this exact shape: {{"title":"...","lines":[{{"speaker":"Felix","text":"...","topic_transition_after":false}},{{"speaker":"Jasper","text":"...","topic_transition_after":false}}],"continuity_update":"..."}}.
+The show title is {json.dumps(title)}; keep that title exactly. Write {length}, with a lively back-and-forth and short spoken turns. Set topic_transition_after to true only when the next line begins a distinct discussion topic; otherwise set it to false. Mark the last line false.
 
 Felix and Jasper are two close buddies chatting casually on Discord / on their gaming podcast. They follow Snowy's dev logs, gaming matches, Bone TD, BattleTabs, and projects, and react like real friends: tease each other, hype good plays, roast bad strategies, disagree playfully, and land funny callbacks. Felix is observant and clear; Jasper is energetic and quick with a hot take. Make it sound spontaneous and warm, not like presenters reading a corporate briefing. They are fictional third-party podcast hosts, not Joel or Madden; never claim to be either person or invent personal experiences for them.
 
@@ -117,8 +132,10 @@ def main():
     parts = []
     for index, line in enumerate(lines):
         output = work / f'line-{index:03}.mp3'
-        print(f'Synthesizing line {index + 1}/{len(lines)} for {line["speaker"]}', flush=True)
-        synthesize_line(line['text'], line['speaker'], output, work)
+        is_last_line = index == len(lines) - 1
+        pause_seconds = 0.0 if is_last_line else (0.5 if line.get('topic_transition_after') is True else 0.3)
+        print(f'Synthesizing line {index + 1}/{len(lines)} for {line["speaker"]}; pause_after={pause_seconds:.2f}s', flush=True)
+        synthesize_line(line['text'], line['speaker'], output, work, pause_seconds)
         parts.append(output)
     print(f'TTS_SUMMARY kokoro_lines={_TTS_BACKENDS["kokoro"]} gtts_fallback_lines={_TTS_BACKENDS["gtts_fallback"]}', flush=True)
     concat_list = work / 'concat.txt'
