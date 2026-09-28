@@ -207,7 +207,9 @@ def validate_dialogue(lines):
         if META_COMMENTARY_PATTERN.search(text):
             raise ValueError(f'Model returned behind-the-scenes/meta commentary in dialogue line {index}; refusing to send it to speech synthesis')
         if line.get('segment_id') == 'offline_radar' and LOG_METADATA_PATTERN.search(text):
-            raise ValueError(f'Model returned log timestamp or metadata in Offline Radar dialogue line {index}; refusing to send it to speech synthesis')
+            text = LOG_METADATA_PATTERN.sub('', text).strip()
+            line['text'] = text
+            print(f'Warning: scrubbed log metadata in line {index}')
     if len(NO_NEWS_ROLLCALL_PATTERN.findall(' '.join(line.get('text', '') for line in lines))) > 1:
         raise ValueError('Model returned a repetitive no-news roll call; refusing to send it to speech synthesis')
 
