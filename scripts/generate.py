@@ -7,8 +7,11 @@ import json
 import os
 import pathlib
 import random
+import socket
 import subprocess
 import sys
+import time
+import urllib.error
 import urllib.request
 
 import numpy as np
@@ -31,9 +34,26 @@ def call_gemini(prompt):
     url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' + key
     payload = {'contents': [{'parts': [{'text': prompt}]}], 'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0.8}}
     req = urllib.request.Request(url, data=json.dumps(payload).encode(), headers={'Content-Type': 'application/json'}, method='POST')
-    with urllib.request.urlopen(req, timeout=90) as response:
-        data = json.load(response)
-    return data['candidates'][0]['content']['parts'][0]['text']
+    retry_delays = (2, 5, 10)
+    for attempt in range(len(retry_delays) + 1):
+        try:
+            with urllib.request.urlopen(req, timeout=90) as response:
+                data = json.load(response)
+            return data['candidates'][0]['content']['parts'][0]['text']
+        except urllib.error.HTTPError as exc:
+            if exc.code not in {429, 500, 502, 503, 504} or attempt >= len(retry_delays):
+                raise
+            delay = retry_delays[attempt]
+            print(f'Gemini returned HTTP {exc.code}; retrying in {delay}s (attempt {attempt + 1}/{len(retry_delays)}).', file=sys.stderr, flush=True)
+            time.sleep(delay)
+        except (urllib.error.URLError, socket.timeout, TimeoutError, OSError) as exc:
+            if isinstance(exc, urllib.error.URLError) and not isinstance(exc.reason, (OSError, TimeoutError)):
+                raise
+            if attempt >= len(retry_delays):
+                raise
+            delay = retry_delays[attempt]
+            print(f'Gemini connection/timeout error ({exc}); retrying in {delay}s (attempt {attempt + 1}/{len(retry_delays)}).', file=sys.stderr, flush=True)
+            time.sleep(delay)
 
 
 def kokoro_language(speaker):
