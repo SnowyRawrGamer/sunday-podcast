@@ -10,25 +10,17 @@
     "Do not narrate research limitations, prompt rules, source notes, or verification policies. Omit unsupported details rather than explaining that the hosts cannot invent or confirm them."
   ],
   "topics": [
-    "Open casually and check in on Snowy, Bone TD, BattleTabs, and gaming. Bring back the brief BattleTabs/Bone TD balancing callback and Slurpee run without inventing new events.",
-    "GDevelop: cover Snowy's interest in Bouh Water Showcase, a 3D pixel-art level generator, and Block Blast/Cookie Clicker-style templates. Separate user project ideas and community experiments from official engine releases. Prior research did not verify a specific recent official GDevelop update; do not present the community forum work as shipped official functionality.",
+    "Open naturally with the current Project Radar and community conversation. Do not add a routine check-in or callback to games or activities that are not present in current topics or logs.",
+    "GDevelop / Project Radar: cover Snowy's interest in Bouh Water Showcase, a 3D pixel-art level generator, and Block Blast/Cookie Clicker-style templates. Separate user project ideas and community experiments from official engine releases. Prior research did not verify a specific recent official GDevelop update; do not present the community forum work as shipped official functionality.",
     "Jackbox: The official Jackbox Games account says The Jackbox Party Pack 12 is coming October 15, 2026, with five games: MegaPals, We Forgot A Card!, Idol Factions, Hyperface, and Debate & Switch. The official account also says Trivia Murder Party 3 is in Early Access on Steam and Epic. Attribute these as official-account announcements; Party Pack 12 has not released as of September 28, 2026.",
     "My Arms Are Longer Now: treat this only as Jackbox-related external news/update, never as Joel's report, observation, statement, or gameplay. The available note mentions the main game disappearing while a giveaway remained, plus V6 and a recent promotion. Attribute those details only to the Jackbox source if the source itself supports them; do not say or imply Joel used V6, saw the disappearance, or personally reported it. If the source does not verify a detail, omit it.",
-    "Bone TD and BattleTabs: keep the familiar games and balancing callback, but do not invent recent patches, statistics, match outcomes, or balance changes. No specific current official update was verified in the earlier research.",
-    "Course update: Joel reported seven missing uploads and concern that AI grading may be involved; identify this as his report/concern, not a confirmed school explanation. A September 22, 2026 Gmail item is a DRAFT follow-up about the missing Grade 11 Health for Life (PPZ3C) completion/grade on the portal and transcript; it says the final exam was taken June 22, 2026 and references earlier inquiries. Do not claim the draft was sent or that the school replied.",
-    "7-Eleven rewards: Joel is tracking Slurpee and pepperoni-pizza rewards/points. As checked September 28, 2026, Poke has unpaused one-time reminders on Tuesday, October 20 and Monday, October 26, 2026 about 7-Eleven refreshers costing 500 points being removed Tuesday, October 27, plus a Thursday, November 19, 2026 points-expiration check/redeem reminder. No live account balance was verified; do not claim a current points balance.",
-    "Interac: Joel mentioned a $5.75 transfer from Zac. Keep this as a brief user-reported note; do not infer its purpose, whether it cleared, or any additional financial details.",
-    "Offline Radar logs: preserve exact message strings, sender attribution, spelling, punctuation, accents, emojis, and reaction wording; never read timestamps or log metadata aloud. Do not invent context or identify the sticker. Keep discussion of the Spanish tapback, college/collage typo, Alaska trip, AI-service idea, and Discord banter as playful conversation prompts, not plans or commitments."
+    "Offline Radar / group chat: preserve exact message strings, sender attribution, spelling, punctuation, accents, emojis, and reaction wording; never read timestamps or log metadata aloud. Do not invent context or identify the sticker. Let the current messages and banter guide discussion of Project Radar, Miko, Peyton, Sayer, the Spanish tapback, college/collage typo, Alaska trip, AI-service idea, and Discord chatter. Treat suggestions and jokes as conversation, not plans or commitments."
   ],
   "required_segments": [
-    {"id": "opening_callback", "label": "Natural opening and familiar-game callback"},
-    {"id": "gdevelop", "label": "GDevelop interests and verified-versus-community distinction"},
+    {"id": "opening_callback", "label": "Natural opening grounded in current episode topics"},
+    {"id": "gdevelop", "label": "Project Radar and GDevelop interests; distinguish verified news from community experiments"},
     {"id": "jackbox", "label": "Jackbox announcements and My Arms Are Longer Now source attribution"},
-    {"id": "bone_battletabs", "label": "Bone TD and BattleTabs"},
-    {"id": "course", "label": "PPZ3C course status, carefully attributed"},
-    {"id": "rewards", "label": "7-Eleven reward points and reminder status"},
-    {"id": "interac", "label": "Zac's $5.75 transfer, without assumptions"},
-    {"id": "offline_radar", "label": "Offline Radar messages, verbatim and without log metadata"}
+    {"id": "offline_radar", "label": "Current group chat messages and banter, without log metadata"}
   ],
   "sources": [
     {"topic": "Jackbox official announcements", "url": "https://x.com/jackboxgames", "note": "Official Jackbox Games X page; Party Pack 12 date and game titles, plus Trivia Murder Party 3 Early Access status."},
