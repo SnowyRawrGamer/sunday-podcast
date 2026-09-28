@@ -27,14 +27,16 @@ _PIPELINE_ERRORS = {}
 _TTS_BACKENDS = {'kokoro': 0, 'gtts_fallback': 0}
 
 
-def call_gemini(prompt):
-    key = os.environ.get('GEMINI_API_KEY')
-    if not key:
-        raise RuntimeError('GEMINI_API_KEY secret is required')
-    url = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=' + key
-    payload = {'contents': [{'parts': [{'text': prompt}]}], 'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0.8}}
+def _is_retryable_network_error(exc):
+    if isinstance(exc, urllib.error.URLError):
+        return isinstance(exc.reason, (OSError, TimeoutError))
+    return isinstance(exc, (socket.timeout, TimeoutError, OSError))
+
+
+def _request_gemini_model(model, payload, key):
+    url = f'https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}'
     req = urllib.request.Request(url, data=json.dumps(payload).encode(), headers={'Content-Type': 'application/json'}, method='POST')
-    retry_delays = (2, 5, 10)
+    retry_delays = (5, 10, 20, 40, 60)
     for attempt in range(len(retry_delays) + 1):
         try:
             with urllib.request.urlopen(req, timeout=90) as response:
@@ -44,16 +46,36 @@ def call_gemini(prompt):
             if exc.code not in {429, 500, 502, 503, 504} or attempt >= len(retry_delays):
                 raise
             delay = retry_delays[attempt]
-            print(f'Gemini returned HTTP {exc.code}; retrying in {delay}s (attempt {attempt + 1}/{len(retry_delays)}).', file=sys.stderr, flush=True)
+            print(f'Gemini model {model} returned HTTP {exc.code}; retrying in {delay}s (retry {attempt + 1}/{len(retry_delays)}).', file=sys.stderr, flush=True)
             time.sleep(delay)
         except (urllib.error.URLError, socket.timeout, TimeoutError, OSError) as exc:
-            if isinstance(exc, urllib.error.URLError) and not isinstance(exc.reason, (OSError, TimeoutError)):
-                raise
-            if attempt >= len(retry_delays):
+            if not _is_retryable_network_error(exc) or attempt >= len(retry_delays):
                 raise
             delay = retry_delays[attempt]
-            print(f'Gemini connection/timeout error ({exc}); retrying in {delay}s (attempt {attempt + 1}/{len(retry_delays)}).', file=sys.stderr, flush=True)
+            print(f'Gemini model {model} connection/timeout error ({exc}); retrying in {delay}s (retry {attempt + 1}/{len(retry_delays)}).', file=sys.stderr, flush=True)
             time.sleep(delay)
+
+
+def call_gemini(prompt):
+    key = os.environ.get('GEMINI_API_KEY')
+    if not key:
+        raise RuntimeError('GEMINI_API_KEY secret is required')
+    payload = {'contents': [{'parts': [{'text': prompt}]}], 'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0.8}}
+    models = ('gemini-2.5-flash', 'gemini-2.5-flash-lite')
+    for index, model in enumerate(models):
+        try:
+            result = _request_gemini_model(model, payload, key)
+            print(f'Gemini generation succeeded with model {model}.', flush=True)
+            return result
+        except (urllib.error.HTTPError, urllib.error.URLError, socket.timeout, TimeoutError, OSError) as exc:
+            if isinstance(exc, urllib.error.HTTPError):
+                can_fallback = exc.code in {404, 410, 429, 500, 502, 503, 504}
+            else:
+                can_fallback = _is_retryable_network_error(exc)
+            if index == len(models) - 1 or not can_fallback:
+                raise
+            print(f'Gemini model {model} remained unavailable; trying fallback model {models[index + 1}.', file=sys.stderr, flush=True)
+    raise RuntimeError('Gemini generation failed for all configured models')
 
 
 def kokoro_language(speaker):
