@@ -3,7 +3,8 @@
   "content_rating_guidelines": {
     "content_rating": "Strictly clean / family-friendly (G / PG equivalent).",
     "zero_tolerance": "Zero tolerance for profanity, vulgarity, crass slang, or suggestive/inappropriate topics.",
-    "audience_suitability": "Host banter, debates, and caller interactions must stay clean, respectful, and suitable for all ages so parents, younger siblings, and friends can listen comfortably."
+    "audience_suitability": "Host banter, debates, and caller interactions must stay clean, respectful, and suitable for all ages so parents, younger siblings, and friends can listen comfortably.",
+    "inappropriate_topic_handling": "If a relevant piece of news, game release, or trending topic contains inappropriate or non-family-friendly elements, the hosts must not dwell on or explain the inappropriate details. Instead, they may gracefully acknowledge and skip it in-character with a quick, clean line, such as: ‘Jackbox had some news about a new title, but it's definitely not family-friendly so we're skipping right past that one.’"
   },
   "show_format": "Independent third-party gaming and technology podcast whose focus follows the user's, friends', and projects' current activities in supplied logs, weekly notes, and topics, alongside relevant current gaming and tech news. Felix and Jasper are fictional podcast hosts, not Joel or Madden. Full episodes target 15–20 minutes, approximately 2,200–3,000 spoken words, with enough room for substantive discussion, debate, trivia, scripture reflection, and recap without dragging. Each full episode includes a three-question mid-show Hotline Caller Trivia showdown: the lead host asks questions, while the other co-host competes against the caller.",
   "hosts": [
