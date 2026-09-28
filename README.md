@@ -1,18 +1,18 @@
 # Sunday Podcast
 
-Free-to-run GitHub Actions pipeline that uses Gemini's free-tier API for a two-host script, edge-tts for speech, ffmpeg for mixing, and GitHub Pages for MP3/RSS hosting.
+A manually triggered GitHub Actions workflow writes a two-host gaming podcast script with Gemini, synthesizes voices locally with Kokoro on CPU (gTTS is a last-resort fallback), mixes audio with ffmpeg, and publishes MP3/RSS output to GitHub Pages.
 
 ## One-time setup
-1. In Settings → Secrets and variables → Actions, add repository secret `GEMINI_API_KEY` (get a key from Google AI Studio; free-tier availability/quotas depend on Google's current terms). No paid API is intentionally used by this workflow.
+1. In Settings → Secrets and variables → Actions, add repository secret `GEMINI_API_KEY` (Google AI Studio free-tier quotas and availability depend on Google's current terms).
 2. In Settings → Pages, set Build and deployment source to **GitHub Actions**.
-3. Add a properly licensed royalty-free instrumental MP3 at `music/lofi.mp3`. The workflow works without it, but then has no background bed. You are responsible for verifying music rights; no track is bundled.
-4. Edit `topics.json` for the next episode. Update `show_bible.json` with lore/personas and use episode history as canonical continuity.
-5. Actions → Sunday Podcast → Run workflow. Set `test_mode` to true for a short test. The default is a short sample episode; add weekly topics first for a real show.
+3. Run Actions → Sunday Podcast. The workflow generates two original, loopable instrumental MP3s in `music/` if they are missing. The compositions are dedicated to CC0 1.0; see `music/CC0.txt`.
+4. Edit `topics.json` for the next episode and keep `show_bible.json` continuity notes accurate.
+5. Set `test_mode` true for a short test, or false for a full episode.
 
-The workflow_dispatch run generates audio, appends the episode and continuity notes to the show bible, then publishes `site/` to Pages. The episode MP3 and `podcast.xml` are available at `https://<owner>.github.io/sunday-podcast/` once Pages is enabled. First-time Pages setup may require repository admin action. GitHub-hosted runners and Pages have free-plan limits and are not a guarantee of unlimited free use.
+The workflow installs ffmpeg, eSpeak NG, and libsndfile, installs requirements, caches Hugging Face model files between runs, then generates audio and publishes `site/`. The first Kokoro run downloads model data and can take longer. GitHub runners and Pages have plan limits and are not guaranteed to be unlimited or cost-free.
 
-## Voices and output
-Configure the two neural voice names using `HOST_VOICE` / `COHOST_VOICE` repository variables or workflow environment defaults. The script expects `en-US-GuyNeural` and `en-US-JennyNeural`. Audio is synthesized per line, joined and optionally mixed with `music/lofi.mp3` using ffmpeg sidechain compression (ducking). `show_bible.json` records completed episodes only after successful audio generation.
+## Voices and music
+Kokoro runs on CPU without a paid TTS API key. Felix uses `am_adam` (US English) and Jasper uses `bm_george` (British English). If Kokoro cannot initialize or synthesize, the script logs the failure and falls back to gTTS; that last-resort fallback requires network access. For each episode, one of the available MP3s in `music/` is randomly selected, looped, and ducked beneath speech with ffmpeg sidechain compression.
 
-## Test
-Run workflow_dispatch with `test_mode=true`. Check the run logs and Pages deployment, then open the feed in a podcast client. If it fails, inspect the Actions log; common setup issue is missing `GEMINI_API_KEY` or Pages not enabled. Feed URLs are absolute GitHub Pages URLs configured from the repository owner/name in the workflow.
+## Output
+The workflow commits the generated CC0 music and show-bible update, then uploads `site/` to GitHub Pages. The episode MP3 and `podcast.xml` are served from the repository's Pages site after deployment.
