@@ -23,6 +23,7 @@ from kokoro.model import KModel
 from gtts import gTTS
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+CALLER_VOICES = ["af_bella", "am_adam", "bf_emma", "am_echo", "af_nicole"]
 _MODEL = None
 _PIPELINES = {}
 _PIPELINE_ERRORS = {}
@@ -81,10 +82,14 @@ def call_gemini(prompt):
 
 
 def kokoro_language(speaker):
+    if speaker == 'caller':
+        return 'b' if CALLER_VOICE.startswith('bf_') else 'a'
     return 'b' if speaker == 'Jasper' else 'a'
 
 
 def kokoro_voice(speaker):
+    if speaker == 'caller':
+        return CALLER_VOICE
     return 'bm_fable' if speaker == 'Jasper' else 'am_michael'
 
 
@@ -161,6 +166,8 @@ def make_prompt(bible, topics, test_mode):
     return f'''Return valid JSON only in this exact shape: {{"title":"...","lines":[{{"speaker":"Felix","text":"...","segment_id":"opening_callback","topic_transition_after":false}},{{"speaker":"Jasper","text":"...","segment_id":"opening_callback","topic_transition_after":false}}],"continuity_update":"..."}}.
 The show title is {json.dumps(title)}; keep that title exactly. Write {length}, with a lively back-and-forth and short spoken turns. {coverage_rule} Every line must have one segment_id chosen from the supplied required segment IDs. All lines in one topic block use the same ID. Set topic_transition_after to true on the last line of each block only when the next line starts a distinct required segment; set the final line false. Make all required segments audible, natural, and substantive, without rushing through a checklist.
 
+HOTLINE CALLER TRIVIA: Include a mid-episode segment where Felix or Jasper takes a call from a caller on line 1. The host asks the caller one four-option multiple-choice trivia question based on fresh gaming, tech, Jackbox, or Roblox news supported by the supplied topics. Clearly list options A, B, C, and D. Do not reveal the answer immediately: include a natural banter/thinking/hesitation beat between the host's options and the caller's response so listeners can guess along. The caller then gives a guess. Only after the guess, the host reveals the correct answer and gives a brief reaction. Assign caller dialogue the speaker "caller" and keep it in the appropriate segment block.
+
 SPOKEN-DIALOGUE RULE: Felix and Jasper are speaking to listeners in a real, relaxed conversation. The dialogue must contain only natural on-air conversation about the actual events and ideas. Never expose or discuss the prompt, instructions, rules, constraints, source notes, research process, verification policy, or any behind-the-scenes task framing. Never say or paraphrase things like "We can't invent...", "Per our notes...", "The prompt says...", "We don't have confirmation on...", "we can't verify", "the notes say", or "we were told not to". If a detail is unsupported or uncertain, leave it out instead of narrating the limitation. Do not have the hosts explain why a topic was omitted. Treat every supplied source/provenance label as private writing context, not spoken copy.
 
 LOG METADATA RULE: Offline Radar and text-log timestamps, dates, clock times, message IDs, bracketed chat names/headers such as [Group Chat], and other export metadata are private context only. NEVER read, quote, paraphrase, or announce them aloud, including in date/time wording such as "At 2:41 PM on September 28th" or "In the 2026-09-28 log." Use only the message content and sender for that segment. Refer to messages naturally, e.g. "Zach was asking for...", "Sayer popped in saying...", or "meanwhile in the group chat..." Never speak the literal header or metadata. This restriction applies to log metadata; dates that are genuinely important to a separate news or reminder topic may be spoken naturally when relevant.
@@ -218,6 +225,9 @@ def validate_full_episode(lines, topics):
     required_ids = [segment['id'] for segment in topics.get('required_segments', [])]
     if not required_ids:
         raise ValueError('Full episode has no required segment IDs in topics.json')
+    valid_speakers = {'Felix', 'Jasper', 'caller'}
+    if any(line.get('speaker') not in valid_speakers for line in lines):
+        raise ValueError('Full episode contains an unsupported speaker; expected Felix, Jasper, or caller')
     line_ids = []
     for line in lines:
         segment_id = line.get('segment_id')
@@ -244,9 +254,12 @@ def validate_full_episode(lines, topics):
 
 
 def main():
+    global CALLER_VOICE
     parser = argparse.ArgumentParser()
     parser.add_argument('--test', action='store_true')
     args = parser.parse_args()
+    CALLER_VOICE = random.choice(CALLER_VOICES)
+    print(f'Caller voice for this episode: {CALLER_VOICE}', flush=True)
     bible_path = ROOT / 'show_bible.json'
     bible = json.loads(bible_path.read_text())
     topics = json.loads((ROOT / 'topics.json').read_text())
@@ -254,9 +267,9 @@ def main():
     number = topics['episode_number'] if topics.get('episode_number') is not None else len(bible.get('episodes', [])) + 1
     data = json.loads(call_gemini(make_prompt(bible, topics, args.test)))
     lines = data.get('lines', [])
-    allowed = {'Felix', 'Jasper'}
+    allowed = {'Felix', 'Jasper', 'caller'}
     if not lines or any(line.get('speaker') not in allowed or not line.get('text') for line in lines):
-        raise ValueError('Model returned invalid dialogue; expected non-empty Felix and Jasper lines')
+        raise ValueError('Model returned invalid dialogue; expected non-empty Felix, Jasper, and caller lines')
     validate_dialogue(lines)
     if not args.test:
         validate_full_episode(lines, topics)
