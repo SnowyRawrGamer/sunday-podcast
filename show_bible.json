@@ -16,26 +16,21 @@
     }
   ],
   "coverage": [
-    "Snowy ecosystem projects and community developments",
-    "Bone TD developer logs, balance, and strategy",
-    "BattleTabs meta and strategy",
-    "Gaming news supplied in weekly topics"
+    "Snowy projects and community developments supported by current logs and news",
+    "Bone TD developer logs, balance, and strategy when current source material supports coverage",
+    "Gaming news and community conversations supplied in weekly topics"
   ],
   "recurring_lore": [
-    "BattleTabs meta can receive an unusually serious tournament-style breakdown.",
-    "Bone TD balance discussions return periodically; distinguish verified developer-log details from speculation.",
-    "Slurpee runs may recur as a light Sunday side-quest when relevant."
+    "Use relevant project history only when supported by current episode topics or source notes.",
+    "Distinguish verified developer-log details from speculation when discussing game balance.",
+    "Let each episode's current news and conversations determine its focus; do not presume recurring activities or topics."
   ],
-  "running_jokes": [
-    "A BattleTabs meta read delivered with championship-level gravity",
-    "A Bone TD balance debate treated like a strategy desk review",
-    "The Sunday Slurpee run as a side-quest"
-  ],
+  "running_jokes": [],
   "continuity_rules": [
     "Felix and Jasper are independent third-party hosts and must never speak as Joel or Madden or claim to be them.",
     "Use only facts supplied in weekly topics or source notes; do not invent personal anecdotes, stats, news, or developer statements.",
     "Felix provides clear analysis; Jasper adds lively reactions and challenges strategies without drowning out the analysis.",
-    "Vary callbacks and do not force every running joke into every episode.",
+    "Use callbacks only to topics present in the current episode's topics or logs; never force a running joke or recurring subject.",
     "Keep the dialogue natural, friendly, and clearly identify speakers."
   ],
   "news_sources": [
@@ -62,8 +57,8 @@
       "pubDate": "Mon, 28 Sep 2026 17:33:54 +0000",
       "title": "Episode 2: Project Radar, Jackbox, and the Group Chat",
       "audio": "episode-002-2026-09-28.mp3",
-      "continuity_update": "Episode 2 covered Snowy's GDevelop community experiments, including the Bouh Water Showcase and game templates. It detailed Jackbox Games' official announcements for The Jackbox Party Pack 12 (with its five new games) and Trivia Murder Party 3's Early Access. Academic updates included Joel's reported concerns about missing course uploads and a draft email regarding Grade 11 Health for Life. The episode also highlighted 7-Eleven reward point tracking and upcoming refresher removals, a brief Interac transfer from Zac, and a comprehensive review of the group chat's diverse conversations, including an AI service idea, college/collage banter, and an Alaska trip proposal, all delivered with the hosts' characteristic back-and-forth.",
-      "image": "episode-002.png"
+      "image": "episode-002.png",
+      "continuity_update": "Episode 2 covered Snowy's GDevelop community experiments, including the Bouh Water Showcase and game templates. It detailed Jackbox Games' official announcements for The Jackbox Party Pack 12 (with its five new games) and Trivia Murder Party 3's Early Access. Academic updates included Joel's reported concerns about missing course uploads and a draft email regarding Grade 11 Health for Life. The episode also highlighted 7-Eleven reward point tracking and upcoming refresher removals, a brief Interac transfer from Zac, and a comprehensive review of the group chat's diverse conversations, including an AI service idea, college/collage banter, and an Alaska trip proposal, all delivered with the hosts' characteristic back-and-forth."
     }
   ]
 }
