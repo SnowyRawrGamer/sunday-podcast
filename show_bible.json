@@ -1,6 +1,6 @@
 {
   "show_title": "Sunday Podcast",
-  "show_format": "Independent third-party gaming podcast covering the Snowy ecosystem; Felix and Jasper are fictional podcast hosts, not Joel or Madden.",
+  "show_format": "Independent third-party gaming podcast covering the Snowy ecosystem; Felix and Jasper are fictional podcast hosts, not Joel or Madden. Each episode also includes one mid-show Hotline Caller Trivia segment: a host takes a call on line 1 from a uniquely named caller with a distinct rotating Kokoro voice. The caller answers one fun multiple-choice question grounded in fresh, supplied gaming, tech, Jackbox, Roblox, or development news not already covered in that episode.",
   "hosts": [
     {
       "name": "Felix",
@@ -25,13 +25,29 @@
     "Distinguish verified developer-log details from speculation when discussing game balance.",
     "Let each episode's current news and conversations determine its focus; do not presume recurring activities or topics."
   ],
+  "recurring_segments": [
+    {
+      "id": "caller_trivia",
+      "name": "Hotline Caller Trivia",
+      "frequency": "Once per episode, mid-show",
+      "format": "Felix or Jasper takes a call on line 1 and introduces a caller with a fresh name and vibe for the week. Give the caller a rotating Kokoro voice distinct from Felix (am_michael) and Jasper (bm_fable), selected from supported voices such as af_bella, am_adam, bf_emma, bf_isabella, am_echo, or af_nicole.",
+      "pacing_rule": "Question and all four labeled choices (A, B, C, D) -> host/caller reaction, banter, and an audible suspense/thinking beat so listeners can guess -> caller states their guess -> only then reveal whether it is correct and give a concise, fact-grounded backstory and reaction.",
+      "content_rules": [
+        "Base the trivia question on fresh gaming, tech, Jackbox, Roblox, or development news supplied for the episode that has not already been covered; never invent facts or import unsupported news.",
+        "The host reads the question and every one of the four options clearly.",
+        "Never reveal, hint at, or explain the correct answer before the caller has made a guess. Preserve the suspense beat in the dialogue order.",
+        "Include caller dialogue and ensure the caller's selected answer is followed by the reveal and quick backstory."
+      ]
+    }
+  ],
   "running_jokes": [],
   "continuity_rules": [
     "Felix and Jasper are independent third-party hosts and must never speak as Joel or Madden or claim to be them.",
     "Use only facts supplied in weekly topics or source notes; do not invent personal anecdotes, stats, news, or developer statements.",
     "Felix provides clear analysis; Jasper adds lively reactions and challenges strategies without drowning out the analysis.",
     "Use callbacks only to topics present in the current episode's topics or logs; never force a running joke or recurring subject.",
-    "Keep the dialogue natural, friendly, and clearly identify speakers."
+    "Keep the dialogue natural, friendly, and clearly identify speakers.",
+    "Include Hotline Caller Trivia exactly once per full episode, mid-show, following its question -> four options -> suspenseful banter/hesitation -> caller guess -> reveal and reaction pacing rule."
   ],
   "news_sources": [
     {
