@@ -66,6 +66,13 @@
       "title": "Episode 0: The Test Run",
       "audio": "episode-000-2026-09-28.mp3",
       "continuity_update": "Episode 0 establishes the Sunday Podcast, its hosts Felix and Jasper, their distinct personas, and the general scope of coverage (Snowy ecosystem, Bone TD, BattleTabs, gaming topics). A brief callback to BattleTabs strategy and Slurpee runs is included, setting up future running jokes/themes."
+    },
+    {
+      "number": 1,
+      "date": "2026-09-28",
+      "title": "Episode 1: Project Radar and the Group Chat",
+      "audio": "episode-001-2026-09-28.mp3",
+      "continuity_update": "Episode 1 covers Joel's recent gaming interests and community updates, including GDevelop experiments, Jackbox announcements, observations on \"My Arms Are Longer Now,\" and Roblox specifics. It also touches on academic concerns, 7-Eleven rewards tracking, a small Interac transfer, and a selection of verbatim community chat logs, reinforcing the podcast's role as a third-party observer of these activities. The episode continues the casual, buddy-chat format, with Felix providing analysis and Jasper delivering energetic hot takes."
     }
   ]
 }
