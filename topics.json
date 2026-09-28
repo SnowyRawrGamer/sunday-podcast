@@ -4,6 +4,36 @@
   "topics": [
     "Introduce the Sunday Podcast and explain what listeners can expect.",
     "A light check-in about the Snowy ecosystem, Bone TD, BattleTabs, and gaming topics; keep details generic unless supplied by the hosts.",
-    "Use one brief callback to BattleTabs, Bone TD balancing, or a Slurpee run."
-  ]
+    "Use one brief callback to BattleTabs, Bone TD balancing, or a Slurpee run.",
+    "Include a short Offline Radar Sunday messages segment using only the supplied messages below. Attribute quoted excerpts to their sender and do not infer missing context."
+  ],
+  "offline_radar_sunday_messages": {
+    "segment_title": "Offline Radar Sunday messages",
+    "messages": [
+      {
+        "sender": "Zach DragonBoat",
+        "messages": ["Sorry", "Joesl", "We're not availaible", "But def send pics!"]
+      },
+      {
+        "sender": "Peyton Corder",
+        "messages": ["30% on relief", ":\\", "true", "only if it was active"]
+      },
+      {
+        "sender": "Canon Smith",
+        "messages": ["Skibidi"]
+      },
+      {
+        "sender": "Sayer Smith",
+        "messages": ["Le gustó una imagen", "whattt", "sick art bro"]
+      },
+      {
+        "sender": "Madden Long",
+        "messages": ["Thank you"]
+      },
+      {
+        "sender": "Casen Grijalva",
+        "messages": ["I Guess Bro", "That would work if this chat was active"]
+      }
+    ]
+  }
 }
