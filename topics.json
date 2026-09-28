@@ -3,12 +3,17 @@
   "title": "Episode 1: Project Radar and the Group Chat",
   "as_of": "2026-09-28",
   "target_runtime": "Full episode: 8-12 minutes; dispatch with test_mode=false",
+  "source_attribution_policy": [
+    "Treat source and author labels as production context for Felix and Jasper, not words to read aloud.",
+    "Attribute a statement or action to Joel only when a note explicitly says Joel personally said or did it. A newsletter, developer email, bug tracker, or third-party email is not Joel speaking, even when it concerns him or is in his inbox.",
+    "For Jackbox-related external updates, attribute claims to Jackbox or the named Jackbox source; never recast them as Joel's observations, gameplay, or words. If the provided source does not support a detail, leave it out.",
+    "Do not narrate research limitations, prompt rules, source notes, or verification policies. Omit unsupported details rather than explaining that the hosts cannot invent or confirm them."
+  ],
   "topics": [
     "Open casually and check in on Snowy, Bone TD, BattleTabs, and gaming. Bring back the brief BattleTabs/Bone TD balancing callback and Slurpee run without inventing new events.",
     "GDevelop: cover Snowy's interest in Bouh Water Showcase, a 3D pixel-art level generator, and Block Blast/Cookie Clicker-style templates. Separate user project ideas and community experiments from official engine releases. Prior research did not verify a specific recent official GDevelop update; do not present the community forum work as shipped official functionality.",
     "Jackbox: The official Jackbox Games account says The Jackbox Party Pack 12 is coming October 15, 2026, with five games: MegaPals, We Forgot A Card!, Idol Factions, Hyperface, and Debate & Switch. The official account also says Trivia Murder Party 3 is in Early Access on Steam and Epic. Attribute these as official-account announcements; Party Pack 12 has not released as of September 28, 2026.",
-    "My Arms Are Longer Now: include Joel's report that the main game disappeared while a giveaway remained, and that he used V6 and a recent promotion. Treat these as Joel's observations, not independently verified current availability or an official Jackbox promotion.",
-    "Roblox: Clicking Legends Remastered. Joel wants current secret discoveries, the Kraken, and whether multiplayer/non-solo play is possible. An exact-title current web search found no reliable corroborating source; do not invent secret codes, unlock steps, or multiplayer facts. Also cover zero-cost goodies and Roblox gift-card cashback only as Joel's interest; do not invent a cashback percentage or imply an offer is currently available.",
+    "My Arms Are Longer Now: treat this only as Jackbox-related external news/update, never as Joel's report, observation, statement, or gameplay. The available note mentions the main game disappearing while a giveaway remained, plus V6 and a recent promotion. Attribute those details only to the Jackbox source if the source itself supports them; do not say or imply Joel used V6, saw the disappearance, or personally reported it. If the source does not verify a detail, omit it.",
     "Bone TD and BattleTabs: keep the familiar games and balancing callback, but do not invent recent patches, statistics, match outcomes, or balance changes. No specific current official update was verified in the earlier research.",
     "Course update: Joel reported seven missing uploads and concern that AI grading may be involved; identify this as his report/concern, not a confirmed school explanation. A September 22, 2026 Gmail item is a DRAFT follow-up about the missing Grade 11 Health for Life (PPZ3C) completion/grade on the portal and transcript; it says the final exam was taken June 22, 2026 and references earlier inquiries. Do not claim the draft was sent or that the school replied.",
     "7-Eleven rewards: Joel is tracking Slurpee and pepperoni-pizza rewards/points. As checked September 28, 2026, Poke has unpaused one-time reminders on Tuesday, October 20 and Monday, October 26, 2026 about 7-Eleven refreshers costing 500 points being removed Tuesday, October 27, plus a Thursday, November 19, 2026 points-expiration check/redeem reminder. No live account balance was verified; do not claim a current points balance.",
@@ -18,9 +23,7 @@
   "required_segments": [
     {"id": "opening_callback", "label": "Natural opening and familiar-game callback"},
     {"id": "gdevelop", "label": "GDevelop interests and verified-versus-community distinction"},
-    {"id": "jackbox", "label": "Jackbox Party Pack 12 and Trivia Murder Party 3"},
-    {"id": "longer_now", "label": "My Arms Are Longer Now observations"},
-    {"id": "roblox", "label": "Clicking Legends Remastered and Roblox offers"},
+    {"id": "jackbox", "label": "Jackbox announcements and My Arms Are Longer Now source attribution"},
     {"id": "bone_battletabs", "label": "Bone TD and BattleTabs"},
     {"id": "course", "label": "PPZ3C course status, carefully attributed"},
     {"id": "rewards", "label": "7-Eleven reward points and reminder status"},

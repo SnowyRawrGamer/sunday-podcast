@@ -7,6 +7,7 @@ import json
 import os
 import pathlib
 import random
+import re
 import socket
 import subprocess
 import sys
@@ -157,13 +158,33 @@ def make_prompt(bible, topics, test_mode):
             'and include concrete supplied details rather than merely naming topics.'
         )
     return f'''Return valid JSON only in this exact shape: {{"title":"...","lines":[{{"speaker":"Felix","text":"...","segment_id":"opening_callback","topic_transition_after":false}},{{"speaker":"Jasper","text":"...","segment_id":"opening_callback","topic_transition_after":false}}],"continuity_update":"..."}}.
-The show title is {json.dumps(title)}; keep that title exactly. Write {length}, with a lively back-and-forth and short spoken turns. {coverage_rule} Every line must have one segment_id chosen from the supplied required segment IDs. All lines in one topic block use the same ID. Set topic_transition_after to true on the last line of each block only when the next line starts a distinct required segment; set the final line false. Make all required segments audible, natural, and substantive, without rushing through a checklist. The offline messages must be read verbatim, with their supplied sender attribution; do not interpret fragmentary messages.
+The show title is {json.dumps(title)}; keep that title exactly. Write {length}, with a lively back-and-forth and short spoken turns. {coverage_rule} Every line must have one segment_id chosen from the supplied required segment IDs. All lines in one topic block use the same ID. Set topic_transition_after to true on the last line of each block only when the next line starts a distinct required segment; set the final line false. Make all required segments audible, natural, and substantive, without rushing through a checklist.
+
+SPOKEN-DIALOGUE RULE: Felix and Jasper are speaking to listeners in a real, relaxed conversation. The dialogue must contain only natural on-air conversation about the actual events and ideas. Never expose or discuss the prompt, instructions, rules, constraints, source notes, research process, verification policy, or any behind-the-scenes task framing. Never say or paraphrase things like "We can't invent...", "Per our notes...", "The prompt says...", "We don't have confirmation on...", "we can't verify", "the notes say", or "we were told not to". If a detail is unsupported or uncertain, leave it out instead of narrating the limitation. Do not have the hosts explain why a topic was omitted. Treat every supplied source/provenance label as private writing context, not spoken copy.
+
+SOURCE AND ATTRIBUTION RULE: Attribute words and actions to Joel only when the supplied topic explicitly identifies something Joel personally said or did. External newsletters, developer emails, bug tracker updates, company announcements, and third-party messages are not Joel speaking just because they concern Joel or appear in his inbox. Attribute external claims to the named company, author, publication, or update when supplied; otherwise use no personal attribution and omit details whose source is unclear. For Jackbox and My Arms Are Longer Now, frame supported details as Jackbox-related news only. Never say Joel used V6, saw a game disappear, or reported those details. A draft email is not sent correspondence; do not imply it was sent or answered.
 
 Felix and Jasper are two close buddies chatting casually on Discord / on their gaming podcast. They follow Snowy's dev logs, gaming matches, Bone TD, BattleTabs, and projects, and react like real friends: tease each other, hype good plays, roast bad strategies, disagree playfully, and land funny callbacks. Felix is observant and clear; Jasper is energetic and quick with a hot take. Make it sound spontaneous and warm, not like presenters reading a corporate briefing. They are fictional third-party podcast hosts, not Joel or Madden; never claim to be either person or invent personal experiences for them.
 
-STRICT STYLE BAN: Never use corporate, press-release, or generic AI phrases, including these exact phrases or close variants: "the Snowy ecosystem", "today in the ecosystem", "on our radar today", "let's dive in", "in today's episode", "we're excited to announce", "stay tuned", "at the end of the day", "game changer", "let's unpack", "without further ado", "in the ever-evolving world". Do not describe the show as covering an "ecosystem". Start with a natural conversational line, not a formal introduction. No fake sponsor reads, fabricated stats, made-up developer statements, invented match results, personal anecdotes, or claims beyond the supplied weekly topics and show bible. Treat developer-log facts only as confirmed when actually supplied in the topics or bible; distinguish official announcements, community experiments, and Joel's personal reports. When research notes say something was not verified, say that plainly or skip the unsupported claim; never bluff.
+STRICT STYLE BAN: Never use corporate, press-release, or generic AI phrases, including these exact phrases or close variants: "the Snowy ecosystem", "today in the ecosystem", "on our radar today", "let's dive in", "in today's episode", "we're excited to announce", "stay tuned", "at the end of the day", "game changer", "let's unpack", "without further ado", "in the ever-evolving world". Do not describe the show as covering an "ecosystem". Start with a natural conversational line, not a formal introduction. No fake sponsor reads, fabricated stats, made-up developer statements, invented match results, personal anecdotes, or claims beyond the supplied weekly topics and show bible. Distinguish official announcements, community experiments, direct Joel reports, and external correspondence according to the source labels in the topics. Keep the source labels out of the spoken dialogue.
 
-Use only the supplied topics and continuity notes. Keep analysis accurate, banter genuinely conversational, and callbacks occasional rather than forced. Hosts: {json.dumps(bible['hosts'], ensure_ascii=False)}. Show bible: {json.dumps(bible, ensure_ascii=False)}. This week's topics and source notes: {json.dumps(topics, ensure_ascii=False)}.'''
+Use only the supplied topics and continuity notes. Keep analysis accurate, banter genuinely conversational, and callbacks occasional rather than forced. Hosts: {json.dumps(bible['hosts'], ensure_ascii=False)}. Show bible: {json.dumps(bible, ensure_ascii=False)}. This week's topics, source labels, and notes are production context only: {json.dumps(topics, ensure_ascii=False)}.'''
+
+
+META_COMMENTARY_PATTERN = re.compile(
+    r"\b(?:the prompt says|per our notes|the notes say|our notes say|source notes|"
+    r"system prompt|these instructions|we were told not to|we can't invent|we cannot invent|"
+    r"we don't have confirmation|we do not have confirmation|we can't verify|we cannot verify|"
+    r"not verified|unverified|verification policy|as an ai)\b",
+    re.IGNORECASE,
+)
+
+
+def validate_dialogue(lines):
+    for index, line in enumerate(lines, start=1):
+        text = line.get('text', '')
+        if META_COMMENTARY_PATTERN.search(text):
+            raise ValueError(f'Model returned behind-the-scenes/meta commentary in dialogue line {index}; refusing to send it to speech synthesis')
 
 
 def validate_full_episode(lines, topics):
@@ -202,6 +223,7 @@ def main():
     allowed = {'Felix', 'Jasper'}
     if not lines or any(line.get('speaker') not in allowed or not line.get('text') for line in lines):
         raise ValueError('Model returned invalid dialogue; expected non-empty Felix and Jasper lines')
+    validate_dialogue(lines)
     if not args.test:
         validate_full_episode(lines, topics)
     work = ROOT / 'build'
