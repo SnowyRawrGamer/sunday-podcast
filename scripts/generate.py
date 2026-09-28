@@ -164,11 +164,19 @@ SPOKEN-DIALOGUE RULE: Felix and Jasper are speaking to listeners in a real, rela
 
 LOG METADATA RULE: Offline Radar and text-log timestamps, dates, clock times, message IDs, bracketed chat names/headers such as [Group Chat], and other export metadata are private context only. NEVER read, quote, paraphrase, or announce them aloud, including in date/time wording such as "At 2:41 PM on September 28th" or "In the 2026-09-28 log." Use only the message content and sender for that segment. Refer to messages naturally, e.g. "Zach was asking for...", "Sayer popped in saying...", or "meanwhile in the group chat..." Never speak the literal header or metadata. This restriction applies to log metadata; dates that are genuinely important to a separate news or reminder topic may be spoken naturally when relevant.
 
+FACTUAL-GROUNDING RULE: Use only facts explicitly supported by topics.json and the supplied logs. Zero invented news or filler: do not fabricate releases, patches, stats, match results, announcements, developer statements, quotes, experiences, or explanations. Banter may express reactions, but must not add facts. Do not import outside context.
+
 SOURCE AND ATTRIBUTION RULE: Attribute words and actions to Joel only when the supplied topic explicitly identifies something Joel personally said or did. External newsletters, developer emails, bug tracker updates, company announcements, and third-party messages are not Joel speaking just because they concern Joel or appear in his inbox. Attribute external claims to the named company, author, publication, or update when supplied; otherwise use no personal attribution and omit details whose source is unclear. For Jackbox and My Arms Are Longer Now, frame supported details as Jackbox-related news only. Never say Joel used V6, saw a game disappear, or reported those details. A draft email is not sent correspondence; do not imply it was sent or answered.
+
+CHAT SYNTHESIS RULE: Before writing the Offline Radar/friend-chat segment, digest the whole supplied chat as one conversation. Synthesize its overall flow, themes, inside jokes, recurring banter, and general vibe rather than selecting one random line and ignoring the rest. You need not quote every message; use representative details to capture the group dynamic. Never infer unseen context or invent messages.
 
 Felix and Jasper are two close buddies chatting casually on Discord / on their gaming podcast. They follow Snowy's dev logs, gaming matches, Bone TD, BattleTabs, and projects, and react like real friends: tease each other, hype good plays, roast bad strategies, disagree playfully, and land funny callbacks. Felix is observant and clear; Jasper is energetic and quick with a hot take. Make it sound spontaneous and warm, not like presenters reading a corporate briefing. They are fictional third-party podcast hosts, not Joel or Madden; never claim to be either person or invent personal experiences for them.
 
+NO-NEWS PACING RULE: Never do a repetitive roll call of projects with no updates or spend substantial airtime listing what did not happen. If the verified notes establish that a project was quiet, one quick, natural aside is fine; do not repeat it or make it a segment. Keep focus on actual supported news, substantive supplied topics, and chat dynamics. Never invent updates or import outside industry context to fill space; move on when a topic has no substance.
+
 STRICT STYLE BAN: Never use corporate, press-release, or generic AI phrases, including these exact phrases or close variants: "the Snowy ecosystem", "today in the ecosystem", "on our radar today", "let's dive in", "in today's episode", "we're excited to announce", "stay tuned", "at the end of the day", "game changer", "let's unpack", "without further ado", "in the ever-evolving world". Do not describe the show as covering an "ecosystem". Start with a natural conversational line, not a formal introduction. No fake sponsor reads, fabricated stats, made-up developer statements, invented match results, personal anecdotes, or claims beyond the supplied weekly topics and show bible. Distinguish official announcements, community experiments, direct Joel reports, and external correspondence according to the source labels in the topics. Keep the source labels out of the spoken dialogue.
+
+OUTRO RULE: End the full episode in the final segment block with a concise, engaging recap of the major substantive beats actually discussed, followed by a warm, natural sign-off. Do not introduce new facts in the recap; avoid a checklist or abrupt cutoff.
 
 Use only the supplied topics and continuity notes. Keep analysis accurate, banter genuinely conversational, and callbacks occasional rather than forced. Hosts: {json.dumps(bible['hosts'], ensure_ascii=False)}. Show bible: {json.dumps(bible, ensure_ascii=False)}. This week's topics, source labels, and notes are production context only: {json.dumps(topics, ensure_ascii=False)}.'''
 
@@ -187,6 +195,9 @@ LOG_METADATA_PATTERN = re.compile(
     re.IGNORECASE,
 )
 
+NO_NEWS_ROLLCALL_PATTERN = re.compile(r"\b(?:no news|no updates?|nothing new|not much (?:new|happening)|quiet)\s+(?:on|for|with)\b", re.IGNORECASE)
+OUTRO_RECAP_PATTERN = re.compile(r"\b(?:recap|wrap(?:ping)? up|we(?:'ve| have) covered|we talked about|we got into|we hit on|we touched on)\b", re.IGNORECASE)
+OUTRO_SIGNOFF_PATTERN = re.compile(r"\b(?:see (?:you|ya)|catch (?:you|ya)|until next time|goodbye|good night|take care|later|that's it from us|that's all from us)\b", re.IGNORECASE)
 
 def validate_dialogue(lines):
     for index, line in enumerate(lines, start=1):
@@ -195,6 +206,8 @@ def validate_dialogue(lines):
             raise ValueError(f'Model returned behind-the-scenes/meta commentary in dialogue line {index}; refusing to send it to speech synthesis')
         if line.get('segment_id') == 'offline_radar' and LOG_METADATA_PATTERN.search(text):
             raise ValueError(f'Model returned log timestamp or metadata in Offline Radar dialogue line {index}; refusing to send it to speech synthesis')
+    if len(NO_NEWS_ROLLCALL_PATTERN.findall(' '.join(line.get('text', '') for line in lines))) > 1:
+        raise ValueError('Model returned a repetitive no-news roll call; refusing to send it to speech synthesis')
 
 
 def validate_full_episode(lines, topics):
@@ -217,6 +230,12 @@ def validate_full_episode(lines, topics):
         should_transition = index < len(lines) - 1 and line_ids[index] != line_ids[index + 1]
         if line.get('topic_transition_after') is not should_transition:
             raise ValueError(f'Incorrect topic_transition_after at dialogue line {index + 1}')
+    closing = ' '.join(line.get('text', '') for line in lines[-5:])
+    signoff = ' '.join(line.get('text', '') for line in lines[-3:])
+    if not OUTRO_RECAP_PATTERN.search(closing):
+        raise ValueError('Full episode is missing a concise closing recap')
+    if not OUTRO_SIGNOFF_PATTERN.search(signoff):
+        raise ValueError('Full episode is missing a natural sign-off')
 
 
 def main():
