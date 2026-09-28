@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Generate and mix a continuity-aware Sunday Podcast episode."""
-import argparse, datetime as dt, json, os, pathlib, re, subprocess, sys, urllib.request
+import argparse, datetime as dt, json, os, pathlib, subprocess, sys, urllib.request
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 def call_gemini(prompt):
@@ -24,14 +24,13 @@ def main():
     voices={'Madden':os.getenv('HOST_VOICE','en-US-GuyNeural'),'Joel':os.getenv('COHOST_VOICE','en-US-JennyNeural')}
     for i,line in enumerate(lines):
         mp3=work/f'line-{i:03}.mp3'; run(sys.executable,'-m','edge_tts','--voice',voices[line['speaker']],'--text',line['text'],'--write-media',str(mp3)); parts.append(mp3)
-    listing=work/'concat.txt'; listing.write_text(''.join("file '"+p.name+"'\\n" for p in parts))
+    listing=work/'concat.txt'; listing.write_text(''.join("file '"+p.name+"'\n" for p in parts))
     speech=work/'speech.mp3'; run('ffmpeg','-y','-f','concat','-safe','0','-i',str(listing),'-c:a','libmp3lame','-b:a','128k',str(speech))
     site=ROOT/'site'; site.mkdir(exist_ok=True); slug=f'episode-{n:03}-{date}'; out=site/f'{slug}.mp3'; music=ROOT/'music'/'lofi.mp3'
     if music.exists(): run('ffmpeg','-y','-i',str(speech),'-stream_loop','-1','-i',str(music),'-filter_complex','[1:a]volume=0.16[bed];[bed][0:a]sidechaincompress=threshold=0.025:ratio=8:attack=20:release=500[ducked];[0:a][ducked]amix=inputs=2:duration=first:dropout_transition=2[out]','-map','[out]','-c:a','libmp3lame','-b:a','128k',str(out))
     else: run('ffmpeg','-y','-i',str(speech),'-c:a','libmp3lame','-b:a','128k',str(out))
     bible.setdefault('episodes',[]).append({'number':n,'date':date,'title':data.get('title',topics.get('title','Sunday Podcast')),'audio':out.name,'continuity_update':data.get('continuity_update','')})
-    bible_path.write_text(json.dumps(bible,indent=2,ensure_ascii=False)+'\\n')
-    # Workflow supplies the canonical public Pages base URL.
+    bible_path.write_text(json.dumps(bible,indent=2,ensure_ascii=False)+'\n')
     base=os.environ['PODCAST_BASE_URL'].rstrip('/')+'/'
     items=[]
     for ep in reversed(bible['episodes']):
