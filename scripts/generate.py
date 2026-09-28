@@ -21,6 +21,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 _MODEL = None
 _PIPELINES = {}
 _PIPELINE_ERRORS = {}
+_TTS_BACKENDS = {'kokoro': 0, 'gtts_fallback': 0}
 
 
 def call_gemini(prompt):
@@ -44,7 +45,7 @@ def kokoro_voice(speaker):
 
 
 def synthesize_line(text, speaker, out_path, work):
-    """Prefer local Kokoro neural speech; keep gTTS as a last-resort fallback."""
+    """Use local Kokoro by default; gTTS fallback must be explicitly enabled."""
     global _MODEL
     lang = kokoro_language(speaker)
     voice = kokoro_voice(speaker)
@@ -52,9 +53,9 @@ def synthesize_line(text, speaker, out_path, work):
         try:
             if lang not in _PIPELINES:
                 if _MODEL is None:
-                    print('Loading shared Kokoro model on CPU', flush=True)
+                    print('Loading shared Kokoro model on CPU (hexgrad/Kokoro-82M)', flush=True)
                     _MODEL = KModel(repo_id='hexgrad/Kokoro-82M').to('cpu').eval()
-                print(f'Loading Kokoro CPU pipeline for language {lang}', flush=True)
+                print(f'Loading Kokoro CPU pipeline: language={lang}, voice={voice}', flush=True)
                 _PIPELINES[lang] = KPipeline(lang_code=lang, model=_MODEL, device='cpu')
             chunks = [audio for _, _, audio in _PIPELINES[lang](text, voice=voice) if audio is not None and len(audio)]
             if not chunks:
@@ -62,17 +63,22 @@ def synthesize_line(text, speaker, out_path, work):
             wav_path = work / (out_path.stem + '.wav')
             sf.write(str(wav_path), np.concatenate(chunks), 24000)
             subprocess.run(['ffmpeg', '-y', '-loglevel', 'error', '-i', str(wav_path), '-codec:a', 'libmp3lame', '-b:a', '128k', str(out_path)], check=True)
-            print(f'TTS backend=kokoro voice={voice} language={lang}', flush=True)
+            _TTS_BACKENDS['kokoro'] += 1
+            print(f'TTS_RESULT backend=kokoro speaker={speaker} voice={voice} language={lang}', flush=True)
             return
         except Exception as exc:
             _PIPELINE_ERRORS[lang] = f'{type(exc).__name__}: {exc}'
-            print(f'Kokoro failed for {speaker} ({voice}): {_PIPELINE_ERRORS[lang]}; using gTTS fallback', file=sys.stderr, flush=True)
+            print(f'KOKORO_ERROR speaker={speaker} voice={voice} language={lang}: {_PIPELINE_ERRORS[lang]}', file=sys.stderr, flush=True)
+    else:
+        print(f'KOKORO_UNAVAILABLE language={lang}: {_PIPELINE_ERRORS[lang]}', file=sys.stderr, flush=True)
+
+    if os.getenv('ALLOW_GTTS_FALLBACK', '').strip().lower() not in {'1', 'true', 'yes'}:
+        raise RuntimeError(f'Kokoro failed for {speaker}; gTTS fallback is disabled. Set ALLOW_GTTS_FALLBACK=true only if a less natural emergency voice is acceptable. Error: {_PIPELINE_ERRORS.get(lang, "unknown Kokoro error")}')
+
     fallback_tld = 'co.uk' if speaker == 'Jasper' else 'com'
-    try:
-        gTTS(text=text, lang='en', tld=fallback_tld).save(str(out_path))
-        print(f'TTS backend=gTTS fallback speaker={speaker} tld={fallback_tld}', flush=True)
-    except Exception as exc:
-        raise RuntimeError(f'Kokoro and gTTS both failed for {speaker}: Kokoro={_PIPELINE_ERRORS.get(lang, "unknown")}; gTTS={type(exc).__name__}: {exc}') from exc
+    gTTS(text=text, lang='en', tld=fallback_tld).save(str(out_path))
+    _TTS_BACKENDS['gtts_fallback'] += 1
+    print(f'TTS_RESULT backend=gTTS_fallback speaker={speaker} tld={fallback_tld}', flush=True)
 
 
 def run(*cmd):
@@ -114,6 +120,7 @@ def main():
         print(f'Synthesizing line {index + 1}/{len(lines)} for {line["speaker"]}', flush=True)
         synthesize_line(line['text'], line['speaker'], output, work)
         parts.append(output)
+    print(f'TTS_SUMMARY kokoro_lines={_TTS_BACKENDS["kokoro"]} gtts_fallback_lines={_TTS_BACKENDS["gtts_fallback"]}', flush=True)
     concat_list = work / 'concat.txt'
     concat_list.write_text(''.join("file '" + part.name + "'\n" for part in parts))
     speech = work / 'speech.mp3'
@@ -131,7 +138,7 @@ def main():
     if music_files:
         music = random.choice(music_files)
         print(f'Mixing background track: {music.name}', flush=True)
-        run('ffmpeg', '-y', '-i', str(speech), '-stream_loop', '-1', '-i', str(music), '-filter_complex', '[1:a]volume=0.18[musicbed];[musicbed][0:a]sidechaincompress=threshold=0.025:ratio=8:attack=20:release=500[ducked];[0:a][ducked]amix=inputs=2:duration=first:dropout_transition=2[out]', '-map', '[out]', '-c:a', 'libmp3lame', '-b:a', '128k', str(output))
+        run('ffmpeg', '-y', '-i', str(speech), '-stream_loop', '-1', '-i', str(music), '-filter_complex', '[1:a]volume=0.30[musicbed];[musicbed][0:a]sidechaincompress=threshold=0.04:ratio=6:attack=20:release=500[ducked];[0:a][ducked]amix=inputs=2:duration=first:dropout_transition=2[out]', '-map', '[out]', '-c:a', 'libmp3lame', '-b:a', '128k', str(output))
     else:
         print('No music tracks found; exporting speech only', file=sys.stderr, flush=True)
         run('ffmpeg', '-y', '-i', str(speech), '-c:a', 'libmp3lame', '-b:a', '128k', str(output))
