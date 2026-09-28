@@ -190,6 +190,7 @@ META_COMMENTARY_PATTERN = re.compile(
 )
 LOG_METADATA_PATTERN = re.compile(
     r"(?:\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}:\d{2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?)?\b|"
+    r"\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2}(?:st|nd|rd|th)?(?:,?\s+\d{4})?\b|"
     r"\[\s*(?:group\s*chat|[^\]]*(?:log|header)[^\]]*)\s*\]|"
     r"\b(?:message|msg)[ _-]?(?:id|#)\s*[:=#]?\s*[A-Z0-9_-]+\b)",
     re.IGNORECASE,
