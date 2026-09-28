@@ -177,7 +177,7 @@ NO-NEWS PACING RULE: Never do a repetitive roll call of projects with no updates
 
 STRICT STYLE BAN: Never use corporate, press-release, or generic AI phrases, including these exact phrases or close variants: "the Snowy ecosystem", "today in the ecosystem", "on our radar today", "let's dive in", "in today's episode", "we're excited to announce", "stay tuned", "at the end of the day", "game changer", "let's unpack", "without further ado", "in the ever-evolving world". Do not describe the show as covering an "ecosystem". Start with a natural conversational line, not a formal introduction. No fake sponsor reads, fabricated stats, made-up developer statements, invented match results, personal anecdotes, or claims beyond the supplied weekly topics and show bible. Distinguish official announcements, community experiments, direct Joel reports, and external correspondence according to the source labels in the topics. Keep the source labels out of the spoken dialogue.
 
-OUTRO RULE: End the full episode in the final segment block with a concise, engaging recap of the major substantive beats actually discussed, followed by a warm, natural sign-off. Do not introduce new facts in the recap; avoid a checklist or abrupt cutoff.
+OUTRO RULE: End the full episode in the final segment block with a concise, engaging recap of the major substantive beats actually discussed, followed by a warm, natural sign-off. Before the final sign-off, Felix and Jasper must give a quick closing recap (e.g. 'To wrap up what we covered today...' or 'Quick recap of today's radar:'). Do not introduce new facts in the recap; avoid a checklist or abrupt cutoff.
 
 Use only the supplied topics and continuity notes. Keep analysis accurate, banter genuinely conversational, and callbacks occasional rather than forced. Hosts: {json.dumps(bible['hosts'], ensure_ascii=False)}. Show bible: {json.dumps(bible, ensure_ascii=False)}. This week's topics, source labels, and notes are production context only: {json.dumps(topics, ensure_ascii=False)}.'''
 
@@ -198,7 +198,7 @@ LOG_METADATA_PATTERN = re.compile(
 )
 
 NO_NEWS_ROLLCALL_PATTERN = re.compile(r"\b(?:no news|no updates?|nothing new|not much (?:new|happening)|quiet)\s+(?:on|for|with)\b", re.IGNORECASE)
-OUTRO_RECAP_PATTERN = re.compile(r"\b(?:recap|wrap(?:ping)? up|we(?:'ve| have) covered|we talked about|we got into|we hit on|we touched on)\b", re.IGNORECASE)
+OUTRO_RECAP_PATTERN = re.compile(r"\b(?:recap|wrap(?:ping)? up|we(?:'ve| have) covered|we talked about|we got into|we hit on|we touched on|that's|that is|to summarize|in summary|all in all|looking back|what a week|covered|summary|run down|rundown|breakdown|roundup|revisiting|review)\b", re.IGNORECASE)
 OUTRO_SIGNOFF_PATTERN = re.compile(r"\b(?:see (?:you|ya)|catch (?:you|ya)|until next time|goodbye|good night|take care|later|that's it from us|that's all from us)\b", re.IGNORECASE)
 
 def validate_dialogue(lines):
@@ -232,7 +232,7 @@ def validate_full_episode(lines, topics):
         should_transition = index < len(lines) - 1 and line_ids[index] != line_ids[index + 1]
         if line.get('topic_transition_after') is not should_transition:
             raise ValueError(f'Incorrect topic_transition_after at dialogue line {index + 1}')
-    closing = ' '.join(line.get('text', '') for line in lines[-5:])
+    closing = ' '.join(line.get('text', '') for line in lines[-8:])
     signoff = ' '.join(line.get('text', '') for line in lines[-3:])
     if not OUTRO_RECAP_PATTERN.search(closing):
         raise ValueError('Full episode is missing a concise closing recap')
