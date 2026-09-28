@@ -292,11 +292,13 @@ def main():
     title = topics.get('title') or data.get('title', 'Sunday Podcast')
     bible.setdefault('episodes', []).append({'number': number, 'date': date, 'title': title, 'audio': output.name, 'continuity_update': data.get('continuity_update', '')})
     bible_path.write_text(json.dumps(bible, indent=2, ensure_ascii=False) + '\n')
-    base_url = os.environ['PODCAST_BASE_URL'].rstrip('/') + '/'
+    base_url = os.environ['PODCAST_BASE_URL'].rstrip('/')
     items = []
     for episode in reversed(bible['episodes']):
-        items.append(f'''<item><title>{esc(episode['title'])}</title><guid isPermaLink="false">{esc(episode['audio'])}</guid><pubDate>{dt.datetime.fromisoformat(episode['date']).strftime('%a, %d %b %Y 00:00:00 +0000')}</pubDate><enclosure url="{base_url}{esc(episode['audio'])}" length="0" type="audio/mpeg"/><description>{esc(episode.get('continuity_update', ''))}</description></item>''')
-    (site / 'podcast.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>Sunday Podcast</title><link>' + esc(base_url) + '</link><description>Sunday Podcast with Felix and Jasper</description>' + ''.join(items) + '</channel></rss>')
+        image_name = episode.get('image') or f"episode-{int(episode['number']):03}.png"
+        image_url = f'{base_url}/assets/{image_name}'
+        items.append(f'''<item><title>{esc(episode['title'])}</title><guid isPermaLink="false">{esc(episode['audio'])}</guid><pubDate>{dt.datetime.fromisoformat(episode['date']).strftime('%a, %d %b %Y 00:00:00 +0000')}</pubDate><enclosure url="{base_url}/{esc(episode['audio'])}" length="0" type="audio/mpeg"/><description>{esc(episode.get('continuity_update', ''))}</description><itunes:image href="{esc(image_url)}"/></item>''')
+    (site / 'podcast.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"><channel><title>Sunday Podcast</title><link>' + esc(base_url + '/') + '</link><description>Sunday Podcast with Felix and Jasper</description><itunes:image href="' + esc(base_url + '/assets/cover.png') + '"/>' + ''.join(items) + '</channel></rss>')
     (site / 'index.html').write_text('<!doctype html><title>Sunday Podcast</title><h1>Sunday Podcast</h1><p><a href="podcast.xml">RSS feed</a></p>' + ''.join(f'<p><a href="{esc(ep["audio"])}">{esc(ep["title"])}</a></p>' for ep in reversed(bible['episodes'])))
 
 
