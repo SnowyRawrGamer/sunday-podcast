@@ -2,6 +2,7 @@
 """Generate and mix a continuity-aware Sunday Podcast episode."""
 import argparse
 import datetime as dt
+import email.utils
 import html
 import json
 import os
@@ -290,14 +291,21 @@ def main():
         run('ffmpeg', '-y', '-i', str(speech), '-c:a', 'libmp3lame', '-b:a', '128k', str(output))
 
     title = topics.get('title') or data.get('title', 'Sunday Podcast')
-    bible.setdefault('episodes', []).append({'number': number, 'date': date, 'title': title, 'audio': output.name, 'continuity_update': data.get('continuity_update', '')})
+    episode = next((ep for ep in bible['episodes'] if int(ep['number']) == int(number)), None)
+    if episode is None:
+        episode = {'number': number, 'date': date, 'pubDate': dt.datetime.now(dt.timezone.utc).strftime('%a, %d %b %Y %H:%M:%S +0000'), 'title': title, 'audio': output.name, 'continuity_update': data.get('continuity_update', '')}
+        bible.setdefault('episodes', []).append(episode)
+    else:
+        episode.update({'title': title, 'audio': output.name, 'continuity_update': data.get('continuity_update', '')})
+        episode.setdefault('pubDate', dt.datetime.fromisoformat(episode['date']).replace(tzinfo=dt.timezone.utc).strftime('%a, %d %b %Y 00:00:00 +0000'))
     bible_path.write_text(json.dumps(bible, indent=2, ensure_ascii=False) + '\n')
     base_url = os.environ['PODCAST_BASE_URL'].rstrip('/')
     items = []
     for episode in reversed(bible['episodes']):
         image_name = episode.get('image') or f"episode-{int(episode['number']):03}.png"
         image_url = f'{base_url}/assets/{image_name}'
-        items.append(f'''<item><title>{esc(episode['title'])}</title><guid isPermaLink="false">{esc(episode['audio'])}</guid><pubDate>{dt.datetime.fromisoformat(episode['date']).strftime('%a, %d %b %Y 00:00:00 +0000')}</pubDate><enclosure url="{base_url}/{esc(episode['audio'])}" length="0" type="audio/mpeg"/><description>{esc(episode.get('continuity_update', ''))}</description><itunes:image href="{esc(image_url)}"/></item>''')
+        published = email.utils.format_datetime(email.utils.parsedate_to_datetime(episode['pubDate']))
+        items.append(f'''<item><title>{esc(episode['title'])}</title><guid isPermaLink="false">{esc(episode['audio'])}</guid><pubDate>{published}</pubDate><enclosure url="{base_url}/{esc(episode['audio'])}" length="0" type="audio/mpeg"/><description>{esc(episode.get('continuity_update', ''))}</description><itunes:image href="{esc(image_url)}"/></item>''')
     (site / 'podcast.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"><channel><title>Sunday Podcast</title><link>' + esc(base_url + '/') + '</link><description>Sunday Podcast with Felix and Jasper</description><itunes:image href="' + esc(base_url + '/assets/cover.png') + '"/>' + ''.join(items) + '</channel></rss>')
     (site / 'index.html').write_text('<!doctype html><title>Sunday Podcast</title><h1>Sunday Podcast</h1><p><a href="podcast.xml">RSS feed</a></p>' + ''.join(f'<p><a href="{esc(ep["audio"])}">{esc(ep["title"])}</a></p>' for ep in reversed(bible['episodes'])))
 
