@@ -150,7 +150,7 @@ def make_prompt(bible, topics, test_mode):
         length = 'a concise 4-6 exchange test episode under 90 seconds'
         coverage_rule = 'This is only a short test, so a subset of segments may be sampled.'
     else:
-        length = 'a natural full 8-12 minute episode, approximately 1,050-1,500 spoken words'
+        length = 'a natural full 15-20 minute episode, approximately 2,200 to 3,000 spoken words'
         required_ids = [segment['id'] for segment in topics.get('required_segments', [])]
         coverage_rule = (
             'The full episode must cover every required segment exactly in this order: '
@@ -268,7 +268,7 @@ def main():
         is_last_line = index == len(lines) - 1
         pause_seconds = 0.0 if is_last_line else (0.5 if line.get('topic_transition_after') is True else 0.3)
         print(f'Synthesizing line {index + 1}/{len(lines)} for {line["speaker"]}; pause_after={pause_seconds:.2f}s', flush=True)
-        synthesize_line(line['text'], line['speaker'], output, work, pause_seconds)
+        synthesize_line(line['text'].replace('*', ''), line['speaker'], output, work, pause_seconds)
         parts.append(output)
     print(f'TTS_SUMMARY kokoro_lines={_TTS_BACKENDS["kokoro"]} gtts_fallback_lines={_TTS_BACKENDS["gtts_fallback"]}', flush=True)
     concat_list = work / 'concat.txt'
