@@ -158,7 +158,7 @@ def make_prompt(bible, topics, test_mode):
             + '. Give each segment its own contiguous discussion block, do not skip or merge blocks, '
             'and include concrete supplied details rather than merely naming topics.'
         )
-    return f'''Return valid JSON only in this exact shape: {{"title":"...","lines":[{{"speaker":"Felix","text":"...","segment_id":"opening_callback","topic_transition_after":false}},{{"speaker":"Jasper","text":"...","segment_id":"opening_callback","topic_transition_after":false}}],"continuity_update":"..."}}.
+    return f'''Return valid JSON only in this exact shape: {{"title":"...","lines":[{{"speaker":"Felix","text":"...","segment_id":"opening_callback","topic_transition_after":false}},{{"speaker":"Jasper","text":"...","segment_id":"opening_callback","topic_transition_after":false}}],"continuity_update":"..."}}. Every line in lines MUST have speaker set to either 'Felix' or 'Jasper' exactly.
 The show title is {json.dumps(title)}; keep that title exactly. Write {length}, with a lively back-and-forth and short spoken turns. {coverage_rule} Every line must have one segment_id chosen from the supplied required segment IDs. All lines in one topic block use the same ID. Set topic_transition_after to true on the last line of each block only when the next line starts a distinct required segment; set the final line false. Make all required segments audible, natural, and substantive, without rushing through a checklist.
 
 SPOKEN-DIALOGUE RULE: Felix and Jasper are speaking to listeners in a real, relaxed conversation. The dialogue must contain only natural on-air conversation about the actual events and ideas. Never expose or discuss the prompt, instructions, rules, constraints, source notes, research process, verification policy, or any behind-the-scenes task framing. Never say or paraphrase things like "We can't invent...", "Per our notes...", "The prompt says...", "We don't have confirmation on...", "we can't verify", "the notes say", or "we were told not to". If a detail is unsupported or uncertain, leave it out instead of narrating the limitation. Do not have the hosts explain why a topic was omitted. Treat every supplied source/provenance label as private writing context, not spoken copy.
@@ -255,8 +255,19 @@ def main():
     data = json.loads(call_gemini(make_prompt(bible, topics, args.test)))
     lines = data.get('lines', [])
     allowed = {'Felix', 'Jasper'}
-    if not lines or any(line.get('speaker') not in allowed or not line.get('text') for line in lines):
-        raise ValueError('Model returned invalid dialogue; expected non-empty Felix and Jasper lines')
+    clean_lines = []
+    for line in lines:
+        text = line.get('text', '')
+        if not text.strip():
+            continue
+        speaker = str(line.get('speaker', '')).strip().strip(':').strip()
+        if speaker not in allowed:
+            speaker = 'Jasper' if 'jasper' in speaker.lower() else 'Felix'
+        line['speaker'] = speaker
+        clean_lines.append(line)
+    lines = clean_lines
+    if not lines:
+        raise ValueError('Model returned no non-empty dialogue lines')
     validate_dialogue(lines)
     if not args.test:
         validate_full_episode(lines, topics)
