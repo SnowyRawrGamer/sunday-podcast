@@ -162,6 +162,8 @@ The show title is {json.dumps(title)}; keep that title exactly. Write {length}, 
 
 SPOKEN-DIALOGUE RULE: Felix and Jasper are speaking to listeners in a real, relaxed conversation. The dialogue must contain only natural on-air conversation about the actual events and ideas. Never expose or discuss the prompt, instructions, rules, constraints, source notes, research process, verification policy, or any behind-the-scenes task framing. Never say or paraphrase things like "We can't invent...", "Per our notes...", "The prompt says...", "We don't have confirmation on...", "we can't verify", "the notes say", or "we were told not to". If a detail is unsupported or uncertain, leave it out instead of narrating the limitation. Do not have the hosts explain why a topic was omitted. Treat every supplied source/provenance label as private writing context, not spoken copy.
 
+LOG METADATA RULE: Offline Radar and text-log timestamps, dates, clock times, message IDs, bracketed chat names/headers such as [Group Chat], and other export metadata are private context only. NEVER read, quote, paraphrase, or announce them aloud, including in date/time wording such as "At 2:41 PM on September 28th" or "In the 2026-09-28 log." Use only the message content and sender for that segment. Refer to messages naturally, e.g. "Zach was asking for...", "Sayer popped in saying...", or "meanwhile in the group chat..." Never speak the literal header or metadata. This restriction applies to log metadata; dates that are genuinely important to a separate news or reminder topic may be spoken naturally when relevant.
+
 SOURCE AND ATTRIBUTION RULE: Attribute words and actions to Joel only when the supplied topic explicitly identifies something Joel personally said or did. External newsletters, developer emails, bug tracker updates, company announcements, and third-party messages are not Joel speaking just because they concern Joel or appear in his inbox. Attribute external claims to the named company, author, publication, or update when supplied; otherwise use no personal attribution and omit details whose source is unclear. For Jackbox and My Arms Are Longer Now, frame supported details as Jackbox-related news only. Never say Joel used V6, saw a game disappear, or reported those details. A draft email is not sent correspondence; do not imply it was sent or answered.
 
 Felix and Jasper are two close buddies chatting casually on Discord / on their gaming podcast. They follow Snowy's dev logs, gaming matches, Bone TD, BattleTabs, and projects, and react like real friends: tease each other, hype good plays, roast bad strategies, disagree playfully, and land funny callbacks. Felix is observant and clear; Jasper is energetic and quick with a hot take. Make it sound spontaneous and warm, not like presenters reading a corporate briefing. They are fictional third-party podcast hosts, not Joel or Madden; never claim to be either person or invent personal experiences for them.
@@ -178,6 +180,12 @@ META_COMMENTARY_PATTERN = re.compile(
     r"not verified|unverified|verification policy|as an ai)\b",
     re.IGNORECASE,
 )
+LOG_METADATA_PATTERN = re.compile(
+    r"(?:\b\d{4}-\d{2}-\d{2}\b|\b\d{1,2}:\d{2}(?::\d{2})?\s*(?:a\.?m\.?|p\.?m\.?)?\b|"
+    r"\[\s*(?:group\s*chat|[^\]]*(?:log|header)[^\]]*)\s*\]|"
+    r"\b(?:message|msg)[ _-]?(?:id|#)\s*[:=#]?\s*[A-Z0-9_-]+\b)",
+    re.IGNORECASE,
+)
 
 
 def validate_dialogue(lines):
@@ -185,6 +193,8 @@ def validate_dialogue(lines):
         text = line.get('text', '')
         if META_COMMENTARY_PATTERN.search(text):
             raise ValueError(f'Model returned behind-the-scenes/meta commentary in dialogue line {index}; refusing to send it to speech synthesis')
+        if line.get('segment_id') == 'offline_radar' and LOG_METADATA_PATTERN.search(text):
+            raise ValueError(f'Model returned log timestamp or metadata in Offline Radar dialogue line {index}; refusing to send it to speech synthesis')
 
 
 def validate_full_episode(lines, topics):
