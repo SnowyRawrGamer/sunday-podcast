@@ -14,9 +14,11 @@ import urllib.request
 import numpy as np
 import soundfile as sf
 from kokoro import KPipeline
+from kokoro.model import KModel
 from gtts import gTTS
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
+_MODEL = None
 _PIPELINES = {}
 _PIPELINE_ERRORS = {}
 
@@ -43,13 +45,17 @@ def kokoro_voice(speaker):
 
 def synthesize_line(text, speaker, out_path, work):
     """Prefer local Kokoro neural speech; keep gTTS as a last-resort fallback."""
+    global _MODEL
     lang = kokoro_language(speaker)
     voice = kokoro_voice(speaker)
     if lang not in _PIPELINE_ERRORS:
         try:
             if lang not in _PIPELINES:
+                if _MODEL is None:
+                    print('Loading shared Kokoro model on CPU', flush=True)
+                    _MODEL = KModel(repo_id='hexgrad/Kokoro-82M').to('cpu').eval()
                 print(f'Loading Kokoro CPU pipeline for language {lang}', flush=True)
-                _PIPELINES[lang] = KPipeline(lang_code=lang, device='cpu')
+                _PIPELINES[lang] = KPipeline(lang_code=lang, model=_MODEL, device='cpu')
             chunks = [audio for _, _, audio in _PIPELINES[lang](text, voice=voice) if audio is not None and len(audio)]
             if not chunks:
                 raise RuntimeError('Kokoro returned no audio chunks')
