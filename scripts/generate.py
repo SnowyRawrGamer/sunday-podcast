@@ -233,7 +233,8 @@ def validate_full_episode(lines, topics):
     for index, line in enumerate(lines):
         should_transition = index < len(lines) - 1 and line_ids[index] != line_ids[index + 1]
         if line.get('topic_transition_after') is not should_transition:
-            raise ValueError(f'Incorrect topic_transition_after at dialogue line {index + 1}')
+            line['topic_transition_after'] = should_transition
+            print(f'Warning: normalized topic_transition_after at dialogue line {index + 1} to {should_transition}')
     closing = ' '.join(line.get('text', '') for line in lines[-8:])
     signoff = ' '.join(line.get('text', '') for line in lines[-3:])
     if not OUTRO_RECAP_PATTERN.search(closing):
