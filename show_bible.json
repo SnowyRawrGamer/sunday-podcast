@@ -55,6 +55,15 @@
       "audio": "episode-001-2026-09-28.mp3",
       "image": "episode-001.png",
       "continuity_update": "Episode 1 covers Joel's recent gaming interests and community updates, including GDevelop experiments, Jackbox announcements, observations on \"My Arms Are Longer Now,\" and Roblox specifics. It also touches on academic concerns, 7-Eleven rewards tracking, a small Interac transfer, and a selection of verbatim community chat logs, reinforcing the podcast's role as a third-party observer of these activities. The episode continues the casual, buddy-chat format, with Felix providing analysis and Jasper delivering energetic hot takes."
+    },
+    {
+      "number": 2,
+      "date": "2026-09-28",
+      "pubDate": "Mon, 28 Sep 2026 17:33:54 +0000",
+      "title": "Episode 2: Project Radar, Jackbox, and the Group Chat",
+      "audio": "episode-002-2026-09-28.mp3",
+      "continuity_update": "Episode 2 covered Snowy's GDevelop community experiments, including the Bouh Water Showcase and game templates. It detailed Jackbox Games' official announcements for The Jackbox Party Pack 12 (with its five new games) and Trivia Murder Party 3's Early Access. Academic updates included Joel's reported concerns about missing course uploads and a draft email regarding Grade 11 Health for Life. The episode also highlighted 7-Eleven reward point tracking and upcoming refresher removals, a brief Interac transfer from Zac, and a comprehensive review of the group chat's diverse conversations, including an AI service idea, college/collage banter, and an Alaska trip proposal, all delivered with the hosts' characteristic back-and-forth.",
+      "image": "episode-002.png"
     }
   ]
 }
