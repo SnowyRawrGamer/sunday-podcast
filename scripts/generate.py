@@ -74,7 +74,7 @@ def call_gemini(prompt):
                 can_fallback = _is_retryable_network_error(exc)
             if index == len(models) - 1 or not can_fallback:
                 raise
-            print(f'Gemini model {model} remained unavailable; trying fallback model {models[index + 1}.', file=sys.stderr, flush=True)
+            print(f'Gemini model {model} remained unavailable; trying fallback model {models[index + 1]}.', file=sys.stderr, flush=True)
     raise RuntimeError('Gemini generation failed for all configured models')
 
 
