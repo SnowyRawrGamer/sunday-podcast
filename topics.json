@@ -40,7 +40,7 @@
     {"sender": "Casen Grijalva", "messages": ["I Guess Bro", "That would work if this chat was active"]},
     {"sender": "Miko Haldeman", "timestamp": "2026-09-28 10:37:52", "messages": ["thats really cool and genius joel you should make some service like this for the public like lean to code some cool ai thing"], "context": "Miko is praising Joel's automated Sunday podcast concept and suggesting he build a public AI service/startup around it. This is context for Felix and Jasper's banter, not part of the verbatim quote."},
     {"sender": "Sayer Smith", "timestamp": "2026-09-28 10:48:57", "messages": ["Reacted with a sticker to \"when Ari is able to spell Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch in less than 10 seconds\""]},
-    {"sender": "Canon Smith", "timestamp": "2026-09-28 10:52:10", "messages": ["Reacted with a sticker to “when Ari is able to spell Llanfairpwllgwynggogerychwyrndrobwllllantysiliogogogoch in less than 10 seconds”"]},
+    {"sender": "Canon Smith", "timestamp": "2026-09-28 10:52:10", "messages": ["Reacted with a sticker to “when Ari is able to spell Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch in less than 10 seconds”"]},
     {"sender": "Sayer Smith", "timestamp": "2026-09-28 10:52:33", "messages": ["¿when did I say le gustó una imagen?"], "context": "The user says Sayer is confused because iMessage stored the image tapback in Spanish in chat.db as “Le gustó una imagen”; Sayer asks when they said it. This context is for playful banter and is not part of the verbatim message."}
   ]
 }
