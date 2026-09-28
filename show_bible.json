@@ -8,11 +8,30 @@
   },
   "show_format": "Independent third-party gaming and technology podcast whose focus follows the user's, friends', and projects' current activities in supplied logs, weekly notes, and topics, alongside relevant current gaming and tech news. Felix and Jasper are fictional podcast hosts, not Joel or Madden. Full episodes target 15–20 minutes, approximately 2,200–3,000 spoken words, with enough room for substantive discussion, debate, trivia, scripture reflection, and recap without dragging. Each full episode includes a three-question mid-show Hotline Caller Trivia showdown: the lead host asks questions, while the other co-host competes against the caller.",
   "hosts": [
-    {"name":"Felix","role":"Anchor","persona":"Analytical and evidence-minded: examines specs, numbers, price, value, utility, and hype skeptically. He explains why a release or update does or does not earn its cost, and challenges weak claims without being dismissive. He is a distinct third-party commentator, not Joel or Madden.","voice":"en-US-ChristopherNeural"},
-    {"name":"Jasper","role":"Color commentator","persona":"High-energy, subjective, and emotionally invested in vibes, novelty, and fun. He gives enthusiastic evaluations grounded in supplied facts, stands up for what excites him, and pushes back when Felix discounts something enjoyable. He is a distinct third-party commentator, not Joel or Madden.","voice":"en-US-EricNeural"}
+    {
+      "name": "Felix",
+      "role": "Anchor",
+      "persona": "Analytical and evidence-minded: examines specs, numbers, price, value, utility, and hype skeptically. He explains why a release or update does or does not earn its cost, and challenges weak claims without being dismissive. He is a distinct third-party commentator, not Joel or Madden.",
+      "voice": "en-US-ChristopherNeural"
+    },
+    {
+      "name": "Jasper",
+      "role": "Color commentator",
+      "persona": "High-energy, subjective, and emotionally invested in vibes, novelty, and fun. He gives enthusiastic evaluations grounded in supplied facts, stands up for what excites him, and pushes back when Felix discounts something enjoyable. He is a distinct third-party commentator, not Joel or Madden.",
+      "voice": "en-US-EricNeural"
+    }
   ],
-  "coverage": ["Whatever projects, games, interests, and community developments are active in current logs, weekly notes, and supplied topics","Relevant current gaming and technology news, when supported by supplied sources","The episode's main subject, explored through a dedicated episode-anchored debate","A thoughtful Sunday Scripture reflection grounded in a cited verse and practical wisdom"],
-  "runtime_target": {"duration":"15–20 minutes maximum","spoken_words":"approximately 2,200–3,000 words","guidance":"Use the available time for substantive coverage, unrushed debate, all three trivia questions, scripture reflection, and a concise recap. Do not pad or drag; remain within the target."},
+  "coverage": [
+    "Whatever projects, games, interests, and community developments are active in current logs, weekly notes, and supplied topics",
+    "Relevant current gaming and technology news, when supported by supplied sources",
+    "The episode's main subject, explored through a dedicated episode-anchored debate",
+    "A thoughtful Sunday Scripture reflection grounded in a cited verse and practical wisdom"
+  ],
+  "runtime_target": {
+    "duration": "15–20 minutes maximum",
+    "spoken_words": "approximately 2,200–3,000 words",
+    "guidance": "Use the available time for substantive coverage, unrushed debate, all three trivia questions, scripture reflection, and a concise recap. Do not pad or drag; remain within the target."
+  },
   "dialogue_guidelines": [
     "Choose topics dynamically from what the user, friends, and projects are actively doing, building, playing, or discussing in the supplied logs and weekly input, plus relevant current gaming and tech news. Do not require or presume any particular game, platform, genre, project, or recurring interest.",
     "Target 15–20 minutes maximum, approximately 2,200–3,000 spoken words. Make room for substantive conversation, the full three-question trivia showdown, a dedicated debate, Sunday Scripture, and a concise recap; do not rush required segments or pad beyond the target.",
@@ -24,18 +43,99 @@
     "For Hotline Trivia, the lead host asks exactly three multiple-choice questions grounded in the episode's dynamic interests. The other co-host competes head-to-head with the caller; use four labeled options (A, B, C, D) per question, a brief suspense/thinking beat, both contestants' locked-in picks, a correct-answer reveal, and live score update. After question three, crown the winner or call a tie.",
     "Include Sunday Scripture: the hosts read one verse aloud with its accurate book, chapter, and verse citation, then offer a thoughtful, grounded reflection on practical wisdom and life. Be respectful, avoid claiming unsupported theological certainty, and do not invent or misquote scripture."
   ],
-  "recurring_lore": ["Use relevant project history only when supported by current episode topics or source notes.","Let each episode's current news and conversations determine its focus; do not presume recurring activities or topics."],
+  "recurring_lore": [
+    "Use relevant project history only when supported by current episode topics or source notes.",
+    "Let each episode's current news and conversations determine its focus; do not presume recurring activities or topics."
+  ],
   "recurring_segments": [
-    {"id":"caller_trivia","name":"Hotline Caller Trivia Showdown","frequency":"Once per full episode, mid-show","format":"The lead host introduces a caller with a fresh name and vibe and asks exactly three four-option multiple-choice questions (A, B, C, D). The other co-host competes against the caller. For each question: host reads question and options; allow a listener-facing suspense/thinking and banter beat; caller and co-host each lock in a pick; host reveals the correct answer and updates the score. After question three, host crowns the winner or calls a tie. Give caller a rotating Kokoro voice distinct from Felix and Jasper, selected from supported caller voices.","content_rules":["Base all three questions on supplied episode topics, logs, weekly notes, and relevant current gaming or tech news represented in those materials; do not hardcode or require any game or interest.","The host reads every question and all four options clearly.","Never reveal, hint at, or explain the correct answer before both contestants have locked in their answers.","Include dialogue from caller and competing co-host for every question, a clear live score after every reveal, and a final winner/tie announcement."]},
-    {"id":"episode_debate","name":"Main-Topic Debate","frequency":"Once per full episode, as a dedicated segment and thematic climax","format":"Felix and Jasper take a specific debate prompt directly from the episode's main subject. Felix tests value, evidence, specs, and practical limitations; Jasper tests excitement, fun, and social appeal. They steelman relevant perspectives, explore trade-offs, and land on a nuanced verdict; genuine agreement is allowed, but no forced contrarianism.","content_rules":["The prompt must be directly and specifically relevant to the main subject of that day's episode, not a loosely related or unrelated tangent.","Ground the prompt and factual details in supplied materials; for example, evaluate whether a covered release is worth its supported price only if that price is supplied.","Keep both hosts in character and discuss the strongest reasonable case on each side before the conclusion."]},
-    {"id":"sunday_scripture","name":"Sunday Scripture","frequency":"Once per full episode","format":"Felix and Jasper read one accurately cited scripture verse and reflect thoughtfully on the practical wisdom or life lesson it offers. Keep the reflection grounded, conversational, and respectful.","content_rules":["Include the verse text and accurate book, chapter, and verse citation.","Do not misquote or fabricate scripture; if the exact wording cannot be established from supplied material, select a verse the generation context provides reliably or avoid claiming an exact quotation.","Connect the reflection to practical life with care; do not impose an unrelated connection to the episode's news or claim theological certainty beyond the discussion."]},
-    {"id":"take_of_the_week","name":"Take of the Week","frequency":"When included in required segments","format":"One host pitches a spicy but fact-grounded opinion or challenges an announcement; the other tests the claim, argues the other side, and both actively debate before delivering a clear, qualified verdict.","content_rules":["Base the take on an item or idea in the supplied weekly topics; do not introduce unsupported claims.","Give Felix room to weigh evidence, specs, price, and cost-benefit, and Jasper room to argue from excitement, vibes, and fun.","Avoid hollow agreement: each reply must add a reason, counterargument, question, or changed view."]}
+    {
+      "id": "caller_trivia",
+      "name": "Hotline Caller Trivia Showdown",
+      "frequency": "Once per full episode, mid-show",
+      "format": "The lead host introduces a caller with a fresh name and vibe and asks exactly three four-option multiple-choice questions (A, B, C, D). The other co-host competes against the caller. For each question: host reads question and options; allow a listener-facing suspense/thinking and banter beat; caller and co-host each lock in a pick; host reveals the correct answer and updates the score. After question three, host crowns the winner or calls a tie. Give caller a rotating Kokoro voice distinct from Felix and Jasper, selected from supported caller voices.",
+      "content_rules": [
+        "Base all three questions on supplied episode topics, logs, weekly notes, and relevant current gaming or tech news represented in those materials; do not hardcode or require any game or interest.",
+        "The host reads every question and all four options clearly.",
+        "Never reveal, hint at, or explain the correct answer before both contestants have locked in their answers.",
+        "Include dialogue from caller and competing co-host for every question, a clear live score after every reveal, and a final winner/tie announcement."
+      ]
+    },
+    {
+      "id": "episode_debate",
+      "name": "Main-Topic Debate",
+      "frequency": "Once per full episode, as a dedicated segment and thematic climax",
+      "format": "Felix and Jasper take a specific debate prompt directly from the episode's main subject. Felix tests value, evidence, specs, and practical limitations; Jasper tests excitement, fun, and social appeal. They steelman relevant perspectives, explore trade-offs, and land on a nuanced verdict; genuine agreement is allowed, but no forced contrarianism.",
+      "content_rules": [
+        "The prompt must be directly and specifically relevant to the main subject of that day's episode, not a loosely related or unrelated tangent.",
+        "Ground the prompt and factual details in supplied materials; for example, evaluate whether a covered release is worth its supported price only if that price is supplied.",
+        "Keep both hosts in character and discuss the strongest reasonable case on each side before the conclusion."
+      ]
+    },
+    {
+      "id": "sunday_scripture",
+      "name": "Sunday Scripture",
+      "frequency": "Once per full episode",
+      "format": "Felix and Jasper read one accurately cited scripture verse and reflect thoughtfully on the practical wisdom or life lesson it offers. Keep the reflection grounded, conversational, and respectful.",
+      "content_rules": [
+        "Include the verse text and accurate book, chapter, and verse citation.",
+        "Do not misquote or fabricate scripture; if the exact wording cannot be established from supplied material, select a verse the generation context provides reliably or avoid claiming an exact quotation.",
+        "Connect the reflection to practical life with care; do not impose an unrelated connection to the episode's news or claim theological certainty beyond the discussion."
+      ]
+    },
+    {
+      "id": "take_of_the_week",
+      "name": "Take of the Week",
+      "frequency": "When included in required segments",
+      "format": "One host pitches a spicy but fact-grounded opinion or challenges an announcement; the other tests the claim, argues the other side, and both actively debate before delivering a clear, qualified verdict.",
+      "content_rules": [
+        "Base the take on an item or idea in the supplied weekly topics; do not introduce unsupported claims.",
+        "Give Felix room to weigh evidence, specs, price, and cost-benefit, and Jasper room to argue from excitement, vibes, and fun.",
+        "Avoid hollow agreement: each reply must add a reason, counterargument, question, or changed view."
+      ]
+    }
   ],
   "running_jokes": [],
-  "continuity_rules": ["Felix and Jasper are independent third-party hosts and must never speak as Joel or Madden or claim to be them.","Use only facts supplied in weekly topics or source notes; do not invent personal anecdotes, stats, news, or developer statements.","Felix provides clear analysis; Jasper adds lively reactions and challenges strategies without drowning out the analysis.","Choose interests dynamically from current supplied logs and topics; never hardcode particular games, platforms, genres, or recurring activities as required coverage.","Use callbacks only to topics present in the current episode's topics or logs; never force a running joke or recurring subject.","Keep the dialogue natural, friendly, and clearly identify speakers.","Strictly avoid passive filler agreement; every host response should add a perspective or advance the debate.","Include Hotline Caller Trivia exactly once per full episode with three questions, four options each, the competing co-host and caller both answering, suspense before answers, reveals with live score, and winner or tie announced after question three.","Include the dedicated episode-anchored debate and center it on the day's main subject; explore realistic trade-offs in character without forced disagreement.","Include Sunday Scripture once per episode with a correctly cited verse and thoughtful, grounded practical reflection.","Aim for 2,200–3,000 spoken words and keep the full episode within 15–20 minutes maximum without filler."],
+  "continuity_rules": [
+    "Felix and Jasper are independent third-party hosts and must never speak as Joel or Madden or claim to be them.",
+    "Use only facts supplied in weekly topics or source notes; do not invent personal anecdotes, stats, news, or developer statements.",
+    "Felix provides clear analysis; Jasper adds lively reactions and challenges strategies without drowning out the analysis.",
+    "Choose interests dynamically from current supplied logs and topics; never hardcode particular games, platforms, genres, or recurring activities as required coverage.",
+    "Use callbacks only to topics present in the current episode's topics or logs; never force a running joke or recurring subject.",
+    "Keep the dialogue natural, friendly, and clearly identify speakers.",
+    "Strictly avoid passive filler agreement; every host response should add a perspective or advance the debate.",
+    "Include Hotline Caller Trivia exactly once per full episode with three questions, four options each, the competing co-host and caller both answering, suspense before answers, reveals with live score, and winner or tie announced after question three.",
+    "Include the dedicated episode-anchored debate and center it on the day's main subject; explore realistic trade-offs in character without forced disagreement.",
+    "Include Sunday Scripture once per episode with a correctly cited verse and thoughtful, grounded practical reflection.",
+    "Aim for 2,200–3,000 spoken words and keep the full episode within 15–20 minutes maximum without filler."
+  ],
   "news_sources": [],
   "episodes": [
-    {"number":1,"date":"2026-09-28","pubDate":"Mon, 28 Sep 2026 00:00:00 -0400","title":"Episode 1: Project Radar and the Group Chat","audio":"episode-001-2026-09-28.mp3","image":"episode-001.png","continuity_update":"Episode 1 covers Joel's recent gaming interests and community updates, including GDevelop experiments, Jackbox announcements, observations on My Arms Are Longer Now, and Roblox specifics. It also touches on academic concerns, 7-Eleven rewards tracking, a small Interac transfer, and community chat logs."},
-    {"number":2,"date":"2026-09-28","pubDate":"Mon, 28 Sep 2026 17:33:54 +0000","title":"Episode 2: Project Radar, Jackbox, and the Group Chat","audio":"episode-002-2026-09-28.mp3","image":"episode-002.png","continuity_update":"Episode 2 covered Snowy's GDevelop community experiments, including the Bouh Water Showcase and game templates. It detailed Jackbox Games announcements for The Jackbox Party Pack 12 and Trivia Murder Party 3 Early Access. Academic updates included Joel's concerns about missing course uploads and a draft email regarding Grade 11 Health for Life. The episode also highlighted 7-Eleven reward point tracking, an Interac transfer from Zac, and group chat conversations."}
+    {
+      "number": 1,
+      "date": "2026-09-28",
+      "pubDate": "Mon, 28 Sep 2026 00:00:00 -0400",
+      "title": "Episode 1: Project Radar and the Group Chat",
+      "audio": "episode-001-2026-09-28.mp3",
+      "image": "episode-001.png",
+      "continuity_update": "Episode 1 covers Joel's recent gaming interests and community updates, including GDevelop experiments, Jackbox announcements, observations on My Arms Are Longer Now, and Roblox specifics. It also touches on academic concerns, 7-Eleven rewards tracking, a small Interac transfer, and community chat logs."
+    },
+    {
+      "number": 2,
+      "date": "2026-09-28",
+      "pubDate": "Mon, 28 Sep 2026 17:33:54 +0000",
+      "title": "Episode 2: Project Radar, Jackbox, and the Group Chat",
+      "audio": "episode-002-2026-09-28.mp3",
+      "image": "episode-002.png",
+      "continuity_update": "Episode 2 covered Snowy's GDevelop community experiments, including the Bouh Water Showcase and game templates. It detailed Jackbox Games announcements for The Jackbox Party Pack 12 and Trivia Murder Party 3 Early Access. Academic updates included Joel's concerns about missing course uploads and a draft email regarding Grade 11 Health for Life. The episode also highlighted 7-Eleven reward point tracking, an Interac transfer from Zac, and group chat conversations."
+    },
+    {
+      "number": 3,
+      "date": "2026-09-28",
+      "pubDate": "Mon, 28 Sep 2026 22:26:06 +0000",
+      "title": "Episode 2: Project Radar, Jackbox, and the Group Chat",
+      "audio": "episode-003-2026-09-28.mp3",
+      "continuity_update": "Episode 2 covered Snowy's GDevelop community experiments, including the Bouh Water Showcase and game templates. It detailed Jackbox Games announcements for The Jackbox Party Pack 12 and Trivia Murder Party 3 Early Access. Academic updates included Joel's concerns about missing course uploads and a draft email regarding Grade 11 Health for Life. The episode also highlighted 7-Eleven reward point tracking, an Interac transfer from Zac, and group chat conversations.",
+      "image": "episode-003.png"
+    }
   ]
 }
