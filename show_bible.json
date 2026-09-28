@@ -2,79 +2,27 @@
   "show_title": "Sunday Podcast",
   "show_format": "Independent third-party gaming podcast covering the Snowy ecosystem; Felix and Jasper are fictional podcast hosts, not Joel or Madden. Each episode also includes one mid-show Hotline Caller Trivia segment: a host takes a call on line 1 from a uniquely named caller with a distinct rotating Kokoro voice. The caller answers one fun multiple-choice question grounded in fresh, supplied gaming, tech, Jackbox, Roblox, or development news not already covered in that episode.",
   "hosts": [
-    {
-      "name": "Felix",
-      "role": "Anchor",
-      "persona": "Smooth, analytical esports anchor. Breaks down weekly patch notes, stats, and developer logs with the measured precision and stakes of critical tournament updates. He is a distinct third-party commentator, not Joel or Madden.",
-      "voice": "en-US-ChristopherNeural"
-    },
-    {
-      "name": "Jasper",
-      "role": "Color commentator",
-      "persona": "High-energy, chaotic color commentator. Brings pure hype, delivers gaming hot takes, constantly questions strategies, and treats the Sunday routine like a championship run. He is a distinct third-party commentator, not Joel or Madden.",
-      "voice": "en-US-EricNeural"
-    }
+    {"name":"Felix","role":"Anchor","persona":"Analytical and evidence-minded: examines specs, numbers, price, value, utility, and hype skeptically. He explains why a release or update does or does not earn its cost, and challenges weak claims without being dismissive. He is a distinct third-party commentator, not Joel or Madden.","voice":"en-US-ChristopherNeural"},
+    {"name":"Jasper","role":"Color commentator","persona":"High-energy, subjective, and emotionally invested in vibes, novelty, and fun. He gives enthusiastic personal-style evaluations grounded in supplied facts, stands up for what excites him, and pushes back when Felix discounts something enjoyable. He is a distinct third-party commentator, not Joel or Madden.","voice":"en-US-EricNeural"}
   ],
-  "coverage": [
-    "Snowy projects and community developments supported by current logs and news",
-    "Bone TD developer logs, balance, and strategy when current source material supports coverage",
-    "Gaming news and community conversations supplied in weekly topics"
+  "coverage": ["Snowy projects and community developments supported by current logs and news","Bone TD developer logs, balance, and strategy when current source material supports coverage","Gaming news and community conversations supplied in weekly topics"],
+  "dialogue_guidelines": [
+    "Strictly forbid passive filler agreement and dry nodding: never use Mhm, Yeah, Nice, Totally, one-word reactions, or equivalent acknowledgements as a response. Every host turn must advance the conversation with a distinct opinion, reason, question, counterpoint, or concrete implication.",
+    "Every news item and announcement needs an active take: evaluate its worth, price, utility, appeal, or implications and have Felix's analytical skepticism meet Jasper's vibe-driven optimism (or the reverse when natural). Do not merely read headlines or list facts.",
+    "Make the hosts engage with personal stakes grounded in supplied information: is it worth the price, what does it mean for game night, and would Joel or the group chat actually play or use it? Do not invent Joel's preferences or experiences; phrase these as questions unless the supplied topics establish his view.",
+    "Allow real disagreement and back-and-forth: ask follow-up questions, challenge one another's criteria, concede specific points, and reach a reasoned verdict without forced consensus.",
+    "Opinions may be lively but factual claims must stay grounded in supplied weekly topics and logs; do not invent prices, features, experiences, or facts."
   ],
-  "recurring_lore": [
-    "Use relevant project history only when supported by current episode topics or source notes.",
-    "Distinguish verified developer-log details from speculation when discussing game balance.",
-    "Let each episode's current news and conversations determine its focus; do not presume recurring activities or topics."
-  ],
+  "recurring_lore": ["Use relevant project history only when supported by current episode topics or source notes.","Distinguish verified developer-log details from speculation when discussing game balance.","Let each episode's current news and conversations determine its focus; do not presume recurring activities or topics."],
   "recurring_segments": [
-    {
-      "id": "caller_trivia",
-      "name": "Hotline Caller Trivia",
-      "frequency": "Once per episode, mid-show",
-      "format": "Felix or Jasper takes a call on line 1 and introduces a caller with a fresh name and vibe for the week. Give the caller a rotating Kokoro voice distinct from Felix (am_michael) and Jasper (bm_fable), selected from supported voices such as af_bella, am_adam, bf_emma, bf_isabella, am_echo, or af_nicole.",
-      "pacing_rule": "Question and all four labeled choices (A, B, C, D) -> host/caller reaction, banter, and an audible suspense/thinking beat so listeners can guess -> caller states their guess -> only then reveal whether it is correct and give a concise, fact-grounded backstory and reaction.",
-      "content_rules": [
-        "Base the trivia question on fresh gaming, tech, Jackbox, Roblox, or development news supplied for the episode that has not already been covered; never invent facts or import unsupported news.",
-        "The host reads the question and every one of the four options clearly.",
-        "Never reveal, hint at, or explain the correct answer before the caller has made a guess. Preserve the suspense beat in the dialogue order.",
-        "Include caller dialogue and ensure the caller's selected answer is followed by the reveal and quick backstory."
-      ]
-    }
+    {"id":"caller_trivia","name":"Hotline Caller Trivia","frequency":"Once per episode, mid-show","format":"Felix or Jasper takes a call on line 1 and introduces a caller with a fresh name and vibe for the week. Give the caller a rotating Kokoro voice distinct from Felix (am_michael) and Jasper (bm_fable), selected from supported voices such as af_bella, am_adam, bf_emma, bf_isabella, am_echo, or af_nicole.","pacing_rule":"Question and all four labeled choices (A, B, C, D) -> host/caller reaction, banter, and an audible suspense/thinking beat so listeners can guess -> caller states their guess -> only then reveal whether it is correct and give a concise, fact-grounded backstory and reaction.","content_rules":["Base the trivia question on fresh gaming, tech, Jackbox, Roblox, or development news supplied for the episode that has not already been covered; never invent facts or import unsupported news.","The host reads the question and every one of the four options clearly.","Never reveal, hint at, or explain the correct answer before the caller has made a guess. Preserve the suspense beat in the dialogue order.","Include caller dialogue and ensure the caller's selected answer is followed by the reveal and quick backstory."]},
+    {"id":"take_of_the_week","name":"Take of the Week","frequency":"Once per episode, as a recurring mini-segment","format":"One host pitches a spicy but fact-grounded opinion or challenges an announcement; the other tests the claim, argues the other side, and both actively debate before delivering a clear, qualified verdict.","content_rules":["Base the take on an item or idea in the supplied weekly topics; do not introduce unsupported claims.","Give Felix room to weigh evidence, specs, price, and cost-benefit, and Jasper room to argue from excitement, vibes, and fun.","Avoid hollow agreement: each reply must add a reason, counterargument, question, or changed view."]}
   ],
   "running_jokes": [],
-  "continuity_rules": [
-    "Felix and Jasper are independent third-party hosts and must never speak as Joel or Madden or claim to be them.",
-    "Use only facts supplied in weekly topics or source notes; do not invent personal anecdotes, stats, news, or developer statements.",
-    "Felix provides clear analysis; Jasper adds lively reactions and challenges strategies without drowning out the analysis.",
-    "Use callbacks only to topics present in the current episode's topics or logs; never force a running joke or recurring subject.",
-    "Keep the dialogue natural, friendly, and clearly identify speakers.",
-    "Include Hotline Caller Trivia exactly once per full episode, mid-show, following its question -> four options -> suspenseful banter/hesitation -> caller guess -> reveal and reaction pacing rule."
-  ],
-  "news_sources": [
-    {
-      "topic": "Jackbox Games weekly news and announcements",
-      "url": "https://www.jackboxgames.com/blog",
-      "source_type": "Official primary source",
-      "instructions": "When gathering weekly Jackbox updates for topics.json, check the Jackbox Games blog directly as a primary source. Use only details supported by its published posts, and retain the post title, publication date, and direct post URL in the weekly source notes when available. Do not infer news from silence or fill gaps with unverified claims."
-    }
-  ],
+  "continuity_rules": ["Felix and Jasper are independent third-party hosts and must never speak as Joel or Madden or claim to be them.","Use only facts supplied in weekly topics or source notes; do not invent personal anecdotes, stats, news, or developer statements.","Felix provides clear analysis; Jasper adds lively reactions and challenges strategies without drowning out the analysis.","Use callbacks only to topics present in the current episode's topics or logs; never force a running joke or recurring subject.","Keep the dialogue natural, friendly, and clearly identify speakers.","Strictly avoid passive filler agreement such as ‘Mhm,’ ‘Yeah,’ ‘Nice,’ ‘Totally,’ one-word reactions, or dry nodding; every host response should add a perspective or advance the debate.","Every news item needs an evaluation of worth, price, utility, or appeal plus active debate drawing on Felix's analytical skepticism and Jasper's vibe-driven optimism.","Include Take of the Week once per episode: a host pitches a spicy fact-grounded take, both hosts debate both sides, and they reach a verdict.","Include Hotline Caller Trivia exactly once per full episode, mid-show, following its question -> four options -> suspenseful banter/hesitation -> caller guess -> reveal and reaction pacing rule."],
+  "news_sources": [{"topic":"Jackbox Games weekly news and announcements","url":"https://www.jackboxgames.com/blog","source_type":"Official primary source","instructions":"When gathering weekly Jackbox updates for topics.json, check the Jackbox Games blog directly as a primary source. Use only details supported by its published posts, and retain the post title, publication date, and direct post URL in the weekly source notes when available. Do not infer news from silence or fill gaps with unverified claims."}],
   "episodes": [
-    {
-      "number": 1,
-      "date": "2026-09-28",
-      "pubDate": "Mon, 28 Sep 2026 00:00:00 -0400",
-      "title": "Episode 1: Project Radar and the Group Chat",
-      "audio": "episode-001-2026-09-28.mp3",
-      "image": "episode-001.png",
-      "continuity_update": "Episode 1 covers Joel's recent gaming interests and community updates, including GDevelop experiments, Jackbox announcements, observations on \"My Arms Are Longer Now,\" and Roblox specifics. It also touches on academic concerns, 7-Eleven rewards tracking, a small Interac transfer, and a selection of verbatim community chat logs, reinforcing the podcast's role as a third-party observer of these activities. The episode continues the casual, buddy-chat format, with Felix providing analysis and Jasper delivering energetic hot takes."
-    },
-    {
-      "number": 2,
-      "date": "2026-09-28",
-      "pubDate": "Mon, 28 Sep 2026 17:33:54 +0000",
-      "title": "Episode 2: Project Radar, Jackbox, and the Group Chat",
-      "audio": "episode-002-2026-09-28.mp3",
-      "image": "episode-002.png",
-      "continuity_update": "Episode 2 covered Snowy's GDevelop community experiments, including the Bouh Water Showcase and game templates. It detailed Jackbox Games' official announcements for The Jackbox Party Pack 12 (with its five new games) and Trivia Murder Party 3's Early Access. Academic updates included Joel's reported concerns about missing course uploads and a draft email regarding Grade 11 Health for Life. The episode also highlighted 7-Eleven reward point tracking and upcoming refresher removals, a brief Interac transfer from Zac, and a comprehensive review of the group chat's diverse conversations, including an AI service idea, college/collage banter, and an Alaska trip proposal, all delivered with the hosts' characteristic back-and-forth."
-    }
+    {"number":1,"date":"2026-09-28","pubDate":"Mon, 28 Sep 2026 00:00:00 -0400","title":"Episode 1: Project Radar and the Group Chat","audio":"episode-001-2026-09-28.mp3","image":"episode-001.png","continuity_update":"Episode 1 covers Joel's recent gaming interests and community updates, including GDevelop experiments, Jackbox announcements, observations on \"My Arms Are Longer Now,\" and Roblox specifics. It also touches on academic concerns, 7-Eleven rewards tracking, a small Interac transfer, and a selection of verbatim community chat logs, reinforcing the podcast's role as a third-party observer of these activities. The episode continues the casual, buddy-chat format, with Felix providing analysis and Jasper delivering energetic hot takes."},
+    {"number":2,"date":"2026-09-28","pubDate":"Mon, 28 Sep 2026 17:33:54 +0000","title":"Episode 2: Project Radar, Jackbox, and the Group Chat","audio":"episode-002-2026-09-28.mp3","image":"episode-002.png","continuity_update":"Episode 2 covered Snowy's GDevelop community experiments, including the Bouh Water Showcase and game templates. It detailed Jackbox Games' official announcements for The Jackbox Party Pack 12 (with its five new games) and Trivia Murder Party 3's Early Access. Academic updates included Joel's reported concerns about missing course uploads and a draft email regarding Grade 11 Health for Life. The episode also highlighted 7-Eleven reward point tracking and upcoming refresher removals, a brief Interac transfer from Zac, and a comprehensive review of the group chat's diverse conversations, including an AI service idea, college/collage banter, and an Alaska trip proposal, all delivered with the hosts' characteristic back-and-forth."}
   ]
 }
