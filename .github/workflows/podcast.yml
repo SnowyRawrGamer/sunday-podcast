@@ -1,5 +1,7 @@
 name: Sunday Podcast
 on:
+  schedule:
+    - cron: '0 18 * * 0'
   workflow_dispatch:
     inputs:
       test_mode:
@@ -37,7 +39,13 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           PODCAST_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
         run: |
-          if [ "${{ inputs.test_mode }}" = "true" ]; then python scripts/generate.py --test; else python scripts/generate.py; fi
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            python scripts/generate.py
+          elif [ "${{ inputs.test_mode }}" = "true" ]; then
+            python scripts/generate.py --test
+          else
+            python scripts/generate.py
+          fi
       - name: Commit show bible and generated music
         run: |
           git config user.name github-actions[bot]
