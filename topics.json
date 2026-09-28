@@ -1,39 +1,42 @@
 {
-  "title": "Episode 0: The Test Run",
-  "episode_number": 0,
+  "episode_number": 1,
+  "title": "Episode 1: Project Radar and the Group Chat",
+  "as_of": "2026-09-28",
+  "target_runtime": "Full episode: 8-12 minutes; dispatch with test_mode=false",
   "topics": [
-    "Introduce the Sunday Podcast and explain what listeners can expect.",
-    "A light check-in about the Snowy ecosystem, Bone TD, BattleTabs, and gaming topics; keep details generic unless supplied by the hosts.",
-    "Use one brief callback to BattleTabs, Bone TD balancing, or a Slurpee run.",
-    "Include a short Offline Radar Sunday messages segment using only the supplied messages below. Attribute quoted excerpts to their sender and do not infer missing context."
+    "Open casually and check in on Snowy, Bone TD, BattleTabs, and gaming. Bring back the brief BattleTabs/Bone TD balancing callback and Slurpee run without inventing new events.",
+    "GDevelop: cover Snowy's interest in Bouh Water Showcase, a 3D pixel-art level generator, and Block Blast/Cookie Clicker-style templates. Separate user project ideas and community experiments from official engine releases. Prior research did not verify a specific recent official GDevelop update; do not present the community forum work as shipped official functionality.",
+    "Jackbox: The official Jackbox Games account says The Jackbox Party Pack 12 is coming October 15, 2026, with five games: MegaPals, We Forgot A Card!, Idol Factions, Hyperface, and Debate & Switch. The official account also says Trivia Murder Party 3 is in Early Access on Steam and Epic. Attribute these as official-account announcements; Party Pack 12 has not released as of September 28, 2026.",
+    "My Arms Are Longer Now: include Joel's report that the main game disappeared while a giveaway remained, and that he used V6 and a recent promotion. Treat these as Joel's observations, not independently verified current availability or an official Jackbox promotion.",
+    "Roblox: Clicking Legends Remastered. Joel wants current secret discoveries, the Kraken, and whether multiplayer/non-solo play is possible. An exact-title current web search found no reliable corroborating source; do not invent secret codes, unlock steps, or multiplayer facts. Also cover zero-cost goodies and Roblox gift-card cashback only as Joel's interest; do not invent a cashback percentage or imply an offer is currently available.",
+    "Bone TD and BattleTabs: keep the familiar games and balancing callback, but do not invent recent patches, statistics, match outcomes, or balance changes. No specific current official update was verified in the earlier research.",
+    "Course update: Joel reported seven missing uploads and concern that AI grading may be involved; identify this as his report/concern, not a confirmed school explanation. A September 22, 2026 Gmail item is a DRAFT follow-up about the missing Grade 11 Health for Life (PPZ3C) completion/grade on the portal and transcript; it says the final exam was taken June 22, 2026 and references earlier inquiries. Do not claim the draft was sent or that the school replied.",
+    "7-Eleven rewards: Joel is tracking Slurpee and pepperoni-pizza rewards/points. As checked September 28, 2026, Poke has unpaused one-time reminders on Tuesday, October 20 and Monday, October 26, 2026 about 7-Eleven refreshers costing 500 points being removed Tuesday, October 27, plus a Thursday, November 19, 2026 points-expiration check/redeem reminder. No live account balance was verified; do not claim a current points balance.",
+    "Interac: Joel mentioned a $5.75 transfer from Zac. Keep this as a brief user-reported note; do not infer its purpose, whether it cleared, or any additional financial details.",
+    "Offline Radar Sunday messages: read only the exact supplied snippets below, preserve spelling, punctuation, and accents, attribute them to the listed sender, and do not infer what a fragment means. No additional exact message batch was available in the current repository/context, so do not invent more messages."
   ],
-  "offline_radar_sunday_messages": {
-    "segment_title": "Offline Radar Sunday messages",
-    "messages": [
-      {
-        "sender": "Zach DragonBoat",
-        "messages": ["Sorry", "Joesl", "We're not availaible", "But def send pics!"]
-      },
-      {
-        "sender": "Peyton Corder",
-        "messages": ["30% on relief", ":\\", "true", "only if it was active"]
-      },
-      {
-        "sender": "Canon Smith",
-        "messages": ["Skibidi"]
-      },
-      {
-        "sender": "Sayer Smith",
-        "messages": ["Le gustó una imagen", "whattt", "sick art bro"]
-      },
-      {
-        "sender": "Madden Long",
-        "messages": ["Thank you"]
-      },
-      {
-        "sender": "Casen Grijalva",
-        "messages": ["I Guess Bro", "That would work if this chat was active"]
-      }
-    ]
-  }
+  "required_segments": [
+    {"id": "opening_callback", "label": "Natural opening and familiar-game callback"},
+    {"id": "gdevelop", "label": "GDevelop interests and verified-versus-community distinction"},
+    {"id": "jackbox", "label": "Jackbox Party Pack 12 and Trivia Murder Party 3"},
+    {"id": "longer_now", "label": "My Arms Are Longer Now observations"},
+    {"id": "roblox", "label": "Clicking Legends Remastered and Roblox offers"},
+    {"id": "bone_battletabs", "label": "Bone TD and BattleTabs"},
+    {"id": "course", "label": "PPZ3C course status, carefully attributed"},
+    {"id": "rewards", "label": "7-Eleven reward points and reminder status"},
+    {"id": "interac", "label": "Zac's $5.75 transfer, without assumptions"},
+    {"id": "offline_radar", "label": "Offline Radar messages, verbatim"}
+  ],
+  "sources": [
+    {"topic": "Jackbox official announcements", "url": "https://x.com/jackboxgames", "note": "Official Jackbox Games X page; Party Pack 12 date and game titles, plus Trivia Murder Party 3 Early Access status."},
+    {"topic": "GDevelop community experimentation", "url": "https://forum.gdevelop.io/t/i-added-native-post-processing-advanced-lighting-physics3d-joints-ragdoll-directly-into-gdevelops-source-code/75385/21", "note": "Community forum contribution dated March 3, 2026 discussing a PBR material behavior; not evidence of an official shipped release."}
+  ],
+  "offline_radar_messages": [
+    {"sender": "Zach DragonBoat", "messages": ["Sorry", "Joesl", "We're not availaible", "But def send pics!"]},
+    {"sender": "Peyton Corder", "messages": ["30% on relief", ":\\", "true", "only if it was active"]},
+    {"sender": "Canon Smith", "messages": ["Skibidi"]},
+    {"sender": "Sayer Smith", "messages": ["Le gustó una imagen", "whattt", "sick art bro"]},
+    {"sender": "Madden Long", "messages": ["Thank you"]},
+    {"sender": "Casen Grijalva", "messages": ["I Guess Bro", "That would work if this chat was active"]}
+  ]
 }

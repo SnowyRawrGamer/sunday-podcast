@@ -102,15 +102,48 @@ def run(*cmd):
 
 def make_prompt(bible, topics, test_mode):
     title = topics.get('title', 'Sunday Podcast')
-    length = 'a concise 4-6 exchange test, under 90 seconds' if test_mode else 'a natural 8-12 minute episode'
-    return f'''Return valid JSON only in this exact shape: {{"title":"...","lines":[{{"speaker":"Felix","text":"...","topic_transition_after":false}},{{"speaker":"Jasper","text":"...","topic_transition_after":false}}],"continuity_update":"..."}}.
-The show title is {json.dumps(title)}; keep that title exactly. Write {length}, with a lively back-and-forth and short spoken turns. Set topic_transition_after to true only when the next line begins a distinct discussion topic; otherwise set it to false. Mark the last line false.
+    if test_mode:
+        length = 'a concise 4-6 exchange test episode under 90 seconds'
+        coverage_rule = 'This is only a short test, so a subset of segments may be sampled.'
+    else:
+        length = 'a natural full 8-12 minute episode, approximately 1,050-1,500 spoken words'
+        required_ids = [segment['id'] for segment in topics.get('required_segments', [])]
+        coverage_rule = (
+            'The full episode must cover every required segment exactly in this order: '
+            + ', '.join(required_ids)
+            + '. Give each segment its own contiguous discussion block, do not skip or merge blocks, '
+            'and include concrete supplied details rather than merely naming topics.'
+        )
+    return f'''Return valid JSON only in this exact shape: {{"title":"...","lines":[{{"speaker":"Felix","text":"...","segment_id":"opening_callback","topic_transition_after":false}},{{"speaker":"Jasper","text":"...","segment_id":"opening_callback","topic_transition_after":false}}],"continuity_update":"..."}}.
+The show title is {json.dumps(title)}; keep that title exactly. Write {length}, with a lively back-and-forth and short spoken turns. {coverage_rule} Every line must have one segment_id chosen from the supplied required segment IDs. All lines in one topic block use the same ID. Set topic_transition_after to true on the last line of each block only when the next line starts a distinct required segment; set the final line false. Make all required segments audible, natural, and substantive, without rushing through a checklist. The offline messages must be read verbatim, with their supplied sender attribution; do not interpret fragmentary messages.
 
 Felix and Jasper are two close buddies chatting casually on Discord / on their gaming podcast. They follow Snowy's dev logs, gaming matches, Bone TD, BattleTabs, and projects, and react like real friends: tease each other, hype good plays, roast bad strategies, disagree playfully, and land funny callbacks. Felix is observant and clear; Jasper is energetic and quick with a hot take. Make it sound spontaneous and warm, not like presenters reading a corporate briefing. They are fictional third-party podcast hosts, not Joel or Madden; never claim to be either person or invent personal experiences for them.
 
-STRICT STYLE BAN: Never use corporate, press-release, or generic AI phrases, including these exact phrases or close variants: "the Snowy ecosystem", "today in the ecosystem", "on our radar today", "let's dive in", "in today's episode", "we're excited to announce", "stay tuned", "at the end of the day", "game changer", "let's unpack", "without further ado", "in the ever-evolving world". Do not describe the show as covering an "ecosystem". Start with a natural conversational line, not a formal introduction. No fake sponsor reads, fabricated stats, made-up developer statements, invented match results, personal anecdotes, or claims beyond the supplied weekly topics and show bible. Treat developer-log facts only as confirmed when actually supplied in the topics or bible; otherwise speak generally and say what is unknown rather than bluffing.
+STRICT STYLE BAN: Never use corporate, press-release, or generic AI phrases, including these exact phrases or close variants: "the Snowy ecosystem", "today in the ecosystem", "on our radar today", "let's dive in", "in today's episode", "we're excited to announce", "stay tuned", "at the end of the day", "game changer", "let's unpack", "without further ado", "in the ever-evolving world". Do not describe the show as covering an "ecosystem". Start with a natural conversational line, not a formal introduction. No fake sponsor reads, fabricated stats, made-up developer statements, invented match results, personal anecdotes, or claims beyond the supplied weekly topics and show bible. Treat developer-log facts only as confirmed when actually supplied in the topics or bible; distinguish official announcements, community experiments, and Joel's personal reports. When research notes say something was not verified, say that plainly or skip the unsupported claim; never bluff.
 
-Use only the supplied topics and continuity notes. Keep analysis accurate, banter genuinely conversational, and callbacks occasional rather than forced. Hosts: {json.dumps(bible['hosts'], ensure_ascii=False)}. Show bible: {json.dumps(bible, ensure_ascii=False)}. This week's topics: {json.dumps(topics, ensure_ascii=False)}.'''
+Use only the supplied topics and continuity notes. Keep analysis accurate, banter genuinely conversational, and callbacks occasional rather than forced. Hosts: {json.dumps(bible['hosts'], ensure_ascii=False)}. Show bible: {json.dumps(bible, ensure_ascii=False)}. This week's topics and source notes: {json.dumps(topics, ensure_ascii=False)}.'''
+
+
+def validate_full_episode(lines, topics):
+    required_ids = [segment['id'] for segment in topics.get('required_segments', [])]
+    if not required_ids:
+        raise ValueError('Full episode has no required segment IDs in topics.json')
+    line_ids = []
+    for line in lines:
+        segment_id = line.get('segment_id')
+        if segment_id not in required_ids:
+            raise ValueError(f'Full episode contains unknown or missing segment_id: {segment_id!r}')
+        line_ids.append(segment_id)
+    block_order = []
+    for segment_id in line_ids:
+        if not block_order or block_order[-1] != segment_id:
+            block_order.append(segment_id)
+    if block_order != required_ids:
+        raise ValueError(f'Full episode segment coverage/order mismatch: expected {required_ids}, got {block_order}')
+    for index, line in enumerate(lines):
+        should_transition = index < len(lines) - 1 and line_ids[index] != line_ids[index + 1]
+        if line.get('topic_transition_after') is not should_transition:
+            raise ValueError(f'Incorrect topic_transition_after at dialogue line {index + 1}')
 
 
 def main():
@@ -127,6 +160,8 @@ def main():
     allowed = {'Felix', 'Jasper'}
     if not lines or any(line.get('speaker') not in allowed or not line.get('text') for line in lines):
         raise ValueError('Model returned invalid dialogue; expected non-empty Felix and Jasper lines')
+    if not args.test:
+        validate_full_episode(lines, topics)
     work = ROOT / 'build'
     work.mkdir(exist_ok=True)
     parts = []
