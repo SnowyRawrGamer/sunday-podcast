@@ -2,6 +2,7 @@
 """Generate and mix a continuity-aware Sunday Podcast episode."""
 import argparse, asyncio, datetime as dt, json, os, pathlib, subprocess, sys, urllib.request
 import edge_tts
+from gtts import gTTS
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
@@ -17,17 +18,26 @@ def call_gemini(prompt):
     return data['candidates'][0]['content']['parts'][0]['text']
 
 
-async def synthesize_line(text, voice, out_path):
-    """Synthesize one line with retries and report the actual edge-tts exception."""
+async def synthesize_line(text, voice, out_path, fallback_tld):
+    """Try Edge TTS with retry; use Google Translate TTS if Edge is blocked/unavailable."""
     for attempt in range(1, 4):
         try:
             communicate = edge_tts.Communicate(text, voice)
             await communicate.save(str(out_path))
+            print(f'TTS backend=edge-tts voice={voice}', flush=True)
             return
         except Exception as exc:
-            print(f'edge-tts failed for voice {voice!r}, attempt {attempt}/3: {type(exc).__name__}: {exc}', file=sys.stderr, flush=True)
-            if attempt == 3:
-                raise RuntimeError(f'edge-tts synthesis failed after 3 attempts for voice {voice!r}: {type(exc).__name__}: {exc}') from exc
+            detail = f'{type(exc).__name__}: {exc}'
+            print(f'edge-tts failed for {voice!r}, attempt {attempt}/3: {detail}', file=sys.stderr, flush=True)
+            blocked = '403' in detail or 'WSServerHandshakeError' in detail or 'Invalid response status' in detail
+            if blocked or attempt == 3:
+                print(f'Falling back to gTTS (lang=en, tld={fallback_tld})', file=sys.stderr, flush=True)
+                try:
+                    await asyncio.to_thread(gTTS(text=text, lang='en', tld=fallback_tld).save, str(out_path))
+                    print(f'TTS backend=gTTS tld={fallback_tld}', flush=True)
+                    return
+                except Exception as fallback_exc:
+                    raise RuntimeError(f'Both edge-tts ({detail}) and gTTS ({type(fallback_exc).__name__}: {fallback_exc}) failed') from fallback_exc
             await asyncio.sleep(attempt * 2)
 
 
@@ -54,10 +64,12 @@ def main():
     work.mkdir(exist_ok=True)
     parts = []
     voices = {'Felix': os.getenv('FELIX_VOICE', 'en-US-ChristopherNeural'), 'Jasper': os.getenv('JASPER_VOICE', 'en-US-EricNeural')}
+    fallback_tlds = {'Felix': 'co.uk', 'Jasper': 'com'}
     for i, line in enumerate(lines):
         mp3 = work / f'line-{i:03}.mp3'
-        print(f'Synthesizing line {i + 1}/{len(lines)} with {voices[line["speaker"]]}', flush=True)
-        asyncio.run(synthesize_line(line['text'], voices[line['speaker']], mp3))
+        speaker = line['speaker']
+        print(f'Synthesizing line {i + 1}/{len(lines)} with {voices[speaker]}', flush=True)
+        asyncio.run(synthesize_line(line['text'], voices[speaker], mp3, fallback_tlds[speaker]))
         parts.append(mp3)
     listing = work / 'concat.txt'
     listing.write_text(''.join("file '" + p.name + "'\n" for p in parts))
