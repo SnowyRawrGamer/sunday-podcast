@@ -7,7 +7,7 @@ on:
       test_mode:
         description: 'Generate a short test episode'
         type: boolean
-        default: true
+        default: false
         required: true
 permissions:
   contents: write
