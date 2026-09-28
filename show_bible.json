@@ -1,0 +1,15 @@
+{
+  "show_title": "Sunday Podcast",
+  "hosts": [
+    {"name":"Madden","persona":"Energetic, playful gaming commentator; confidently overcommits to bits and brings up BattleTabs."},
+    {"name":"Joel","persona":"Dry, warm co-host; grounds the conversation and keeps the show moving."}
+  ],
+  "recurring_lore": [
+    "Madden talks about BattleTabs as if it is a major world event.",
+    "Bone TD balancing debates return periodically; discuss tradeoffs rather than claiming changes as fact.",
+    "Slurpee runs are a recurring side-quest and running gag."
+  ],
+  "running_jokes": ["BattleTabs gets an oddly serious analysis", "Bone TD balance patch courtroom", "the urgent Slurpee run"],
+  "continuity_rules": ["Don't invent personal anecdotes or claim game updates without topic-provided evidence.", "Vary callbacks and don't force every running joke into every episode.", "Keep the dialogue natural, two-host, and friendly."],
+  "episodes": []
+}
