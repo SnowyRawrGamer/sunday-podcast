@@ -28,8 +28,8 @@ def main():
     bible = json.loads(bible_path.read_text())
     topics = json.loads((ROOT / 'topics.json').read_text())
     date = dt.datetime.now(dt.timezone.utc).date().isoformat()
-    n = len(bible.get('episodes', [])) + 1
-    prompt = f'''Write a natural, entertaining two-host gaming podcast dialogue in JSON only, format {{"title":"...","lines":[{{"speaker":"Felix","text":"..."}},{{"speaker":"Jasper","text":"..."}}],"continuity_update":"..."}}. Make 12-20 short exchanges; {'make this a brief 4-6 exchange test, under 90 seconds' if args.test else 'target about 8-12 minutes when spoken'}. Hosts and personas: {json.dumps(bible['hosts'], ensure_ascii=False)}. Show bible: {json.dumps(bible, ensure_ascii=False)}. This week's title/topics: {json.dumps(topics, ensure_ascii=False)}. Felix and Jasper are fictional, independent third-party hosts covering the Snowy ecosystem, not Joel or Madden. Do not claim to be Joel or Madden. Do not invent facts, stats, news, dev-log claims, or personal stories; use only supplied topics. Felix is analytical and measured; Jasper is energetic and questions strategies. Use callbacks sparingly and maintain continuity.'''
+    n = topics['episode_number'] if topics.get('episode_number') is not None else len(bible.get('episodes', [])) + 1
+    prompt = f'''Write a natural, entertaining two-host gaming podcast dialogue in JSON only, format {{"title":"...","lines":[{{"speaker":"Felix","text":"..."}},{{"speaker":"Jasper","text":"..."}}],"continuity_update":"..."}}. The episode title is {json.dumps(topics.get('title', 'Sunday Podcast'))}; preserve it exactly. Make 12-20 short exchanges; {'make this a brief 4-6 exchange test, under 90 seconds' if args.test else 'target about 8-12 minutes when spoken'}. Hosts and personas: {json.dumps(bible['hosts'], ensure_ascii=False)}. Show bible: {json.dumps(bible, ensure_ascii=False)}. This week's title/topics: {json.dumps(topics, ensure_ascii=False)}. Felix and Jasper are fictional, independent third-party hosts covering the Snowy ecosystem, not Joel or Madden. Do not claim to be Joel or Madden. Do not invent facts, stats, news, dev-log claims, or personal stories; use only supplied topics. Felix is analytical and measured; Jasper is energetic and questions strategies. Use callbacks sparingly and maintain continuity.'''
     data = json.loads(call_gemini(prompt))
     lines = data['lines']
     allowed = {'Felix', 'Jasper'}
@@ -38,16 +38,13 @@ def main():
     work = ROOT / 'build'
     work.mkdir(exist_ok=True)
     parts = []
-    voices = {
-        'Felix': os.getenv('FELIX_VOICE', 'en-US-ChristopherNeural'),
-        'Jasper': os.getenv('JASPER_VOICE', 'en-US-EricNeural'),
-    }
+    voices = {'Felix': os.getenv('FELIX_VOICE', 'en-US-ChristopherNeural'), 'Jasper': os.getenv('JASPER_VOICE', 'en-US-EricNeural')}
     for i, line in enumerate(lines):
         mp3 = work / f'line-{i:03}.mp3'
         run(sys.executable, '-m', 'edge_tts', '--voice', voices[line['speaker']], '--text', line['text'], '--write-media', str(mp3))
         parts.append(mp3)
     listing = work / 'concat.txt'
-    listing.write_text(''.join("file '" + p.name + "'\\n" for p in parts))
+    listing.write_text(''.join("file '" + p.name + "'\n" for p in parts))
     speech = work / 'speech.mp3'
     run('ffmpeg', '-y', '-f', 'concat', '-safe', '0', '-i', str(listing), '-c:a', 'libmp3lame', '-b:a', '128k', str(speech))
     site = ROOT / 'site'
@@ -59,8 +56,9 @@ def main():
         run('ffmpeg', '-y', '-i', str(speech), '-stream_loop', '-1', '-i', str(music), '-filter_complex', '[1:a]volume=0.16[bed];[bed][0:a]sidechaincompress=threshold=0.025:ratio=8:attack=20:release=500[ducked];[0:a][ducked]amix=inputs=2:duration=first:dropout_transition=2[out]', '-map', '[out]', '-c:a', 'libmp3lame', '-b:a', '128k', str(out))
     else:
         run('ffmpeg', '-y', '-i', str(speech), '-c:a', 'libmp3lame', '-b:a', '128k', str(out))
-    bible.setdefault('episodes', []).append({'number': n, 'date': date, 'title': data.get('title', topics.get('title', 'Sunday Podcast')), 'audio': out.name, 'continuity_update': data.get('continuity_update', '')})
-    bible_path.write_text(json.dumps(bible, indent=2, ensure_ascii=False) + '\\n')
+    title = topics.get('title') or data.get('title', 'Sunday Podcast')
+    bible.setdefault('episodes', []).append({'number': n, 'date': date, 'title': title, 'audio': out.name, 'continuity_update': data.get('continuity_update', '')})
+    bible_path.write_text(json.dumps(bible, indent=2, ensure_ascii=False) + '\n')
     base = os.environ['PODCAST_BASE_URL'].rstrip('/') + '/'
     items = []
     for ep in reversed(bible['episodes']):

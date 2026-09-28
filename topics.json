@@ -1,8 +1,9 @@
 {
-  "title": "A Sunday test run",
+  "title": "Episode 0: The Test Run",
+  "episode_number": 0,
   "topics": [
     "Introduce the Sunday Podcast and explain what listeners can expect.",
-    "A light check-in about games and projects; keep details generic unless supplied by the hosts.",
+    "A light check-in about the Snowy ecosystem, Bone TD, BattleTabs, and gaming topics; keep details generic unless supplied by the hosts.",
     "Use one brief callback to BattleTabs, Bone TD balancing, or a Slurpee run."
   ]
 }
