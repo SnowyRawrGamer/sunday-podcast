@@ -33,6 +33,7 @@
     "guidance": "Use the available time for substantive coverage, unrushed debate, all three trivia questions, scripture reflection, and a concise recap. Do not pad or drag; remain within the target."
   },
   "dialogue_guidelines": [
+    "NEVER use asterisks (*), italics, bold, or stage directions/sound effects (like *laughs*, *sighs*, *chuckles*) in dialogue. Kokoro TTS speaks the word 'asterisk' literally out loud. Dialogue must be pure spoken text only.",
     "Choose topics dynamically from what the user, friends, and projects are actively doing, building, playing, or discussing in the supplied logs and weekly input, plus relevant current gaming and tech news. Do not require or presume any particular game, platform, genre, project, or recurring interest.",
     "Target 15–20 minutes maximum, approximately 2,200–3,000 spoken words. Make room for substantive conversation, the full three-question trivia showdown, a dedicated debate, Sunday Scripture, and a concise recap; do not rush required segments or pad beyond the target.",
     "Every news item and announcement needs an active take: evaluate its worth, utility, appeal, or implications and let Felix's analytical skepticism meet Jasper's vibe-driven optimism (or the reverse when natural). Do not merely read headlines or list facts.",
@@ -134,6 +135,7 @@
       "pubDate": "Mon, 28 Sep 2026 22:26:06 +0000",
       "title": "Episode 2: Project Radar, Jackbox, and the Group Chat",
       "audio": "episode-003-2026-09-28.mp3",
+      "image": "episode-003.png",
       "continuity_update": "Episode 2 covered Snowy's GDevelop community experiments, including the Bouh Water Showcase and game templates. It detailed Jackbox Games announcements for The Jackbox Party Pack 12 and Trivia Murder Party 3 Early Access. Academic updates included Joel's concerns about missing course uploads and a draft email regarding Grade 11 Health for Life. The episode also highlighted 7-Eleven reward point tracking, an Interac transfer from Zac, and group chat conversations.",
       "image": "episode-003.png"
     }
