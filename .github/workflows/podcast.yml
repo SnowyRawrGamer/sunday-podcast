@@ -46,16 +46,21 @@ jobs:
           else
             python scripts/generate.py
           fi
-      - name: Commit show bible and generated music
+      - name: Generate artwork and iTunes RSS image tags
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          PODCAST_BASE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: python scripts/podcast_artwork.py
+      - name: Commit show bible, artwork, and generated music
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
-          git add show_bible.json music/lofi_1.mp3 music/lofi_2.mp3
+          git add show_bible.json music/lofi_1.mp3 music/lofi_2.mp3 assets/
           if git diff --cached --quiet; then
             echo "No generated changes to commit."
             exit 0
           fi
-          git commit -m "Record generated podcast episode and CC0 music"
+          git commit -m "Record generated podcast episode, artwork, and CC0 music"
           for attempt in 1 2 3 4 5; do
             echo "Syncing with origin/main (attempt ${attempt}/5)"
             if ! git pull --rebase origin main; then
