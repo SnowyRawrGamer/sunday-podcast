@@ -16,3 +16,6 @@ Kokoro runs on CPU without a paid TTS API key. Felix uses `am_adam` (US English)
 
 ## Output
 The workflow commits the generated CC0 music and show-bible update, then uploads `site/` to GitHub Pages. The episode MP3 and `podcast.xml` are served from the repository's Pages site after deployment.
+
+## Weekly source research
+When gathering Jackbox updates for [topics.json](topics.json), consult the official Jackbox Games blog directly as a primary source: https://www.jackboxgames.com/blog. Record the supporting post title, publication date, and direct link in the weekly source notes when available, and include only claims supported by the source. The persistent source configuration is in [show_bible.json](show_bible.json) under [news_sources](show_bible.json).

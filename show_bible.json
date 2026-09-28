@@ -38,6 +38,14 @@
     "Vary callbacks and do not force every running joke into every episode.",
     "Keep the dialogue natural, friendly, and clearly identify speakers."
   ],
+  "news_sources": [
+    {
+      "topic": "Jackbox Games weekly news and announcements",
+      "url": "https://www.jackboxgames.com/blog",
+      "source_type": "Official primary source",
+      "instructions": "When gathering weekly Jackbox updates for topics.json, check the Jackbox Games blog directly as a primary source. Use only details supported by its published posts, and retain the post title, publication date, and direct post URL in the weekly source notes when available. Do not infer news from silence or fill gaps with unverified claims."
+    }
+  ],
   "episodes": [
     {
       "number": 0,
