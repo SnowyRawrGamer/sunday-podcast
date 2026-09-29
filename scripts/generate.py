@@ -288,21 +288,40 @@ def main():
     run('ffmpeg', '-y', '-f', 'concat', '-safe', '0', '-i', str(concat_list), '-c:a', 'libmp3lame', '-b:a', '128k', str(speech))
 
     music_dir = ROOT / 'music'
-    music_files = sorted(music_dir.glob('*.mp3')) if music_dir.exists() else []
+    intro_file = music_dir / 'The Sunday Podcast.mp3'
+    music_files = sorted(
+        path for path in music_dir.iterdir()
+        if path.is_file() and path.suffix.lower() == '.mp3' and path.name.lower().startswith('lofi')
+    ) if music_dir.exists() else []
     if not music_files:
         run(sys.executable, str(ROOT / 'scripts' / 'generate_music.py'))
-        music_files = sorted(music_dir.glob('*.mp3'))
+        music_files = sorted(
+            path for path in music_dir.iterdir()
+            if path.is_file() and path.suffix.lower() == '.mp3' and path.name.lower().startswith('lofi')
+        ) if music_dir.exists() else []
     site = ROOT / 'site'
     site.mkdir(exist_ok=True)
     slug = f'episode-{number:03}-{date}'
     output = site / f'{slug}.mp3'
+    dialogue_mix = work / 'dialogue-mix.mp3'
     if music_files:
         music = random.choice(music_files)
-        print(f'Mixing background track: {music.name}', flush=True)
-        run('ffmpeg', '-y', '-i', str(speech), '-stream_loop', '-1', '-i', str(music), '-filter_complex', '[1:a]volume=0.30[musicbed];[musicbed][0:a]sidechaincompress=threshold=0.04:ratio=6:attack=20:release=500[ducked];[0:a][ducked]amix=inputs=2:duration=first:dropout_transition=2[out]', '-map', '[out]', '-c:a', 'libmp3lame', '-b:a', '128k', str(output))
+        print(f'Mixing background lofi track: {music.name}', flush=True)
+        run('ffmpeg', '-y', '-i', str(speech), '-stream_loop', '-1', '-i', str(music), '-filter_complex', '[1:a]volume=0.30[musicbed];[musicbed][0:a]sidechaincompress=threshold=0.04:ratio=6:attack=20:release=500[ducked];[0:a][ducked]amix=inputs=2:duration=first:dropout_transition=2[out]', '-map', '[out]', '-c:a', 'libmp3lame', '-b:a', '128k', str(dialogue_mix))
     else:
-        print('No music tracks found; exporting speech only', file=sys.stderr, flush=True)
-        run('ffmpeg', '-y', '-i', str(speech), '-c:a', 'libmp3lame', '-b:a', '128k', str(output))
+        print('No lofi tracks found; exporting speech without background music', file=sys.stderr, flush=True)
+        run('ffmpeg', '-y', '-i', str(speech), '-c:a', 'libmp3lame', '-b:a', '128k', str(dialogue_mix))
+
+    if intro_file.is_file():
+        bumper = work / 'intro-bumper-15s.mp3'
+        run('ffmpeg', '-y', '-i', str(intro_file), '-af', 'apad=pad_dur=15,atrim=duration=15', '-codec:a', 'libmp3lame', '-b:a', '128k', str(bumper))
+        final_concat = work / 'episode-with-intro.txt'
+        final_concat.write_text(f"file '{bumper.resolve()}'\nfile '{dialogue_mix.resolve()}'\n")
+        print(f'Prepending 15-second intro bumper: {intro_file.name}', flush=True)
+        run('ffmpeg', '-y', '-f', 'concat', '-safe', '0', '-i', str(final_concat), '-c:a', 'libmp3lame', '-b:a', '128k', str(output))
+    else:
+        print(f'Intro bumper not found at {intro_file}; exporting dialogue mix without intro', file=sys.stderr, flush=True)
+        run('ffmpeg', '-y', '-i', str(dialogue_mix), '-c:a', 'libmp3lame', '-b:a', '128k', str(output))
 
     title = topics.get('title') or data.get('title', 'Sunday Podcast')
     episode = next((ep for ep in bible['episodes'] if int(ep['number']) == int(number)), None)
