@@ -1,43 +1,53 @@
 {
-  "episode_number": null,
-  "title": "Episode 5: Game Grinds, Battery Pain, and a Loaf of Bread",
-  "as_of": "2026-09-29",
+  "episode_number": 1,
+  "title": "Episode 1: Career Paths, Ranked Climb, and Midnight Pings",
+  "as_of": "2026-10-04",
+  "target_publish_time": "2:00 PM EDT",
   "target_runtime": "15-20 minutes (~2,200 to 3,000 words)",
+  "hosts": {
+    "Felix": {"voice": "Michael", "speed": 0.98},
+    "Jasper": {"voice": "Fable", "speed": 1.05}
+  },
+  "dialogue_format": "Alternate naturally between Felix and Jasper. Every spoken line must begin with exactly Felix: or Jasper:. Plain clean text only: no Markdown, asterisks, italics, stage directions, or additional speaker labels. Keep the dialogue family-friendly and conversational. Felix is evidence-minded and practical; Jasper is energetic and fun-focused. Do not impersonate chat participants or claim first-hand experiences.",
   "source_attribution_policy": [
-    "Treat source and author labels as production context for Felix and Jasper, not words to read aloud.",
-    "Attribute statements and actions only to the person identified in the supplied message; don't infer extra context or outcomes.",
-    "Attribute Roblox creator-tool news to GamesBeat's report on RDC 2026 and to Roblox only for claims the report attributes to Roblox. Do not present the report as Joel's firsthand experience.",
-    "Omit unsupported details instead of narrating research limitations or verification rules."
+    "Treat all group-chat details as supplied context and attribute claims to the named person only where useful; do not invent messages, reactions, motivations, or outcomes.",
+    "Treat rank, notification count, project status, and late-night timing as chat-reported facts, not independently verified records.",
+    "Do not expose unnecessary personal details or turn ideas, jokes, or discussion into commitments.",
+    "Use only the game and development details in this file; do not invent updates, game mechanics, completion results, or technical specifics."
   ],
   "topics": [
-    "Opening Banter & Callback: Open naturally on this week's chat themes: impossible game grinds, schoolwork, kitchen plans, and familiar hardware annoyances. Keep the banter warm and clean; don't invent conversations or events.",
-    "Geometry Dash Progress Radar: Peyton Corder reports reaching 93-100% on Anathema, 40% on Relief, and fluking triplash. Treat these as Peyton's reported progress, not independently verified records. Let Felix and Jasper react to the nerve and effort of late-level attempts without inventing level details, difficulty ratings, or outcomes.",
-    "Roblox Creator Tools at RDC 2026: GamesBeat's September 15, 2026 report says Roblox emphasized its push for 'novel games' at RDC 2026 and discussed creator features including Roblox Reality, 2D-focused engine features (orthographic camera, sprite-sheet import, animated image containers), AI-assisted Build, and terrain tools. Distinguish the article's reporting from Joel's experience. Debate how creator tools might help people try unusual ideas while keeping gameplay—not novelty alone—the point.",
-    "Madden's Overloaded Week: Madden Long's messages mention homework, clan grinding, and the exact phrase 'Loaf of breeeeaaaaddd'. Present the clan-grinding explanation as playful chat context, not a serious claim about school or a promise. Let the hosts joke about how bread can become a dramatic subplot without adding ingredients or a real recipe.",
-    "Dad's Kitchen and Job Lead: Dad shared a panko-breaded chicken cooking mission and a lead that Johnny Greeko's is hiring, found on Indeed, in Woodstock, Ontario. Attribute the job lead to Dad; do not imply Joel or Johnny applied, got hired, or contacted the restaurant. Keep cooking talk to the panko detail; don't invent recipe instructions.",
-    "Classic Hardware Dev Pain: Joel reports an M1 Mac with a bloated battery that dies without AC power and a Logitech ('Logi') mouse whose battery is dying. Frame these as Joel's current device frustrations; don't claim any repair, damage, or cause beyond what he supplied. Felix can sympathize with the reliability problem while Jasper jokes about the dev setup needing a power budget.",
-    "Main Topic Debate: Debate whether novel creator tools or the moment-to-moment game idea matters more when making a game. Use only the Roblox creator-tool details above and the supplied gaming progress as context; let Felix argue for practical value and dependable fundamentals while Jasper argues for experimentation and fun. No unsupported claims about Roblox performance or results.",
-    "Hotline Caller Trivia Showdown: Include three clean questions that can be answered solely from the supplied topic facts: Peyton's three progress notes, Roblox's reported creator features, and Madden's bread phrase / Dad's panko detail. Give four choices, suspense, both contestants' picks, reveals and score updates; don't invent outside trivia or a caller's personal history.",
-    "Offline Radar & Family Chat: Synthesize the full supplied slice: Peyton's level grinds, Madden's school/clan/bread chat, Dad's dinner and Woodstock job lead, and Joel's Mac and mouse battery pain. Preserve the exact wording 'Loaf of breeeeaaaaddd' if quoting. Do not read export timestamps or metadata, invent reactions, or turn suggestions into plans.",
-    "Sunday Scripture & Practical Application: Close with a concise, accurately cited Scripture reflection and grounded practical application. Use only a verse and wording the generation context can quote accurately; don't fabricate a quotation or citation. End with a brief recap of the actual gaming, family, and hardware beats and a warm sign-off."
+    "Opening Banter and Chat Energy: Open with a warm, lightly funny welcome and the range of topics in the chat: future plans, a ranked climb, creative game-development work, and a midnight notification storm. Introduce this as a snapshot of group-chat conversation, not a scripted reenactment.",
+    "Career Paths, Writing, and AI: Madden is considering a future as a writer but worries AI could shrink the already small 1-2% who make a living from writing; sales is another possibility. Sayer is weighing waiting tables at Olive Garden against editing/designing shirts. Canon is interested in geography or starting a clothing brand. Kat offered perspective that Tolkien had a day job and that human-touch jobs such as nursing and electrical work may be safer from automation. Discuss uncertainty without promising which careers are safe or predicting specific employment outcomes. Felix can separate practical concerns from speculation; Jasper can defend creativity and the value of people skills. Keep this empathetic and do not dismiss Madden's worry.",
+    "Ranked Play and Notification Milestone: Peyton Corder reports climbing to rank #254 in ranked play. The chat also reports a notification count of 3,889, with Madden hyping up 4,000 and then 8,000 as the next milestones. Keep the jokes playful and make clear this is reported chat banter; do not identify the particular game mode beyond what is supplied or claim the count increased afterward.",
+    "Kat's Background Dev Kittens: Kat describes background development workers nicknamed kittens. Work mentioned includes a Circus rooms fix that passed tests, faster login code, and bundling offline puzzle rooms without touching the live environment. The room names are Lift Off, Cloud Drop, Upward Mobility, and Headroom. Explain the distinction between offline/bundled work and a live deployment using only those facts; do not say anything was released, deployed, or user-tested beyond the specific fix passing tests.",
+    "Midnight Chat Pings: Nlutlu says they woke up at 12:32 AM bewildered by the group chat buzzing. Make this a brief relatable comic beat about a lively chat crossing into sleep hours, without inventing additional messages or implying a health concern.",
+    "Relevant Gaming Banter: Connect ranked grinding, notification overload, and puzzle-room names with light banter. The hosts may joke about the absurd escalation from 3,889 toward 4,000 and 8,000 notifications, and about puzzle names sounding like a dramatic set of challenges, but must not assert mechanics, scores, or play experiences that were not supplied. Keep the section moving naturally into the development discussion.",
+    "Main Topic Debate: Ask whether young people should choose a career mainly for creative passion or for resilience and practical stability as AI changes work. Felix should explore uncertainty, transferable skills, and the limits of forecasting; Jasper should argue for preserving human creativity and motivation. Use Madden, Sayer, and Canon's stated interests as examples without speaking for them. Acknowledge Kat's Tolkien and trades perspective as chat commentary, not a guarantee. Reach a nuanced conclusion rather than declaring any path AI-proof.",
+    "Hotline Caller Trivia Showdown: Include exactly three clean multiple-choice questions with four options labelled A, B, C, and D, based only on this episode's supplied facts. Cover the reported rank/notification count, the named offline puzzle rooms or development work, and Nlutlu's reported wake-up time. Let listeners think, have both hosts lock in answers before revealing them, then update scores. Do not fabricate a real caller, caller biography, or outside trivia.",
+    "Offline Radar: Synthesize the group-chat highlights: career uncertainty and AI, varied career interests, ranked progress and notification-count hype, Kat's test-passing Circus fix and offline room bundling, and Nlutlu's 12:32 AM wake-up. Use paraphrase rather than reconstructing private messages verbatim. Preserve attribution and avoid inventing chat context.",
+    "Sunday Reflection and Close: End with a short, grounded reflection about patience, learning, and using gifts wisely. If using Scripture, quote only a verse and citation that can be stated accurately; otherwise give a general reflection without invented quotation. Recap the main themes and close warmly."
   ],
   "required_segments": [
-    {"id": "opening_callback", "label": "Opening Banter & Callback"},
-    {"id": "geometry_dash", "label": "Geometry Dash Progress Radar"},
-    {"id": "roblox_news", "label": "Roblox Creator Tools at RDC 2026"},
-    {"id": "episode_debate", "label": "Main Topic Debate"},
-    {"id": "caller_trivia", "label": "Hotline Caller Trivia Showdown"},
-    {"id": "offline_radar", "label": "Offline Radar & Family Chat"},
-    {"id": "sunday_scripture", "label": "Sunday Scripture & Practical Application"}
-  ],
-  "sources": [
-    {"topic": "Roblox creator tools and novel games at RDC 2026", "url": "https://gamesbeat.com/why-roblox-is-mobilizing-its-ecosystem-around-novel-games/", "note": "GamesBeat report published September 15, 2026; reports on RDC 2026 announcements and interviews. This is external reporting, not Joel's firsthand account."},
-    {"topic": "Peyton, Madden, Dad, and Joel messages", "url": "", "note": "Personal chat details supplied by Joel for this episode; use the supplied attribution and do not infer outcomes."}
+    {"id": "opening", "label": "Opening Banter and Chat Energy"},
+    {"id": "careers_ai", "label": "Career Paths, Writing, and AI"},
+    {"id": "ranked_notifications", "label": "Ranked Play and Notification Milestone"},
+    {"id": "dev_kittens", "label": "Kat's Background Dev Kittens"},
+    {"id": "midnight_pings", "label": "Midnight Chat Pings"},
+    {"id": "gaming_banter", "label": "Relevant Gaming Banter"},
+    {"id": "career_debate", "label": "Main Topic Debate"},
+    {"id": "trivia", "label": "Hotline Caller Trivia Showdown"},
+    {"id": "offline_radar", "label": "Offline Radar"},
+    {"id": "reflection", "label": "Sunday Reflection and Close"}
   ],
   "offline_radar_messages": [
-    {"sender": "Peyton Corder", "messages": ["Geometry Dash progress: Anathema 93-100%", "Relief 40%", "fluked triplash"]},
-    {"sender": "Madden Long", "messages": ["homework overload", "clan grinding excuses", "Loaf of breeeeaaaaddd"]},
-    {"sender": "Dad", "messages": ["panko breaded chicken cooking mission", "Johnny Greeko's job lead on Indeed in Woodstock, Ontario"]},
-    {"sender": "Joel", "messages": ["M1 Mac has a bloated battery and dies without AC power", "Logi mouse battery is dying"]}
+    {"sender": "Madden", "summary": "Wants to be a writer but worries AI may reduce the already small share who make it; is considering sales; hypes 4,000/8,000 notifications."},
+    {"sender": "Sayer", "summary": "Considering waiting tables at Olive Garden or editing/designing shirts."},
+    {"sender": "Canon", "summary": "Interested in geography or a clothing brand."},
+    {"sender": "Kat", "summary": "Shared perspective on Tolkien having a day job and human-touch roles such as nursing and electrical work; reported background kittens working on Circus rooms, faster login code, and offline puzzle-room bundling."},
+    {"sender": "Peyton Corder", "summary": "Reported reaching rank #254 in ranked play and having 3,889 notifications discussed in the chat."},
+    {"sender": "Nlutlu", "summary": "Reported waking at 12:32 AM bewildered by group-chat pings."}
+  ],
+  "sources": [
+    {"topic": "Group chat career, gaming, development, and late-night chat details", "url": "", "note": "User-supplied episode brief. Treat reported status and opinions as chat reports, not independent verification."}
   ]
 }
