@@ -1,7 +1,7 @@
 {
   "episode_number": 1,
-  "title": "Episode 1: Career Paths, Ranked Climb, and Midnight Pings",
-  "as_of": "2026-10-04",
+  "title": "Episode 1: Matchday, Party Packs, and Chat Quotes",
+  "as_of": "2026-10-11",
   "target_publish_time": "2:00 PM EDT",
   "target_runtime": "15-20 minutes (~2,200 to 3,000 words)",
   "hosts": {
@@ -10,44 +10,42 @@
   },
   "dialogue_format": "Alternate naturally between Felix and Jasper. Every spoken line must begin with exactly Felix: or Jasper:. Plain clean text only: no Markdown, asterisks, italics, stage directions, or additional speaker labels. Keep the dialogue family-friendly and conversational. Felix is evidence-minded and practical; Jasper is energetic and fun-focused. Do not impersonate chat participants or claim first-hand experiences.",
   "source_attribution_policy": [
-    "Treat all group-chat details as supplied context and attribute claims to the named person only where useful; do not invent messages, reactions, motivations, or outcomes.",
-    "Treat rank, notification count, project status, and late-night timing as chat-reported facts, not independently verified records.",
-    "Do not expose unnecessary personal details or turn ideas, jokes, or discussion into commitments.",
-    "Use only the game and development details in this file; do not invent updates, game mechanics, completion results, or technical specifics."
+    "Treat group-chat details and quoted snippets as supplied context; attribute to named people only where useful and do not invent messages or reactions.",
+    "Attribute match facts to FOX Sports coverage and Jackbox announcement facts to the named source; do not add unsupported specifics.",
+    "Describe GDevelop forum items as community posts and requests, not official product releases or endorsed templates.",
+    "Do not expose unnecessary personal details or turn jokes and discussion into commitments.",
+    "Keep claims about Roblox credit pricing ratios as a general balancing discussion; do not assert a specific ratio or game mechanic absent from supplied facts."
   ],
   "topics": [
-    "Opening Banter and Chat Energy: Open with a warm, lightly funny welcome and the range of topics in the chat: future plans, a ranked climb, creative game-development work, and a midnight notification storm. Introduce this as a snapshot of group-chat conversation, not a scripted reenactment.",
-    "Career Paths, Writing, and AI: Madden is considering a future as a writer but worries AI could shrink the already small 1-2% who make a living from writing; sales is another possibility. Sayer is weighing waiting tables at Olive Garden against editing/designing shirts. Canon is interested in geography or starting a clothing brand. Kat offered perspective that Tolkien had a day job and that human-touch jobs such as nursing and electrical work may be safer from automation. Discuss uncertainty without promising which careers are safe or predicting specific employment outcomes. Felix can separate practical concerns from speculation; Jasper can defend creativity and the value of people skills. Keep this empathetic and do not dismiss Madden's worry.",
-    "Ranked Play and Notification Milestone: Peyton Corder reports climbing to rank #254 in ranked play. The chat also reports a notification count of 3,889, with Madden hyping up 4,000 and then 8,000 as the next milestones. Keep the jokes playful and make clear this is reported chat banter; do not identify the particular game mode beyond what is supplied or claim the count increased afterward.",
-    "Kat's Background Dev Kittens: Kat describes background development workers nicknamed kittens. Work mentioned includes a Circus rooms fix that passed tests, faster login code, and bundling offline puzzle rooms without touching the live environment. The room names are Lift Off, Cloud Drop, Upward Mobility, and Headroom. Explain the distinction between offline/bundled work and a live deployment using only those facts; do not say anything was released, deployed, or user-tested beyond the specific fix passing tests.",
-    "Midnight Chat Pings: Nlutlu says they woke up at 12:32 AM bewildered by the group chat buzzing. Make this a brief relatable comic beat about a lively chat crossing into sleep hours, without inventing additional messages or implying a health concern.",
-    "Relevant Gaming Banter: Connect ranked grinding, notification overload, and puzzle-room names with light banter. The hosts may joke about the absurd escalation from 3,889 toward 4,000 and 8,000 notifications, and about puzzle names sounding like a dramatic set of challenges, but must not assert mechanics, scores, or play experiences that were not supplied. Keep the section moving naturally into the development discussion.",
-    "Main Topic Debate: Ask whether young people should choose a career mainly for creative passion or for resilience and practical stability as AI changes work. Felix should explore uncertainty, transferable skills, and the limits of forecasting; Jasper should argue for preserving human creativity and motivation. Use Madden, Sayer, and Canon's stated interests as examples without speaking for them. Acknowledge Kat's Tolkien and trades perspective as chat commentary, not a guarantee. Reach a nuanced conclusion rather than declaring any path AI-proof.",
-    "Hotline Caller Trivia Showdown: Include exactly three clean multiple-choice questions with four options labelled A, B, C, and D, based only on this episode's supplied facts. Cover the reported rank/notification count, the named offline puzzle rooms or development work, and Nlutlu's reported wake-up time. Let listeners think, have both hosts lock in answers before revealing them, then update scores. Do not fabricate a real caller, caller biography, or outside trivia.",
-    "Offline Radar: Synthesize the group-chat highlights: career uncertainty and AI, varied career interests, ranked progress and notification-count hype, Kat's test-passing Circus fix and offline room bundling, and Nlutlu's 12:32 AM wake-up. Use paraphrase rather than reconstructing private messages verbatim. Preserve attribution and avoid inventing chat context.",
-    "Sunday Reflection and Close: End with a short, grounded reflection about patience, learning, and using gifts wisely. If using Scripture, quote only a verse and citation that can be stated accurately; otherwise give a general reflection without invented quotation. Recap the main themes and close warmly."
+    "Opening Banter and Chat Energy: Warm, lightly funny start connecting a big soccer scoreline, party-game news, game-development community chatter, and a group-chat quote-of-the-day moment. Treat chat snippets as a snapshot, not a reenactment.",
+    "Inter Miami Match Recap: FOX Sports reports Inter Miami defeated D.C. United 4-0 on October 10, 2026. Lionel Messi and Luis Suárez each scored twice. Suárez also assisted on one Messi goal and provided an assist on another Miami goal; avoid adding broader claims beyond the cited recap. Note that this was a shutout and keep the discussion focused on the reported result and brace performances.",
+    "Jackbox Party Pack 12: Explosion Network's June 4, 2026 coverage reports Jackbox announced Party Pack 12 with five new party games. The article says the games are themed around roles such as artist, comedian, mind reader, debater, and team captain; when that coverage was published, the individual game details had not yet been revealed. Treat these as the announcement and source's then-current information, not a claim that no later details exist.",
+    "GDevelop Community Highlights: The GDevelop general forum shows community discussions and feature requests, including recent topics on custom hitboxes for 3D models, dynamic per-vector lighting, WebXR/VR extension discussion, and 3D camera development. Present these as community highlights visible in forum activity, not as official templates, completed features, or releases. Do not claim specific templates were verified; frame the requested template angle only as community members sharing and discussing reusable creation ideas where supported, or omit the template claim if specifics are unavailable.",
+    "Chat Highlights and Quote of the Day: Madden's supplied phrase is 'Real guys real.' Canon and Sayer participate in quote-of-the-day banter. Keep it playful and brief, paraphrase the exchange rather than inventing surrounding dialogue, and do not assign a precise meaning or motivation to the phrase beyond the provided context.",
+    "Game Economy and Indie Balancing: Discuss the general design challenge of communicating value and balancing virtual-currency or credit pricing ratios in games, including Roblox as an example raised for discussion. Do not state an exact price, ratio, current Roblox policy, or specific game economy as fact. Felix can emphasize transparent, understandable value; Jasper can stress that perceived fairness affects whether a system feels fun. Keep this at the level of design principles and clearly distinguish opinion from reported news.",
+    "Hotline Trivia Showdown: Include exactly three clean multiple-choice questions with four options labelled A, B, C, and D, based only on this episode's supplied facts. Cover the Inter Miami score and braces, the Party Pack 12 count/theme roles, and the supplied 'Real guys real' quote/chat context. Both hosts lock in answers before revealing them; then update scores without inventing a caller.",
+    "Offline Radar: Synthesize the supplied chat highlights and the external gaming/tech news: Madden's phrase, Canon and Sayer's quote-of-the-day banter, the reported Inter Miami shutout and braces, Jackbox Party Pack 12's announced five-game pack, and GDevelop forum community activity. Preserve attribution and do not reconstruct private messages verbatim.",
+    "Sunday Reflection and Close: Close with a grounded thought about teamwork, creativity, and fair design, then recap only the episode's discussed highlights and sign off warmly."
   ],
   "required_segments": [
     {"id": "opening", "label": "Opening Banter and Chat Energy"},
-    {"id": "careers_ai", "label": "Career Paths, Writing, and AI"},
-    {"id": "ranked_notifications", "label": "Ranked Play and Notification Milestone"},
-    {"id": "dev_kittens", "label": "Kat's Background Dev Kittens"},
-    {"id": "midnight_pings", "label": "Midnight Chat Pings"},
-    {"id": "gaming_banter", "label": "Relevant Gaming Banter"},
-    {"id": "career_debate", "label": "Main Topic Debate"},
-    {"id": "trivia", "label": "Hotline Caller Trivia Showdown"},
+    {"id": "inter_miami", "label": "Inter Miami Match Recap"},
+    {"id": "jackbox", "label": "Jackbox Party Pack 12"},
+    {"id": "gdevelop", "label": "GDevelop Community Highlights"},
+    {"id": "chat_quotes", "label": "Chat Highlights and Quote of the Day"},
+    {"id": "game_economy", "label": "Game Economy and Indie Balancing"},
+    {"id": "trivia", "label": "Hotline Trivia Showdown"},
     {"id": "offline_radar", "label": "Offline Radar"},
     {"id": "reflection", "label": "Sunday Reflection and Close"}
   ],
   "offline_radar_messages": [
-    {"sender": "Madden", "summary": "Wants to be a writer but worries AI may reduce the already small share who make it; is considering sales; hypes 4,000/8,000 notifications."},
-    {"sender": "Sayer", "summary": "Considering waiting tables at Olive Garden or editing/designing shirts."},
-    {"sender": "Canon", "summary": "Interested in geography or a clothing brand."},
-    {"sender": "Kat", "summary": "Shared perspective on Tolkien having a day job and human-touch roles such as nursing and electrical work; reported background kittens working on Circus rooms, faster login code, and offline puzzle-room bundling."},
-    {"sender": "Peyton Corder", "summary": "Reported reaching rank #254 in ranked play and having 3,889 notifications discussed in the chat."},
-    {"sender": "Nlutlu", "summary": "Reported waking at 12:32 AM bewildered by group-chat pings."}
+    {"sender": "Madden", "summary": "Supplied the phrase 'Real guys real.'"},
+    {"sender": "Canon and Sayer", "summary": "Participated in quote-of-the-day banter; no further wording supplied."}
   ],
   "sources": [
-    {"topic": "Group chat career, gaming, development, and late-night chat details", "url": "", "note": "User-supplied episode brief. Treat reported status and opinions as chat reports, not independent verification."}
+    {"topic": "Inter Miami CF 4-0 D.C. United match recap and player stats", "url": "https://www.foxsports.com/soccer/mls-inter-miami-cf-vs-dc-united-oct-10-2026-game-boxscore-647377", "note": "FOX Sports recap reports Messi and Suárez each scored twice; Suárez also had an assist."},
+    {"topic": "Jackbox Party Pack 12 announcement", "url": "https://explosionnetwork.com/the-jackbox-party-pack-12-will-include-five-brand-new-multiplayer-games/", "note": "Explosion Network coverage dated June 4, 2026 reports five new games and describes the announced roles/themes."},
+    {"topic": "GDevelop community forum activity", "url": "https://forum.gdevelop.io/c/gdevelop-general/33", "note": "Community forum listing with recent discussions and feature requests; not an official release or verified template catalog."},
+    {"topic": "Chat highlights", "url": "", "note": "User-supplied episode brief. Treat as chat-reported context."}
   ]
 }
