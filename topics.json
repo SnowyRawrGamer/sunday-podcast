@@ -1,7 +1,7 @@
 {
-  "episode_number": 1,
-  "title": "Episode 1: Matchday, Party Packs, and Chat Quotes",
-  "as_of": "2026-10-11",
+  "episode_number": 2,
+  "title": "Episode 2: Demon Runs, Versus Buzz, and Chat Roasts",
+  "as_of": "2026-10-18",
   "target_publish_time": "2:00 PM EDT",
   "target_runtime": "15-20 minutes (~2,200 to 3,000 words)",
   "hosts": {
@@ -10,42 +10,42 @@
   },
   "dialogue_format": "Alternate naturally between Felix and Jasper. Every spoken line must begin with exactly Felix: or Jasper:. Plain clean text only: no Markdown, asterisks, italics, stage directions, or additional speaker labels. Keep the dialogue family-friendly and conversational. Felix is evidence-minded and practical; Jasper is energetic and fun-focused. Do not impersonate chat participants or claim first-hand experiences.",
   "source_attribution_policy": [
-    "Treat group-chat details and quoted snippets as supplied context; attribute to named people only where useful and do not invent messages or reactions.",
-    "Attribute match facts to FOX Sports coverage and Jackbox announcement facts to the named source; do not add unsupported specifics.",
-    "Describe GDevelop forum items as community posts and requests, not official product releases or endorsed templates.",
-    "Do not expose unnecessary personal details or turn jokes and discussion into commitments.",
-    "Keep claims about Roblox credit pricing ratios as a general balancing discussion; do not assert a specific ratio or game mechanic absent from supplied facts."
+    "Treat group-chat details and quoted snippets as supplied context; attribute to named people only where useful and do not invent messages, reactions, or explanations.",
+    "Treat Doggie's demon-list stream run, current community records, and Versus-mode buzz as supplied episode context unless a specific external source and exact details are provided; do not invent a record, result, ranking, or mode feature.",
+    "Treat Bone TD autumn units and scaling as a game-balancing topic supplied for discussion, not as an independently verified update; do not invent unit names, stats, patch details, or outcomes.",
+    "Keep the discussion of indie development at the level of a general creative-work check-in; do not invent a project milestone or developer statement.",
+    "Strictly exclude sports and soccer topics, including MLS and Inter Miami."
   ],
   "topics": [
-    "Opening Banter and Chat Energy: Warm, lightly funny start connecting a big soccer scoreline, party-game news, game-development community chatter, and a group-chat quote-of-the-day moment. Treat chat snippets as a snapshot, not a reenactment.",
-    "Inter Miami Match Recap: FOX Sports reports Inter Miami defeated D.C. United 4-0 on October 10, 2026. Lionel Messi and Luis Suárez each scored twice. Suárez also assisted on one Messi goal and provided an assist on another Miami goal; avoid adding broader claims beyond the cited recap. Note that this was a shutout and keep the discussion focused on the reported result and brace performances.",
-    "Jackbox Party Pack 12: Explosion Network's June 4, 2026 coverage reports Jackbox announced Party Pack 12 with five new party games. The article says the games are themed around roles such as artist, comedian, mind reader, debater, and team captain; when that coverage was published, the individual game details had not yet been revealed. Treat these as the announcement and source's then-current information, not a claim that no later details exist.",
-    "GDevelop Community Highlights: The GDevelop general forum shows community discussions and feature requests, including recent topics on custom hitboxes for 3D models, dynamic per-vector lighting, WebXR/VR extension discussion, and 3D camera development. Present these as community highlights visible in forum activity, not as official templates, completed features, or releases. Do not claim specific templates were verified; frame the requested template angle only as community members sharing and discussing reusable creation ideas where supported, or omit the template claim if specifics are unavailable.",
-    "Chat Highlights and Quote of the Day: Madden's supplied phrase is 'Real guys real.' Canon and Sayer participate in quote-of-the-day banter. Keep it playful and brief, paraphrase the exchange rather than inventing surrounding dialogue, and do not assign a precise meaning or motivation to the phrase beyond the provided context.",
-    "Game Economy and Indie Balancing: Discuss the general design challenge of communicating value and balancing virtual-currency or credit pricing ratios in games, including Roblox as an example raised for discussion. Do not state an exact price, ratio, current Roblox policy, or specific game economy as fact. Felix can emphasize transparent, understandable value; Jasper can stress that perceived fairness affects whether a system feels fun. Keep this at the level of design principles and clearly distinguish opinion from reported news.",
-    "Hotline Trivia Showdown: Include exactly three clean multiple-choice questions with four options labelled A, B, C, and D, based only on this episode's supplied facts. Cover the Inter Miami score and braces, the Party Pack 12 count/theme roles, and the supplied 'Real guys real' quote/chat context. Both hosts lock in answers before revealing them; then update scores without inventing a caller.",
-    "Offline Radar: Synthesize the supplied chat highlights and the external gaming/tech news: Madden's phrase, Canon and Sayer's quote-of-the-day banter, the reported Inter Miami shutout and braces, Jackbox Party Pack 12's announced five-game pack, and GDevelop forum community activity. Preserve attribution and do not reconstruct private messages verbatim.",
-    "Sunday Reflection and Close: Close with a grounded thought about teamwork, creativity, and fair design, then recap only the episode's discussed highlights and sign off warmly."
+    "Opening Banter and Chat Energy: Start warm and conversational with the group's lively gaming chatter, a stream accomplishment getting people talking, the Versus-mode exchange, spelling-related roasting, and Joel getting called out for leaving the chat on read. Treat the dump as a snapshot, not a verbatim reenactment; keep the teasing friendly and family-appropriate.",
+    "Group Chat Highlights and Banter: Peyton Corder laughed at the line about getting scammed by a YouTube Short, then urged Joel to read something. Canon Smith called Versus mode a popular new mode and joked about 'Pebble's verity's refarted cousin'; Madden Long thought it was a book series. The chat later ribbed Joel for ignoring people. Kat and Sayer Smith traded the supplied 'dasnotnice' / 'the spelling is fighting your case here' roast. Paraphrase where possible, do not infer the missing context for 'Pebble's verity,' and do not reproduce or explain the LGBTQIA+ remark from the dump; keep the conversation respectful and do not validate disparaging claims about LGBTQIA+ people.",
+    "Geometry Dash and Community: Peyton Corder said Doggie can beat list demons in one stream, and Canon Smith agreed. Discuss the excitement and difficulty of high-level demon-list attempts and what makes a standout stream run compelling, but frame the one-stream line as chat's characterization rather than a verified record. Mention that current community records and the specific run details were not independently supplied; do not claim names, completion times, list positions, records, or outcomes beyond the chat. Include the group's Versus-mode buzz as a separate community-interest beat, without assuming which game it refers to or inventing mechanics.",
+    "Dev and Gaming Check-in: Use Bone TD's autumn units and scaling as a practical game-balancing discussion: how developers can make new units feel exciting while keeping progression and difficulty understandable. The supplied brief gives no unit names, numbers, or patch specifics, so keep examples hypothetical and clearly framed as design questions rather than claims about a current update. Connect this lightly to the indie-dev grind: iteration, testing, and choosing a manageable next step, without claiming any particular project shipped or changed.",
+    "Main Topic Debate: Debate the question: when a game adds powerful new units or a popular new mode, should the priority be immediate excitement or carefully controlled balance? Use Bone TD autumn unit/scaling as the supplied example and Versus-mode buzz as chat context. Felix should weigh clarity, fairness, and sustainable progression; Jasper should argue for bold, fun moments while recognizing the risk of short-lived novelty. Do not make unsupported claims about actual Bone TD stats or what Versus mode includes.",
+    "Hotline Trivia Showdown: Include exactly three clean multiple-choice questions, each with four options labelled A, B, C, and D, based only on the supplied chat and episode facts. Cover who praised Doggie's one-stream demon-list performance, what Madden thought Versus mode was, and the wording of Kat's spelling roast. Both hosts and the fictional caller lock in answers before each reveal; update scores and announce the winner or tie. Do not invent a real caller or add outside trivia.",
+    "Offline Radar: Synthesize the chat's overall flow: Peyton nudging Joel to read something and reacting to the stream claim; Canon and Madden riffing about Versus and 'Pebble's verity'; the group noticing Joel's silence; and the spelling roast between Kat and Sayer. Keep any quoted wording brief, preserve the supplied attributions, avoid reconstructing missing messages, and omit the unrelated derogatory remark rather than repeating it.",
+    "Sunday Reflection and Close: Close with a grounded thought about patience, humility, and keeping competition playful. Recap only the demon-stream excitement, Versus chatter, chat banter, and game-balance discussion, then sign off warmly."
   ],
   "required_segments": [
     {"id": "opening", "label": "Opening Banter and Chat Energy"},
-    {"id": "inter_miami", "label": "Inter Miami Match Recap"},
-    {"id": "jackbox", "label": "Jackbox Party Pack 12"},
-    {"id": "gdevelop", "label": "GDevelop Community Highlights"},
-    {"id": "chat_quotes", "label": "Chat Highlights and Quote of the Day"},
-    {"id": "game_economy", "label": "Game Economy and Indie Balancing"},
+    {"id": "chat_highlights", "label": "Group Chat Highlights and Banter"},
+    {"id": "geometry_dash", "label": "Geometry Dash and Community"},
+    {"id": "dev_checkin", "label": "Dev and Gaming Check-in"},
+    {"id": "main_debate", "label": "Main Topic Debate"},
     {"id": "trivia", "label": "Hotline Trivia Showdown"},
     {"id": "offline_radar", "label": "Offline Radar"},
     {"id": "reflection", "label": "Sunday Reflection and Close"}
   ],
   "offline_radar_messages": [
-    {"sender": "Madden", "summary": "Supplied the phrase 'Real guys real.'"},
-    {"sender": "Canon and Sayer", "summary": "Participated in quote-of-the-day banter; no further wording supplied."}
+    {"sender": "Peyton Corder", "summary": "Laughed at the supplied YouTube Short scam line, asked Joel to read something, and said Doggie can beat list demons in one stream."},
+    {"sender": "Canon Smith", "summary": "Called Versus mode popular, agreed about Doggie, and joked about 'Pebble's verity's refarted cousin.'"},
+    {"sender": "Madden Long", "summary": "Said they thought Versus mode was a book series."},
+    {"sender": "Kat and Sayer Smith", "summary": "Had quote-of-the-day and spelling-roast banter, including 'the spelling is fighting your case here.'"},
+    {"sender": "Group chat", "summary": "Several people joked that Joel was ignoring the chat. Do not infer why he had not replied."}
   ],
   "sources": [
-    {"topic": "Inter Miami CF 4-0 D.C. United match recap and player stats", "url": "https://www.foxsports.com/soccer/mls-inter-miami-cf-vs-dc-united-oct-10-2026-game-boxscore-647377", "note": "FOX Sports recap reports Messi and Suárez each scored twice; Suárez also had an assist."},
-    {"topic": "Jackbox Party Pack 12 announcement", "url": "https://explosionnetwork.com/the-jackbox-party-pack-12-will-include-five-brand-new-multiplayer-games/", "note": "Explosion Network coverage dated June 4, 2026 reports five new games and describes the announced roles/themes."},
-    {"topic": "GDevelop community forum activity", "url": "https://forum.gdevelop.io/c/gdevelop-general/33", "note": "Community forum listing with recent discussions and feature requests; not an official release or verified template catalog."},
-    {"topic": "Chat highlights", "url": "", "note": "User-supplied episode brief. Treat as chat-reported context."}
+    {"topic": "Episode 2 group chat highlights", "url": "", "note": "User-supplied chat dump from October 17-18, 2026. Preserve attribution, avoid inferring omitted context, and omit derogatory content."},
+    {"topic": "Doggie demon-list stream run and Versus-mode community buzz", "url": "", "note": "Supplied episode brief and chat discussion only; no exact record, run result, game identification, or mode mechanics verified."},
+    {"topic": "Bone TD autumn units, scaling, and indie development check-in", "url": "", "note": "Supplied episode brief. Discuss general balance/design questions only; no specific units, numeric scaling, patch details, or project milestones supplied."}
   ]
 }
