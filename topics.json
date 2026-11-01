@@ -1,7 +1,7 @@
 {
   "episode_number": 4,
   "title": "Episode 4: Party Pack 12, PSX Classic, and Chatbot Chaos",
-  "as_of": "2026-10-25",
+  "as_of": "2026-11-01",
   "target_publish_time": "2:00 PM EDT",
   "target_runtime": "15-20 minutes (approximately 2,200-3,000 spoken words)",
   "hosts": {
@@ -21,14 +21,14 @@
     {
       "id": "opening",
       "title": "Opening: a week of party games, classic pets, and curious experiments",
-      "facts": ["Episode date is October 25, 2026.", "The supplied episode brief focuses on Party Pack 12, Pet Simulator 99 Update 99, GDevelop 5.6.285, a Geometry Dash community accomplishment, and Joel's personal projects and friend-group experiments."],
+      "facts": ["Episode date is November 1, 2026.", "The supplied episode brief focuses on Party Pack 12, Pet Simulator 99 Update 99, GDevelop 5.6.285, Geometry Dash Grave Gauntlet chatter and icon hunting, a Geometry Dash community accomplishment, and Joel's personal projects and friend-group experiments."],
       "talking_points": ["Open naturally and introduce the mix without adding unsupported claims.", "Keep the episode focused on the actual items in this brief."]
     },
     {
       "id": "jackbox",
       "title": "Jackbox Party Pack 12 launches",
       "sources": ["https://www.jackboxgames.com/blog/the-jackbox-party-pack-12-is-available-now-on-major-platforms"],
-      "facts": ["Jackbox Games' October 15, 2026 announcement says Party Pack 12 is available on PC through Steam and Epic Games Store, PlayStation 5, Xbox Series X|S, and Nintendo Switch for $29.99.", "The pack has five games for 2-8 players: We Forgot a Card, MegaPals, Debate and Switch, Idol Factions, and Hyperface.", "Jackbox describes We Forgot a Card as greeting-card design and joke-writing; MegaPals as quick word association and guessing; Debate and Switch as head-to-head silly debates; Idol Factions as team trivia sorting; and Hyperface as prompt-led photo editing."],
+      "facts": ["Jackbox Games' October 15, 2026 announcement says Party Pack 12 is available on PC through Steam and Epic Games Store, PlayStation 5, Xbox Series X|S, and Nintendo Switch for $29.99.", "The pack has five games for 2-8 players: We Forgot a Card, Mega Pals, Debate & Switch, Idol Factions, and Hyperface.", "Jackbox describes We Forgot a Card as greeting-card design and joke-writing; Mega Pals as quick word association and guessing; Debate & Switch as head-to-head silly debates; Idol Factions as team trivia sorting; and Hyperface as prompt-led photo editing."],
       "talking_points": ["Compare the different social hooks and which formats sound best suited to a group, clearly labeling opinions as opinions.", "Mention the listed price/platforms as stated in the official announcement, not as a guarantee of current regional storefront terms.", "Do not claim review reception, sales, or personal play experience."]
     },
     {
@@ -40,16 +40,16 @@
     },
     {
       "id": "gdevelop-5285",
-      "title": "GDevelop 5.6.285 release",
+      "title": "GDevelop 5.6.285 release and Joel's template momentum",
       "sources": ["https://github.com/4ian/GDevelop/releases/tag/v5.6.285"],
-      "facts": ["The official GDevelop GitHub release page says version 5.6.285 was released October 21, 2026.", "The release announces a refreshed gd.games community page with more focus on multiplayer, new Trending categories, and badges for active players.", "Improvements include reporting store-extension errors in the 3D editor as crash reports, a 3D physics body-type action, invoice generation for purchases or subscriptions, and a warning when the 3D editor cannot start.", "The release also lists bug fixes, extension updates, a 3D scattered-models asset pack, and premium game templates."],
-      "talking_points": ["Focus on the dated release details, especially the revamped discovery/community page and selected tool improvements.", "Discuss how community discovery and creator tooling might matter to indie developers, clearly marking interpretation as commentary.", "Do not invent performance effects or claim any template or feature is Joel's project."]
+      "facts": ["The official GDevelop GitHub release page says version 5.6.285 was released October 21, 2026.", "The release announces a refreshed gd.games community page with more focus on multiplayer, new Trending categories, and badges for active players.", "Improvements include reporting store-extension errors in the 3D editor as crash reports, a 3D physics body-type action, invoice generation for purchases or subscriptions, and a warning when the 3D editor cannot start.", "The release also lists bug fixes, extension updates, a 3D scattered-models asset pack, and premium game templates.", "The supplied user context requests a casual mention of Joel's side projects and GDevelop template momentum; no specific template, project outcome, or sales result is provided."],
+      "talking_points": ["Focus on the dated release details, especially the revamped discovery/community page and selected tool improvements.", "Casually connect the release's template/community angle to Joel's side-project momentum, but do not invent project details, results, or claim a particular template is Joel's.", "Discuss how community discovery and creator tooling might matter to indie developers, clearly marking interpretation as commentary.", "Do not invent performance effects or claim any template or feature is Joel's project."]
     },
     {
       "id": "geometry-dash-high-tide",
-      "title": "Geometry Dash community: Peyton/Andromeda beats High Tide",
-      "facts": ["Joel's supplied chat context says Peyton, also known as Andromeda in Joel's group chat, beat the Geometry Dash level High Tide."],
-      "talking_points": ["Celebrate the accomplishment and the persistence and precision involved in completing a challenging rhythm-platforming level, without inventing a difficulty rank, attempt count, record, or timing.", "Attribute the report to the supplied friend-chat context; do not imply external verification or add leaderboard claims."]
+      "title": "Geometry Dash: High Tide, Grave Gauntlet chatter, and icon hunting",
+      "facts": ["Joel's supplied chat context says Peyton, also known as Andromeda in Joel's group chat, beat the Geometry Dash level High Tide.", "In the supplied group-chat summary, Madden was hyped about the Grave Gauntlet drop and focused on unlocking Geometry Dash icons. The supplied context reports group-chat chatter and does not establish independently verified release details about Grave Gauntlet."],
+      "talking_points": ["Celebrate the High Tide accomplishment and the persistence and precision involved in completing a challenging rhythm-platforming level, without inventing a difficulty rank, attempt count, record, or timing.", "Attribute the High Tide report to the supplied friend-chat context; do not imply external verification or add leaderboard claims.", "Include Madden's excitement about Grave Gauntlet and icon hunting as group-chat reaction, not as independently verified release reporting; do not add mechanics, release timing, or icon specifics not supplied."]
     },
     {
       "id": "kat-emulator",
@@ -59,20 +59,20 @@
     },
     {
       "id": "group-chat-kat",
-      "title": "Friends help get Kat working in the iMessage group",
-      "facts": ["The supplied chat context describes Sayer, Madden, Canon, and Peyton bantering while Kat was added to and removed from Joel's iMessage group chat as they tried to get the AI bot working."],
-      "talking_points": ["Synthesize the group dynamic and the add/remove troubleshooting loop without fabricating exact quotes or assigning specific actions to a person beyond the supplied summary.", "Keep the humor gentle and avoid exposing private information beyond these provided details."]
+      "title": "Group chat: Halloween rankings, Madden's quotes, and the November thaw",
+      "facts": ["The supplied chat context describes Sayer, Madden, Canon, and Peyton bantering while Kat was added to and removed from Joel's iMessage group chat as they tried to get the AI bot working.", "In the supplied last-15-hours chat summary, the group shared a November 1 'Mariah Carey is defrosting' meme.", "The late-night Halloween movie debate compared Star Wars and Indiana Jones rankings and debated Joker versus Anakin as the peak villain.", "Madden's supplied quotes of the night were: 'put my grades up for adoption because I couldn't raise them', 'with great power comes an electricity bill', and 'lil m KitKat'. Keep these exact supplied phrases intact if quoting; do not invent surrounding context."],
+      "talking_points": ["Synthesize the group dynamic and the add/remove troubleshooting loop without assigning specific actions to a person beyond the supplied summary.", "Use the Mariah Carey defrosting meme as a seasonal November 1 callback, clearly framed as supplied group-chat banter.", "Playfully cover the Star Wars versus Indiana Jones rankings and Joker versus Anakin villain debate as opinions expressed in chat, not settled facts.", "Share Madden's supplied one-liners with warm, brief teasing and do not add or attribute extra quotes.", "Keep the humor gentle and avoid exposing private information beyond these provided details."]
     },
     {
       "id": "joel-week-projects",
       "title": "Joel's week: bedroom makeover contest and Duchamp-inspired art",
-      "facts": ["Joel entered the Sleep Country Bedroom Makeover contest.", "Joel worked on a Marcel Duchamp-inspired paper-collage self-portrait for his TVO ILC art class, using a magic-trick/illusion theme."],
-      "talking_points": ["Mention both as Joel's reported activities this week.", "Discuss the playful contrast between a bedroom makeover entry and a self-portrait built around illusion, without inventing contest results, artwork details, or teacher feedback."]
+      "facts": ["Joel entered the Sleep Country Bedroom Makeover contest.", "Joel worked on a Marcel Duchamp-inspired paper-collage self-portrait for his TVO ILC art class, using a magic-trick/illusion theme.", "The supplied new context asks for a casual reference to Joel's side projects and GDevelop template momentum, without providing particular project names or outcomes."],
+      "talking_points": ["Mention both reported activities and, briefly, Joel's side-project/template momentum without inventing any specifics or results.", "Discuss the playful contrast between a bedroom makeover entry and a self-portrait built around illusion, without inventing contest results, artwork details, or teacher feedback."]
     },
     {
       "id": "main-debate",
       "title": "Debate: when does a clever game or tech experiment become worth the friction?",
-      "facts": ["The supplied episode topics include Party Pack 12's group-friendly game formats, PS99's nested classic experience, GDevelop's creator/community update, and Joel's unstable emulator experiment."],
+      "facts": ["The supplied episode topics include Party Pack 12's group-friendly game formats, PS99's nested classic experience, GDevelop's creator/community update and template momentum, Geometry Dash icon hunting, and Joel's unstable emulator experiment."],
       "talking_points": ["Felix weighs reliability, clarity, and whether the extra setup earns its complexity; Jasper argues for novelty, shared moments, and the fun of experimentation.", "Use only those examples and distinguish commentary from factual claims.", "Reach a nuanced conclusion without pretending there is one universal answer."]
     },
     {
@@ -84,7 +84,7 @@
     {
       "id": "reflection-close",
       "title": "Sunday reflection and closing recap",
-      "facts": ["Recap only the Jackbox launch, PSX Classic update, GDevelop release, High Tide accomplishment, Kat emulator/chat experiment, and Joel's week projects if discussed."],
+      "facts": ["Recap only the Jackbox launch, PSX Classic update, GDevelop release, High Tide accomplishment, Grave Gauntlet/icon-hunting chat, Kat emulator/chat experiment, Halloween movie debates, Madden's supplied quotes, November 1 meme, and Joel's week projects if discussed."],
       "talking_points": ["Reflect on patience, creativity, and laughing together when experiments are imperfect; present this as a practical reflection, not a sourced quotation.", "Close with a concise recap and warm sign-off. Do not introduce new news or unsupplied details."]
     }
   ],
