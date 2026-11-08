@@ -1,6 +1,6 @@
 {
   "episode_number": 5,
-  "title": "Episode 5: 3D-Printed Magic and Arcade Builds",
+  "title": "Episode 5: 3D-Printed Magic, Arcade Builds, and Sunday Chat",
   "as_of": "2026-11-08",
   "target_publish_time": "2:00 PM EST",
   "target_runtime": "15-20 minutes (approximately 2,200-3,000 spoken words)",
@@ -10,12 +10,13 @@
   },
   "dialogue_format": "Alternate naturally between Felix and Jasper. Every spoken line must be family-friendly, conversational, and clearly attributed to a host. Felix is evidence-minded and practical; Jasper is energetic and fun-focused. The hosts are fictional commentators and must not impersonate Joel or his friends.",
   "editorial_rules": [
-    "ABSOLUTE SUPPRESSIONS: Do not mention or allude to sports of any kind, including soccer, football, or any Messi/Ronaldo debate. Do not mention Bone TD. These restrictions override all source material.",
+    "Do not mention or allude to sports; do not mention Bone TD. These restrictions override all source material.",
     "Use only the facts in this file and the cited sources. Do not invent features, results, personal experiences, quotes, or chat messages.",
     "For chat and personal highlights, attribute activities to Joel or named friends only as described here; keep teasing warm, brief, and respectful.",
     "State dates and source attribution for research. Distinguish source-confirmed project examples from host brainstorming and opinions.",
     "Do not claim that any linked model is tested, freely licensed, compatible, or available beyond what its cited page/search result establishes.",
-    "End with a grounded Sunday reflection, recap only covered material, and sign off warmly. Include the three-question trivia segment required by the show format, using only the facts below."
+    "End with a grounded Sunday reflection, recap only covered material, and sign off warmly. Include the three-question trivia segment required by the show format, using only the facts below.",
+    "Script blocks must contain plain spoken dialogue only, with no markdown formatting."
   ],
   "topics": [
     {
@@ -48,7 +49,32 @@
       "id": "main-debate",
       "title": "Main debate: should a 3D-printed project prioritize the reveal or the replay?",
       "facts": ["Magic props are discussed for a concealed visual reveal; arcade hardware is discussed for repeated hands-on use. These are the episode's framing categories, not claims about every project."],
-      "talking_points": ["Felix argues for repeatability, safe and sensible mechanics, repairability, and robust controls; Jasper argues that a memorable reveal or distinctive arcade feel can justify extra iteration.", "Use only the examples in this file; distinguish practical engineering commentary from sourced details.", "Reach a balanced conclusion about choosing a project around its intended user experience, not print complexity alone."]
+      "talking_points": ["Felix argues for repeatability, sensible mechanics, repairability, and robust controls; Jasper argues that a memorable reveal or distinctive arcade feel can justify extra iteration.", "Use only the examples in this file; distinguish practical engineering commentary from sourced details.", "Reach a balanced conclusion about choosing a project around its intended user experience, not print complexity alone."]
+    },
+    {
+      "id": "group-chat-highlights",
+      "title": "Group chat highlights: card pulls, APT progress, and the collab countdown",
+      "facts": ["Casen reported 17 hits from an $80 Pokémon card haul, including an SIR Zeraora rather than Darkrai, and said he basically made his money back. He later said he was at the movies with huzz.", "The group discussed Doggie's Geometry Dash APT stream: 79% progress, expectations of a 100% clear, and debate about difficult moments around 91% and 92% and a green bullet. These are chat-reported observations and predictions, not independently verified stream results.", "Madden jokingly pressed Canon for level-collaboration progress. Canon said the level was 12 seconds long and aimed to reach 17 seconds that day. This is the stated goal, not confirmation that it was completed."],
+      "talking_points": ["Keep the card story light: 17 hits for $80, the SIR Zeraora pull instead of Darkrai, and Casen's own playful near-break-even claim; do not independently value cards or say the purchase was objectively profitable.", "Jasper can react to the jump from big card pulls to a movie outing; Felix should clarify that 'made my money back' is Casen's own assessment.", "Discuss the APT stream as a tense progress update: 79% got the group predicting a finish, while the 91%/92% choke-point debate and green bullet became the details people watched. Do not claim Doggie reached 100%.", "Recreate Madden's friendly pushiness only as a paraphrase: asking for progress while admitting he was being pushy. Canon's 12-second current length and 17-second target are the factual anchor.", "Keep the banter warm and concise; do not invent dialogue, outcomes, or reactions beyond the supplied highlights."]
+    },
+    {
+      "id": "printer-troubleshooting",
+      "title": "Printer troubleshooting: browser slicer versus desktop Cura",
+      "facts": ["The group discussed the Ultimaker browser slicer running out of memory with large models or plates, and the alternative of downloading and using the native desktop Ultimaker Cura app on Mac.", "This is a report of the group's troubleshooting discussion, not a technical diagnosis or guarantee that desktop Cura will solve every memory problem."],
+      "talking_points": ["Explain the practical trade-off between a browser-based slicer that can hit memory limits on bigger jobs and installing the desktop application on Mac.", "Felix can suggest treating the desktop app as the group's proposed workaround, not a confirmed fix; Jasper can sympathize with a huge plate turning into a browser-memory problem.", "Do not assert compatibility details, performance gains, or a successful outcome that were not in the chat."]
+    },
+    {
+      "id": "colony-house-concert",
+      "title": "Miko at Colony House: front-row singalong",
+      "facts": ["Miko described being at the front row of a Colony House concert, touching the handrail, and screaming along to the chorus of 'You Know It'."],
+      "talking_points": ["Tell this as Miko's reported concert moment: front row, handrail within reach, and joining the 'You Know It' chorus.", "Jasper can celebrate the energy of being close enough to the handrail; Felix can keep the anecdote grounded in the details supplied.", "Do not invent a venue, date, set list, or further personal experience."]
+    },
+    {
+      "id": "jackbox-party-pack-12",
+      "title": "Jackbox Party Pack 12: five new party games",
+      "sources": ["https://www.jackboxgames.com/de/games/packs/the-jackbox-party-pack-12"],
+      "facts": ["The five games named for Jackbox Party Pack 12 are Idol Factions, We Forgot a Card, Debate & Switch, MegaPals, and Hyperface.", "The official Jackbox Games pack page is the cited source for the pack and its games. Do not add game mechanics not stated in this topics file."],
+      "talking_points": ["Introduce the pack as a timely group-game item and read all five titles clearly.", "Felix can note the list without guessing at how the games play; Jasper can pick which title sounds most intriguing while making clear that it is only a reaction to the names.", "Do not invent release or platform details, mechanics, or availability beyond what the cited page confirms."]
     },
     {
       "id": "trivia",
@@ -59,8 +85,8 @@
     {
       "id": "reflection-close",
       "title": "Sunday reflection and closing recap",
-      "facts": ["Recap only the sourced magic-prop and arcade-build examples, the difference between a one-time reveal and repeated interaction, and any explicitly labeled design brainstorming that was discussed."],
-      "talking_points": ["Reflect on patience, careful iteration, and making things that bring people delight; present this as a practical reflection, not a sourced quotation.", "Close with a concise recap and warm sign-off. Do not introduce new product facts or claim any project was built by Joel, Felix, or Jasper."]
+      "facts": ["Recap only the sourced magic-prop and arcade-build examples, the group chat updates about cards, Geometry Dash and level progress, the Cura troubleshooting discussion, Miko's concert anecdote, the Jackbox game titles, and the difference between a one-time reveal and repeated interaction."],
+      "talking_points": ["Reflect on patience, careful iteration, shared excitement, and making things that bring people delight; present this as a practical reflection, not a sourced quotation.", "Close with a concise recap and warm sign-off. Do not introduce new product facts or claim any project was built by Joel, Felix, or Jasper."]
     }
   ],
   "required_segments": [
@@ -69,6 +95,10 @@
     {"id": "arcade-builds", "label": "Arcade Builds"},
     {"id": "design-challenge", "label": "The Design Challenge"},
     {"id": "main-debate", "label": "Main Debate"},
+    {"id": "group-chat-highlights", "label": "Group Chat Highlights"},
+    {"id": "printer-troubleshooting", "label": "3D Printer Troubleshooting"},
+    {"id": "colony-house-concert", "label": "Concert Story"},
+    {"id": "jackbox-party-pack-12", "label": "Jackbox Party Pack 12"},
     {"id": "trivia", "label": "Hotline Trivia"},
     {"id": "reflection-close", "label": "Sunday Reflection and Close"}
   ]
