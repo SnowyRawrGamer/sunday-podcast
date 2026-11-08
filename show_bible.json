@@ -146,6 +146,15 @@
       "audio": "episode-004-2026-11-01.mp3",
       "continuity_update": "Episode 4 covered the launch of Jackbox Party Pack 12 with its five new games, the Pet Simulator 99 'PSX Classic!' update bringing nostalgic gameplay and new rewards, and the GDevelop 5.6.285 release enhancing community and creator tools. It celebrated Peyton's Geometry Dash High Tide completion and Madden's Grave Gauntlet excitement, alongside Joel's humorous, crash-prone Kat AI bot emulator experiment. Group chat highlights included the 'Mariah Carey is defrosting' meme, Halloween movie debates, and Madden's funny quotes. Joel's week also featured a Sleep Country Bedroom Makeover contest entry and a Marcel Duchamp-inspired art project.",
       "image": "episode-004.png"
+    },
+    {
+      "number": 5,
+      "date": "2026-11-08",
+      "pubDate": "Sun, 08 Nov 2026 22:01:48 +0000",
+      "title": "Episode 5: 3D-Printed Magic, Arcade Builds, and Sunday Chat",
+      "audio": "episode-005-2026-11-08.mp3",
+      "continuity_update": "Episode 5 covered 3D-printed magic props like the 'Vanishing Box' and 'Cool Magic Coin Trick', detailing design challenges like hidden mechanisms and retrieval limitations. It also explored arcade builds, including custom fight sticks, bartop cabinets, and working coin doors, focusing on durability and tactile interaction. The main debate centered on prioritizing a project's reveal versus its replayability. Group chat highlights included Casen's Pokémon card haul with an SIR Zeraora, Doggie's Geometry Dash APT stream progress, and Madden's humorous push for Canon's level collaboration. Technical discussion included Ultimaker browser slicer memory issues and the desktop Cura workaround. Miko shared his front-row Colony House concert experience, and the five new games for Jackbox Party Pack 12 were introduced. The episode concluded with a three-question trivia showdown and a reflection on purposeful creation.",
+      "image": "episode-005.png"
     }
   ]
 }
