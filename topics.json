@@ -1,8 +1,8 @@
 {
-  "episode_number": 4,
-  "title": "Episode 4: Party Pack 12, PSX Classic, and Chatbot Chaos",
-  "as_of": "2026-11-01",
-  "target_publish_time": "2:00 PM EDT",
+  "episode_number": 5,
+  "title": "Episode 5: 3D-Printed Magic and Arcade Builds",
+  "as_of": "2026-11-08",
+  "target_publish_time": "2:00 PM EST",
   "target_runtime": "15-20 minutes (approximately 2,200-3,000 spoken words)",
   "hosts": {
     "Felix": {"voice": "Michael", "speed": 0.98},
@@ -13,90 +13,61 @@
     "ABSOLUTE SUPPRESSIONS: Do not mention or allude to sports of any kind, including soccer, football, or any Messi/Ronaldo debate. Do not mention Bone TD. These restrictions override all source material.",
     "Use only the facts in this file and the cited sources. Do not invent features, results, personal experiences, quotes, or chat messages.",
     "For chat and personal highlights, attribute activities to Joel or named friends only as described here; keep teasing warm, brief, and respectful.",
-    "State dates and source attribution for news. Distinguish official announcements from the supplied personal/chat context and from host opinion.",
-    "Do not claim PSX Classic or any limited contest remains available beyond the official post's stated context; avoid unsupported claims about current event status.",
+    "State dates and source attribution for research. Distinguish source-confirmed project examples from host brainstorming and opinions.",
+    "Do not claim that any linked model is tested, freely licensed, compatible, or available beyond what its cited page/search result establishes.",
     "End with a grounded Sunday reflection, recap only covered material, and sign off warmly. Include the three-question trivia segment required by the show format, using only the facts below."
   ],
   "topics": [
     {
       "id": "opening",
-      "title": "Opening: a week of party games, classic pets, and curious experiments",
-      "facts": ["Episode date is November 1, 2026.", "The supplied episode brief focuses on Party Pack 12, Pet Simulator 99 Update 99, GDevelop 5.6.285, Geometry Dash Grave Gauntlet chatter and icon hunting, a Geometry Dash community accomplishment, and Joel's personal projects and friend-group experiments."],
-      "talking_points": ["Open naturally and introduce the mix without adding unsupported claims.", "Keep the episode focused on the actual items in this brief."]
+      "title": "Opening: 3D printing meets sleight of hand and arcade nostalgia",
+      "facts": ["Episode date is November 8, 2026.", "This episode explores 3D-printable magic props and arcade hardware concepts, with a focus on the design challenges, satisfying mechanisms, and practical trade-offs rather than claiming the hosts built or tested anything."],
+      "talking_points": ["Open by setting up the contrast: a magic prop hides how it works, while arcade hardware invites hands-on interaction.", "Keep examples tied to the sourced pages and clearly label additional design ideas as brainstorming, not existing verified models."]
     },
     {
-      "id": "jackbox",
-      "title": "Jackbox Party Pack 12 launches",
-      "sources": ["https://www.jackboxgames.com/blog/the-jackbox-party-pack-12-is-available-now-on-major-platforms"],
-      "facts": ["Jackbox Games' October 15, 2026 announcement says Party Pack 12 is available on PC through Steam and Epic Games Store, PlayStation 5, Xbox Series X|S, and Nintendo Switch for $29.99.", "The pack has five games for 2-8 players: We Forgot a Card, Mega Pals, Debate & Switch, Idol Factions, and Hyperface.", "Jackbox describes We Forgot a Card as greeting-card design and joke-writing; Mega Pals as quick word association and guessing; Debate & Switch as head-to-head silly debates; Idol Factions as team trivia sorting; and Hyperface as prompt-led photo editing."],
-      "talking_points": ["Compare the different social hooks and which formats sound best suited to a group, clearly labeling opinions as opinions.", "Mention the listed price/platforms as stated in the official announcement, not as a guarantee of current regional storefront terms.", "Do not claim review reception, sales, or personal play experience."]
+      "id": "magic-props",
+      "title": "Magic props: vanishing boxes, coin illusions, and card cases",
+      "sources": ["https://makerworld.com/en/models/1379450-magic-trick-the-vanishing-box", "https://makerworld.com/en/models/204911-cool-magic-box-coin-trick", "https://www.printables.com/model/1834472-magic-disappearing-coin-box/related", "https://www.penguinmagic.com/p/20697"],
+      "facts": ["MakerWorld search results list a model titled 'Magic Trick - The Vanishing Box'; its snippet says the printed hiding action works, but notes a retrieval/hinge limitation. The page could not be independently opened for fuller verification.", "MakerWorld search results list 'Cool Magic box coin trick' by DPJRodrigues, described as a coin box using four STL files.", "Printables search results list a 'Magic Disappearing Coin Box' model.", "Penguin Magic describes Nicholas Lawrence's Vanishing Card Case as a gimmick for making cards vanish, change color, or appear to teleport; this is a commercial magic product, not evidence that this particular model is 3D printable."],
+      "talking_points": ["Discuss how hidden compartments, sliding panels, tolerances, and the reveal angle could make a printed box convincing; present design analysis as host commentary.", "Brainstorm a deck-sized gimmicked card case, a coin slider, and a compact thumb-tip holder as possible original CAD projects, not sourced ready-to-print files.", "Felix can stress reliability, reset/retrieval, print seams, and spectator viewing angles; Jasper can argue for the delight of a simple physical reveal.", "Do not explain a method as though the linked commercial card-case product is a downloadable print or claim a particular trick works without testing."]
     },
     {
-      "id": "ps99-update-99",
-      "title": "Pet Simulator 99 Update 99: PSX Classic!",
-      "sources": ["https://biggames.io/post/pet-simulator-99-update-99"],
-      "facts": ["BIG Games' official post dated October 24, 2026 is titled PSX Classic! and says the real Pet Simulator X now lives inside Pet Simulator 99.", "Players start fresh in the classic experience, progress from Spawn through Fantasy to Heavens Gate, and receive PS99 rewards for areas reached; the post says all 18 areas pay a reward.", "The post describes classic pets with matching PS99 twins, a PSX Classic leaderboard and a six-day Fantasy Clan Battle. It also describes a Season Pass with a Huge Froggy at Tier 4, among other event rewards.", "The update announcement includes a PSX portal, classic eggs and areas, limited pets, and various inventory, booth, trading-terminal, settings, and bug-fix changes."],
-      "talking_points": ["Discuss the nostalgia angle of embedding a classic experience inside the current game, and the dual progression/reward loop, as analysis.", "Attribute mechanics and event duration to BIG Games' October 24 post; do not imply Joel or his friends played it or that the event is still active.", "Avoid reading an exhaustive reward leaderboard; select only a few details from the listed facts."]
+      "id": "arcade-builds",
+      "title": "Arcade builds: fight sticks, bartops, coin doors, and handheld shells",
+      "sources": ["https://www.printables.com/model/1575032-custom-arcade-stick-rp2040-gp2040-ce/related", "https://www.printables.com/model/6454-3d-printed-bartop-desktop-arcade/related", "https://www.thingiverse.com/thing:6881313", "https://www.youtube.com/watch?v=8Pbla1Mgt4o", "https://www.youtube.com/watch?v=LQVNaGD7Un4"],
+      "facts": ["Printables search results list a custom arcade stick model described as designed for fighting games and retro enthusiasts, with RP2040/GP2040-CE in its title; the full page was not independently accessible.", "Printables search results list a 3D-printed desktop/bartop arcade model.", "Thingiverse search results describe a working arcade coin door and coin mechanism model whose door opens and closes; the listing mentions supports.", "A GeekToolkit video search result describes a miniature arcade cabinet build and its chapters include a front bezel, controller, power options, and audio-board wiring.", "A ShaolinPretzels video search result surveys 3D-printed arcade-stick parts, including mechanical buttons and enclosures."],
+      "talking_points": ["Compare a custom fight-stick enclosure and button brackets with a complete mini bartop: modular prints are easier to iterate, while a full cabinet makes a more coherent showpiece; frame as opinion.", "Pitch an arcade control-panel bracket with swappable button spacing, cable routing, and a removable service cover as a design concept, not a verified existing file.", "Discuss coin-door mechanics as tactile theater and a source of mechanical complexity; do not claim compatibility with real coin systems beyond the listing snippet.", "Add a handheld-shell concept with ergonomic grips, screen bezel, controls, and accessible battery/board compartment; label it as brainstorming, not a sourced build.", "Felix weighs print strength, assembly, serviceability, and the electronics/components a print does not supply; Jasper makes the case for the joy of a personalized cabinet or controller."]
     },
     {
-      "id": "gdevelop-5285",
-      "title": "GDevelop 5.6.285 release and Joel's template momentum",
-      "sources": ["https://github.com/4ian/GDevelop/releases/tag/v5.6.285"],
-      "facts": ["The official GDevelop GitHub release page says version 5.6.285 was released October 21, 2026.", "The release announces a refreshed gd.games community page with more focus on multiplayer, new Trending categories, and badges for active players.", "Improvements include reporting store-extension errors in the 3D editor as crash reports, a 3D physics body-type action, invoice generation for purchases or subscriptions, and a warning when the 3D editor cannot start.", "The release also lists bug fixes, extension updates, a 3D scattered-models asset pack, and premium game templates.", "The supplied user context requests a casual mention of Joel's side projects and GDevelop template momentum; no specific template, project outcome, or sales result is provided."],
-      "talking_points": ["Focus on the dated release details, especially the revamped discovery/community page and selected tool improvements.", "Casually connect the release's template/community angle to Joel's side-project momentum, but do not invent project details, results, or claim a particular template is Joel's.", "Discuss how community discovery and creator tooling might matter to indie developers, clearly marking interpretation as commentary.", "Do not invent performance effects or claim any template or feature is Joel's project."]
-    },
-    {
-      "id": "geometry-dash-high-tide",
-      "title": "Geometry Dash: High Tide, Grave Gauntlet chatter, and icon hunting",
-      "facts": ["Joel's supplied chat context says Peyton, also known as Andromeda in Joel's group chat, beat the Geometry Dash level High Tide.", "In the supplied group-chat summary, Madden was hyped about the Grave Gauntlet drop and focused on unlocking Geometry Dash icons. The supplied context reports group-chat chatter and does not establish independently verified release details about Grave Gauntlet."],
-      "talking_points": ["Celebrate the High Tide accomplishment and the persistence and precision involved in completing a challenging rhythm-platforming level, without inventing a difficulty rank, attempt count, record, or timing.", "Attribute the High Tide report to the supplied friend-chat context; do not imply external verification or add leaderboard claims.", "Include Madden's excitement about Grave Gauntlet and icon hunting as group-chat reaction, not as independently verified release reporting; do not add mechanics, release timing, or icon specifics not supplied."]
-    },
-    {
-      "id": "kat-emulator",
-      "title": "Kat the AI bot joins Joel in Build the Pyramid",
-      "facts": ["Joel's supplied weekly notes say Kat, an AI bot, joined him in Roblox Build the Pyramid running through a headless Linux Android emulator with software rendering.", "The setup lagged out and crashed about every 10 seconds, according to the supplied notes."],
-      "talking_points": ["Treat this as Joel's reported experiment, not a verified benchmark or general claim about Android emulation.", "The humor is the contrast between an ambitious setup and the remarkably short uptime; keep it affectionate and do not invent troubleshooting steps or technical diagnoses."]
-    },
-    {
-      "id": "group-chat-kat",
-      "title": "Group chat: Halloween rankings, Madden's quotes, and the November thaw",
-      "facts": ["The supplied chat context describes Sayer, Madden, Canon, and Peyton bantering while Kat was added to and removed from Joel's iMessage group chat as they tried to get the AI bot working.", "In the supplied last-15-hours chat summary, the group shared a November 1 'Mariah Carey is defrosting' meme.", "The late-night Halloween movie debate compared Star Wars and Indiana Jones rankings and debated Joker versus Anakin as the peak villain.", "Madden's supplied quotes of the night were: 'put my grades up for adoption because I couldn't raise them', 'with great power comes an electricity bill', and 'lil m KitKat'. Keep these exact supplied phrases intact if quoting; do not invent surrounding context."],
-      "talking_points": ["Synthesize the group dynamic and the add/remove troubleshooting loop without assigning specific actions to a person beyond the supplied summary.", "Use the Mariah Carey defrosting meme as a seasonal November 1 callback, clearly framed as supplied group-chat banter.", "Playfully cover the Star Wars versus Indiana Jones rankings and Joker versus Anakin villain debate as opinions expressed in chat, not settled facts.", "Share Madden's supplied one-liners with warm, brief teasing and do not add or attribute extra quotes.", "Keep the humor gentle and avoid exposing private information beyond these provided details."]
-    },
-    {
-      "id": "joel-week-projects",
-      "title": "Joel's week: bedroom makeover contest and Duchamp-inspired art",
-      "facts": ["Joel entered the Sleep Country Bedroom Makeover contest.", "Joel worked on a Marcel Duchamp-inspired paper-collage self-portrait for his TVO ILC art class, using a magic-trick/illusion theme.", "The supplied new context asks for a casual reference to Joel's side projects and GDevelop template momentum, without providing particular project names or outcomes."],
-      "talking_points": ["Mention both reported activities and, briefly, Joel's side-project/template momentum without inventing any specifics or results.", "Discuss the playful contrast between a bedroom makeover entry and a self-portrait built around illusion, without inventing contest results, artwork details, or teacher feedback."]
+      "id": "design-challenge",
+      "title": "Design challenge: what makes a 3D print feel finished?",
+      "facts": ["The sourced examples span illusion props, a coin box, arcade-stick parts, a bartop cabinet, and a coin door; they illustrate different goals but do not establish that any hosts printed or tested them."],
+      "talking_points": ["Debate whether the hardest part is precise hidden motion in a magic prop or durable, comfortable interaction in an arcade control.", "Explore practical criteria: print orientation, moving clearances, fasteners, material choice, access for repairs, and how seams or sound affect the experience. These are general design considerations, not specific source claims.", "Have Felix challenge Jasper to choose one project with a clear payoff; let Jasper defend the most fun project while acknowledging setup and tuning.", "Conclude with a nuanced verdict: a small reliable mechanism can beat a giant ambitious build, while a larger build may offer a stronger personal showcase."]
     },
     {
       "id": "main-debate",
-      "title": "Debate: when does a clever game or tech experiment become worth the friction?",
-      "facts": ["The supplied episode topics include Party Pack 12's group-friendly game formats, PS99's nested classic experience, GDevelop's creator/community update and template momentum, Geometry Dash icon hunting, and Joel's unstable emulator experiment."],
-      "talking_points": ["Felix weighs reliability, clarity, and whether the extra setup earns its complexity; Jasper argues for novelty, shared moments, and the fun of experimentation.", "Use only those examples and distinguish commentary from factual claims.", "Reach a nuanced conclusion without pretending there is one universal answer."]
+      "title": "Main debate: should a 3D-printed project prioritize the reveal or the replay?",
+      "facts": ["Magic props are discussed for a concealed visual reveal; arcade hardware is discussed for repeated hands-on use. These are the episode's framing categories, not claims about every project."],
+      "talking_points": ["Felix argues for repeatability, safe and sensible mechanics, repairability, and robust controls; Jasper argues that a memorable reveal or distinctive arcade feel can justify extra iteration.", "Use only the examples in this file; distinguish practical engineering commentary from sourced details.", "Reach a balanced conclusion about choosing a project around its intended user experience, not print complexity alone."]
     },
     {
       "id": "trivia",
       "title": "Three-question Hotline Trivia",
-      "facts": ["Use exactly three questions, each with four options A, B, C, and D. Questions must be based on the supplied topics: Party Pack 12 player count, the PSX Classic announcement date, and the level Peyton/Andromeda beat.", "The co-host and fictional caller both lock in answers before each reveal; update scores after every reveal and announce a winner or tie. Do not invent a real caller or claim outside trivia facts."],
-      "talking_points": ["Use the three factual anchors and unambiguous correct answers: 2-8 players; October 24, 2026; High Tide.", "Keep all options and banter family-friendly."]
+      "facts": ["Use exactly three questions, each with four options A, B, C, and D. Questions must be based on the sourced facts: the vanishing-box model's noted retrieval limitation, the coin box's stated count of STL files, and the coin door's described movement.", "The co-host and fictional caller both lock in answers before each reveal; update scores after every reveal and announce a winner or tie. Do not invent a real caller or claim outside trivia facts."],
+      "talking_points": ["Correct answers: the vanishing-box snippet mentions a retrieval/hinge limitation; the MakerWorld coin box is described as using four STL files; the Thingiverse coin door is described as opening and closing.", "Make answer choices clear and unambiguous, and attribute the details to the respective search-result descriptions rather than implying full-page verification."]
     },
     {
       "id": "reflection-close",
       "title": "Sunday reflection and closing recap",
-      "facts": ["Recap only the Jackbox launch, PSX Classic update, GDevelop release, High Tide accomplishment, Grave Gauntlet/icon-hunting chat, Kat emulator/chat experiment, Halloween movie debates, Madden's supplied quotes, November 1 meme, and Joel's week projects if discussed."],
-      "talking_points": ["Reflect on patience, creativity, and laughing together when experiments are imperfect; present this as a practical reflection, not a sourced quotation.", "Close with a concise recap and warm sign-off. Do not introduce new news or unsupplied details."]
+      "facts": ["Recap only the sourced magic-prop and arcade-build examples, the difference between a one-time reveal and repeated interaction, and any explicitly labeled design brainstorming that was discussed."],
+      "talking_points": ["Reflect on patience, careful iteration, and making things that bring people delight; present this as a practical reflection, not a sourced quotation.", "Close with a concise recap and warm sign-off. Do not introduce new product facts or claim any project was built by Joel, Felix, or Jasper."]
     }
   ],
   "required_segments": [
     {"id": "opening", "label": "Opening"},
-    {"id": "jackbox", "label": "Jackbox Party Pack 12"},
-    {"id": "ps99-update-99", "label": "PS99 Update 99"},
-    {"id": "gdevelop-5285", "label": "GDevelop 5.6.285"},
-    {"id": "geometry-dash-high-tide", "label": "Geometry Dash: High Tide"},
-    {"id": "kat-emulator", "label": "Kat and the Emulator"},
-    {"id": "group-chat-kat", "label": "Group Chat Banter"},
-    {"id": "joel-week-projects", "label": "Joel's Week"},
+    {"id": "magic-props", "label": "3D-Printed Magic Props"},
+    {"id": "arcade-builds", "label": "Arcade Builds"},
+    {"id": "design-challenge", "label": "The Design Challenge"},
     {"id": "main-debate", "label": "Main Debate"},
     {"id": "trivia", "label": "Hotline Trivia"},
     {"id": "reflection-close", "label": "Sunday Reflection and Close"}
